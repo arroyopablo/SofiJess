@@ -37,7 +37,7 @@ public class GestionAdministrador extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        botonCerrarSesion = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
@@ -86,15 +86,15 @@ public class GestionAdministrador extends javax.swing.JFrame {
         jLabel6.setText("Añadir personal");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
-        jButton5.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/images/4115235-exit-logout-sign-out_114030_opt.png"))); // NOI18N
-        jButton5.setText("Cerrar cesiòn");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonCerrarSesion.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        botonCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/images/4115235-exit-logout-sign-out_114030_opt.png"))); // NOI18N
+        botonCerrarSesion.setText("Cerrar sesión");
+        botonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 150, 30));
+        jPanel1.add(botonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 150, 30));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/images/bank_bill_finance_invoice_money_payment_receipt_icon_123239_opt.png"))); // NOI18N
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 60, -1));
@@ -133,9 +133,12 @@ public class GestionAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
+        Login log = new Login();
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,11 +176,11 @@ public class GestionAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCerrarSesion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
