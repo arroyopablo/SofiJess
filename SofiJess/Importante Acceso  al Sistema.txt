@@ -1,0 +1,7 @@
+NOTA: el sistema solo va a aceptar usuarios con la contraseña encriptada
+
+Agregar el usuario:
+  ROOT3 CLAVE DESDE EL PROGRAMA ES 3 EN LA BASE ESTA ASI:
+ INSERT INTO Empleado VALUES
+ ('ROOT3','eccbc87e4b5ce2fe28308fd9f2a7baf3','Alejando','Mendoza',20,315,'cr 69 #26-69','Torres',1000,'Jefe',0001);
+agregarlo en la base para poder ingresar con un usuario al sistema.
