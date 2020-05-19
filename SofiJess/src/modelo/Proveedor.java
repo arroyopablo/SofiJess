@@ -3,16 +3,16 @@ package modelo;
 
 public class Proveedor {
     private String nombreProv;
-    private int nitProv; 
-    private int telefonoProv;
+    private String nitProv; 
+    private String telefonoProv;
     private String direccionProv;
-    private int precioProdProv;
+    private String precioProdProv;
     private String productoProv;
     
    public Proveedor(){
    }
    
-   public Proveedor(String nombreProv,int nitProv, int telefonoProv, String direccionProv, int precioProdProv, String productoProv){
+   public Proveedor(String nombreProv,String nitProv, String telefonoProv, String direccionProv, String precioProdProv, String productoProv){
        this.nombreProv = nombreProv;
        this.nitProv = nitProv;
        this.telefonoProv = telefonoProv;
@@ -29,19 +29,19 @@ public class Proveedor {
         this.nombreProv = nombreProv;
     }
     
-    public int getNitProv() {
+    public String getNitProv() {
         return nitProv;
     }
 
-    public void setNitProv(int nitProv) {
+    public void setNitProv(String nitProv) {
         this.nitProv = nitProv;
     }
     
-    public int getTelefonoProv() {
+    public String getTelefonoProv() {
         return telefonoProv;
     }
 
-    public void setTelefonoProv(int telefonoProv) {
+    public void setTelefonoProv(String telefonoProv) {
         this.telefonoProv = telefonoProv;
     }
     
@@ -53,11 +53,11 @@ public class Proveedor {
         this.direccionProv = direccionProv;
     }
     
-    public int getPrecioProdProv() {
+    public String getPrecioProdProv() {
         return precioProdProv;
     }
 
-    public void setPrecioProdProv(int precioProdProv) {
+    public void setPrecioProdProv(String precioProdProv) {
         this.precioProdProv = precioProdProv;
     }
     

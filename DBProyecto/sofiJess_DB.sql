@@ -1,7 +1,7 @@
 CREATE TABLE Proveedor(
  nombreProv           varchar(50),
- nitProv              int NOT NULL PRIMARY KEY,
- telProv              int  NOT NULL,
+ nitProv              bigint NOT NULL PRIMARY KEY,
+ telProv              bigint  NOT NULL,
  dirProv              varchar(50) NOT NULL,
  precioProducrov      numeric(12,0) NOT NULL,
  nombreProducProv     varchar(50) NOT NULL);
@@ -11,11 +11,11 @@ CREATE TABLE Proveedor(
  
 CREATE TABLE Producto(
  nombreProduc         varchar(50) NOT NULL,
- codigoProduc         int NOT NULL PRIMARY KEY,
+ codigoProduc         bigint NOT NULL PRIMARY KEY,
  precioProduc         numeric(12,0) NOT NULL,
  descripcionProduc    varchar(150),
- cantidadProduc       int NOT NULL,
- nitProv              int NOT NULL,	
+ cantidadProduc       bigint NOT NULL,
+ nitProv              bigint NOT NULL,	
 CONSTRAINT  fknitProv FOREIGN KEY(nitProv) REFERENCES Proveedor(nitProv));
 
 INSERT INTO Producto VALUES('Teclado',1,25000,'Teclado nuevo',10,1077);
@@ -28,12 +28,12 @@ CREATE TABLE Empleado(
  contrasenaEmple        varchar(50) NOT NULL,
  nombreEmple            varchar(50) NOT NULL,
  apellidoEmple          varchar(50),
- cedulaEmple            int NOT NULL PRIMARY KEY,
- telefono               int NOT NULL,
+ cedulaEmple            bigint NOT NULL PRIMARY KEY,
+ telefono               bigint NOT NULL,
  direccionEmple         varchar(60) NOT NULL,
  barrioEmple            varchar(50),
  sueldo                 numeric(12,0) NOT NULL,
- cargo     varchar(50) NOT NULL DEFAULT 'Empleado' CHECK(cargo IN('Jefe','Usuario','Empleado')));
+ cargo     varchar(50) NOT NULL DEFAULT 'Empleado' CHECK(cargo IN('Jefe','Empleado')));
  
  INSERT INTO Empleado VALUES
  ('ROOT3','eccbc87e4b5ce2fe28308fd9f2a7baf3','Admin','y',20,315,'cr 11 #12bis-22','Porvenir',1000,'Jefe');
@@ -47,8 +47,8 @@ CREATE TABLE Empleado(
 CREATE TABLE Cliente(
  nombreClien           varchar(50) NOT NULL,
  apellidoClien         varchar(50) NOT NULL,
- cedulaClien           int NOT NULL PRIMARY KEY,
- telefonoClien         int NOT NULL,
+ cedulaClien           bigint NOT NULL PRIMARY KEY,
+ telefonoClien         bigint NOT NULL,
  direccionClien        varchar(60) NOT NULL,
  barrioClien           varchar(50),
  correoElectro         varchar(80) NOT NULL);
@@ -62,8 +62,8 @@ CREATE TABLE Cliente(
  
 CREATE TABLE  Cotizacion(
  idCotizacion              serial PRIMARY KEY ,
- cedulaClien               int NOT NULL,
- cedulaEmple               int NOT NULL,	
+ cedulaClien               bigint NOT NULL,
+ cedulaEmple               bigint NOT NULL,	
  fechaC                    date DEFAULT CURRENT_DATE,
  totalCompra               numeric(12,0) NOT NULL DEFAULT 0,
 CONSTRAINT fkcedulaClien FOREIGN KEY(cedulaClien) REFERENCES Cliente(cedulaClien),
@@ -78,9 +78,9 @@ INSERT INTO Cotizacion(cedulaClien,cedulaEmple) VALUES
 
 CREATE TABLE DetalleCotizacion(
  idDetalle              serial PRIMARY KEY,
- idCotizacion           int  NOT NULL,
- codigoProduc           int  NOT NULL,
- cantidad               int  NOT NULL,
+ idCotizacion           bigint  NOT NULL,
+ codigoProduc           bigint  NOT NULL,
+ cantidad               bigint  NOT NULL,
  valorunitario          numeric(12,0)NOT NULL,
  iva              	    numeric(12,0)NOT NULL,
  total                  numeric(12,0)NOT NULL,

@@ -1,13 +1,7 @@
 package silverdevs;
 
 import javax.swing.UIManager;
-import vista.RegistrarCotizacion;
-import vista.RegistrarEmpleado;
-import vista.GestionEmpleado;
 import vista.LoginUsuario;
-import vista.RegistarProveedor;
-import vista.RegistrarCliente;
-import vista.RegistrarProducto;
 
 public class SilverDevs {
     

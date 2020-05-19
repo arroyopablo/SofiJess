@@ -10,7 +10,7 @@ public class ControladorCotizacion {
     public ControladorCotizacion() {
     }
 
-    public String buscarPro(int busqueda) {
+    public String buscarPro(String busqueda) {
         modelo.DAOCotizacion objetoProducto = new modelo.DAOCotizacion();
         objetoProducto.setCodigoPro(busqueda);
 
@@ -20,7 +20,7 @@ public class ControladorCotizacion {
         return resultado;
     }
 
-    public String buscarPrecio(int busqueda) {
+    public String buscarPrecio(String busqueda) {
         modelo.DAOCotizacion objetoProducto = new modelo.DAOCotizacion();
         objetoProducto.setCodigoPro(busqueda);
 
@@ -30,7 +30,7 @@ public class ControladorCotizacion {
         return resultado;
     }
 
-    public String buscarCodigo(int busqueda) {
+    public String buscarCodigo(String busqueda) {
         modelo.DAOCotizacion objetoProducto = new modelo.DAOCotizacion();
         objetoProducto.setCodigoPro(busqueda);
 
@@ -66,7 +66,7 @@ public class ControladorCotizacion {
         }
     }
     
-    public void guardarCotizacion(int cedulaCli, int cedulaEmple){
+    public void guardarCotizacion(String cedulaCli, String cedulaEmple){
       modelo.DAOCotizacion1 cotizacion =new modelo.DAOCotizacion1();  
       
       cotizacion.setCedulaClien(cedulaCli);
@@ -75,7 +75,7 @@ public class ControladorCotizacion {
       cotizacion.insertarCotizacion();
     }
     
-    public void guardarDetalleC(int cotizacion, int producto, int cantidad, double valor, double iva, double total){
+    public void guardarDetalleC(String cotizacion, String producto, String cantidad, String valor, String iva, String total){
         modelo.DAOCotizacion1 detallecotizacion =new modelo.DAOCotizacion1();
         
         detallecotizacion.setIdCotizacion(cotizacion);
@@ -88,7 +88,7 @@ public class ControladorCotizacion {
        detallecotizacion.insertarDetalleCotizacion();
     }
     
-    public void updateCompra(double totalcompra,int idcotizacion){
+    public void updateCompra(String totalcompra,String idcotizacion){
        modelo.DAOCotizacion1 update =new modelo.DAOCotizacion1();
        
        update.setTotalCompra(totalcompra);
@@ -99,21 +99,21 @@ public class ControladorCotizacion {
        update.updateTotal();
     }
     
-    public void cancelarCotizacion (int idcotizacion){
+    public void cancelarCotizacion (String idcotizacion){
         modelo.DAOCotizacion1 objeto =new modelo.DAOCotizacion1();
         objeto.setIdCotizacion(idcotizacion);
         String resultado = "";
         resultado = objeto.cancelaCotizacion();
     }
     
-    public void cancelarProducto (int idproducto){
+    public void cancelarProducto (String idproducto){
         modelo.DAOCotizacion1 objeto =new modelo.DAOCotizacion1();
         objeto.setCodigoProducto(idproducto);
         String resultado = "";
         resultado = objeto.cancelaProductoC();
     }
     
-    public String buscarCotizacion (int busqueda){
+    public String buscarCotizacion (String busqueda){
        modelo.DAOCotizacion1 objetocotizacion = new modelo.DAOCotizacion1();
        objetocotizacion.setIdCotizacion(busqueda);
     
@@ -126,7 +126,7 @@ public class ControladorCotizacion {
         return resultado;
     }
     
-    public String buscardetalleCotizacion (int busqueda){
+    public String buscardetalleCotizacion (String busqueda){
        modelo.DAOCotizacion1 objetocotizacion = new modelo.DAOCotizacion1();
        objetocotizacion.setIdCotizacion(busqueda);
     

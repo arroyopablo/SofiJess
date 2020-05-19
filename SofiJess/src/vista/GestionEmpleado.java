@@ -1168,10 +1168,10 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
     private void guardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProductoActionPerformed
         String nombre = nombreProducto.getText();
-        int codigo = Integer.parseInt(codigoProducto.getText());
-        double precio = Double.parseDouble(precioProducto.getText());
+        String codigo = codigoProducto.getText();
+        String precio = precioProducto.getText();
         String descripcion = descripcionProducto.getText();
-        int cantidad = Integer.parseInt(cantidadProducto.getText());
+        String cantidad = cantidadProducto.getText();
         String proveedor = proveedirProducto.getText();
 
         controlador.ControladorProducto producto = new controlador.ControladorProducto();
@@ -1184,7 +1184,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarProductoActionPerformed
 
     private void botonBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCliActionPerformed
-        int codigo = Integer.parseInt(codigoProduccto.getText());
+        String codigo = codigoProduccto.getText();
         if(codigoProduccto.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR EL NIT DEL PRODUCTO");
         }else{
@@ -1197,7 +1197,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE BUSCAR EL PRODUCTO");
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el PRODUCTO, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        produ.eliminarPro(Integer.parseInt(codigoProduccto.getText()));
+        produ.eliminarPro(codigoProduccto.getText());
         limpiarCampos();
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
@@ -1222,12 +1222,12 @@ public class GestionEmpleado extends javax.swing.JFrame {
     private void guardarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProducto1ActionPerformed
 
         modelo.DAOProducto objetoProducto= new modelo.DAOProducto();
-        objetoProducto.setCodigoPro(Integer.parseInt(codigoProducto1.getText()));
+        objetoProducto.setCodigoPro(codigoProducto1.getText());
         objetoProducto.setNombrePro(nombrProducto.getText());
-        objetoProducto.setPrecioPro(Integer.parseInt(precioProducto1.getText()));
+        objetoProducto.setPrecioPro(precioProducto1.getText());
         objetoProducto.setDescripcionPro(descripcionProducto1.getText());
-        objetoProducto.setCantidadPro(Integer.parseInt(cantidadProducto1.getText()));
-        objetoProducto.setProveedorPro(Integer.parseInt(nitProveedor.getText()));
+        objetoProducto.setCantidadPro(cantidadProducto1.getText());
+        objetoProducto.setProveedorPro(nitProveedor.getText());
         String resultado = "";
         resultado = objetoProducto.modificar();
         if(resultado.equals("Error")){
@@ -1247,7 +1247,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
         if(codigoProducto2.getText().equals("")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR EL CODIGO DEL PRODUCTO");
         }else{
-            int codigoProd = Integer.parseInt(codigoProducto2.getText());
+            String codigoProd = codigoProducto2.getText();
             resultadoBusqueda.setText(buscar.buscarPro(codigoProd));
             codigoProducto2.setText("");
         }
@@ -1272,9 +1272,9 @@ public class GestionEmpleado extends javax.swing.JFrame {
         } else if (cboxFiltro.getSelectedItem().toString().equals("Nombre") || cboxFiltro.getSelectedItem().toString().equals("Todos")) {
             listarPro.listarProdu(txtValorBusqueda.getText(), cboxFiltro.getSelectedItem().toString(), tblDatos);
         } else {
-            listarPro.setPrecioPro(Integer.parseInt(txtValorBusqueda.getText()));
-            listarPro.setCantidadPro(Integer.parseInt(txtValorBusqueda.getText()));
-            listarPro.setProveedorPro(Integer.parseInt(txtValorBusqueda.getText()));
+            listarPro.setPrecioPro(txtValorBusqueda.getText());
+            listarPro.setCantidadPro(txtValorBusqueda.getText());
+            listarPro.setProveedorPro(txtValorBusqueda.getText());
             listarPro.listarProdu(txtValorBusqueda.getText(), cboxFiltro.getSelectedItem().toString(), tblDatos);
             limpiarCampos();
         }
@@ -1286,7 +1286,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
         if(cedulCliente.getText().equals("")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LA CEDULA DEL CLIENTE");
         }else{
-            int cedula = Integer.parseInt(cedulCliente.getText());
+            String cedula = cedulCliente.getText();
             resultadoBusqueda1.setText(buscar.buscarCli(cedula));
             cedulCliente.setText("");
         }
@@ -1311,10 +1311,10 @@ public class GestionEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR LA CEDULA");
         }else{
             modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
-            objetoCliente.setCedulaCli(Integer.parseInt(cedulCliente1.getText()));
+            objetoCliente.setCedulaCli(cedulCliente1.getText());
             objetoCliente.setNombreCli(nombreCliente.getText());
             objetoCliente.setApellidoCli(apellidoCliente.getText());
-            objetoCliente.setTelefonoCli(Integer.parseInt(telCliente.getText()));
+            objetoCliente.setTelefonoCli(telCliente.getText());
             objetoCliente.setDireccionCli(direccinCliete.getText());
             objetoCliente.setBarrioCli(BarrioCliente.getText());
             objetoCliente.setCorreoCli(CorreoCliente.getText());
@@ -1349,7 +1349,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_cedulCliente1KeyTyped
 
     private void botonBuscarCli1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCli1ActionPerformed
-        int cedula = Integer.parseInt(cedulCliente2.getText());
+        String cedula = cedulCliente2.getText();
         if(cedulCliente2.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR LA CEDULA DEL CLIENTE");
         }else{
@@ -1372,7 +1372,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE BUSCAR AL CLIENTE");
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el cliente, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        cliente.eliminarCli(Integer.parseInt(cedulCliente2.getText()));
+        cliente.eliminarCli(cedulCliente2.getText());
         limpiarCampos();
         }
     }//GEN-LAST:event_botonEliminar1ActionPerformed
@@ -1402,8 +1402,8 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
         String nombreCli = nombreCliente.getText();
         String apellido = apellidoCliente.getText();
-        int cedula = Integer.parseInt(cedulaCliente.getText());
-        int telefono = Integer.parseInt(telCliente.getText());
+        String cedula = cedulaCliente.getText();
+        String telefono = telCliente.getText();
         String direccion = direccinCliete.getText();
         String barrio = BarrioCliente.getText();
         String correo = CorreoCliente.getText();
@@ -1462,7 +1462,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
         int fila = tlbDatos.getSelectedRow();
         String codigopro = tlbDatos.getValueAt(fila, 0).toString();
         dtm.removeRow(fila);
-        int codigo = Integer.parseInt(codigopro);
+        String codigo = codigopro;
         System.out.println(codigo);
         buscar.cancelarProducto(codigo);
     }
@@ -1471,7 +1471,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
         try {
 
-            int codigoProducto = Integer.parseInt(codigoProducCotizacion.getText());
+            String codigoProducto = codigoProducCotizacion.getText();
             controlador.ControladorCotizacion buscar = new controlador.ControladorCotizacion();
             String nombre = (buscar.buscarPro(codigoProducto));
             String precio = (buscar.buscarPrecio(codigoProducto));
@@ -1485,8 +1485,8 @@ public class GestionEmpleado extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debe ingresar la cantidad");
             } else if (buscar.isNumeric(cantidad)) {
                 agregar(codigo, nombre, cantidad, precio, valort);
-                buscar.guardarDetalleC(idcotizacion, codigoProducto, Integer.parseInt(cantidad),
-                    Double.parseDouble(precio), Double.parseDouble(iva), valort1);
+                buscar.guardarDetalleC(Integer.toString(idcotizacion), codigoProducto, cantidad,
+                    precio, iva, Float.toString(valort1));
 
                 cantidadProductoCotizacion.setText("");
                 codigoProducCotizacion.setText("");
@@ -1514,8 +1514,8 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
     private void tbnGuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnGuardarCotizacionActionPerformed
 
-        int cedulaClien = Integer.parseInt(documentoClienteCotiza.getText());
-        int cedulaEmple = Integer.parseInt(vendedorCotizacion.getText());
+        String cedulaClien = documentoClienteCotiza.getText();
+        String cedulaEmple = vendedorCotizacion.getText();
         //Crea la cotizacion
         buscar.guardarCotizacion(cedulaClien, cedulaEmple);
         codigoProducCotizacion.setEditable(true);
@@ -1536,7 +1536,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
         documentoClienteCotiza.setText("");
         vendedorCotizacion.setText("");
-        buscar.cancelarCotizacion(idcotizacion);
+        buscar.cancelarCotizacion(Integer.toString(idcotizacion));
         numeroCotizacion.setText(Integer.toString(idcotizacion));
         fechaCotizacion.setText(buscar.fechaActual());
         tbnGuardarCotizacion.setEnabled(true);
@@ -1554,7 +1554,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
         int numerocotiza = Integer.parseInt(buscar.codigoCotizacion()) -1;
         // System.out.println(numerocotiza);
-        buscar.updateCompra(compraTotal,numerocotiza);
+        buscar.updateCompra(Double.toString(compraTotal),Integer.toString(numerocotiza));
         codigoProducCotizacion.setEditable(false);
         cantidadProductoCotizacion.setEditable(false);
         agregar.setEnabled(false);
@@ -1578,7 +1578,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
 
         int numerocotiza = Integer.parseInt(buscar.codigoCotizacion()) -1;
         // System.out.println(numerocotiza);
-        buscar.updateCompra(compraTotal,numerocotiza);
+        buscar.updateCompra(Double.toString(compraTotal),Integer.toString(numerocotiza));
         codigoProducCotizacion.setEditable(false);
         cantidadProductoCotizacion.setEditable(false);
         agregar.setEnabled(false);
@@ -1595,7 +1595,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarCotizacion1ActionPerformed
 
     private void buscarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCotizacionActionPerformed
-        int cotizacion = Integer.parseInt(numeroCotizacion.getText());
+        String cotizacion = numeroCotizacion.getText();
         controlador.ControladorCotizacion buscar  = new controlador.ControladorCotizacion();
         resultadocotizacion.setText(buscar.buscarCotizacion(cotizacion));
         resultadodetalle.setText(buscar.buscardetalleCotizacion(cotizacion));

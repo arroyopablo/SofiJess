@@ -234,13 +234,7 @@ public class LoginUsuario extends javax.swing.JFrame {
                     ge1.setVisible(true);
                     ge1.nombreUsuario.setText(nombre);
 
-                } else if (resultado.equals("Usuario")) {
-
-                    GestionUsuario gU = new GestionUsuario();
-                    gU.setVisible(true);
-                    gU.nombreUsuario.setText(nombre);
-                }
-
+                } 
                 this.dispose();
             }
         } catch (Exception ex) {
@@ -307,13 +301,7 @@ public class LoginUsuario extends javax.swing.JFrame {
                     ge1.setVisible(true);
                     ge1.nombreUsuario.setText(nombre);
 
-                } else if (resultado.equals("Usuario")) {
-
-                    GestionUsuario gU = new GestionUsuario();
-                    gU.setVisible(true);
-                    gU.nombreUsuario.setText(nombre);
-                }
-
+                } 
                 this.dispose();
             }
         } catch (Exception ex) {

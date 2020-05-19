@@ -2,6 +2,7 @@ package vista;
 
 import Atxy2k.CustomTextField.RestrictedTextField;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -9,12 +10,14 @@ public class GestionJefe extends javax.swing.JFrame {
     DefaultTableModel dtm = new DefaultTableModel();
     controlador.ControladorCotizacion buscar = new controlador.ControladorCotizacion();
     private int idcotizacion;
-    Color fondoAzul = new Color(0,102,255);
+    Color fondoNaranja = new Color(246,149,50);
+    Color rojo = new Color(234,201,186);
     private double compraTotal;
     RestrictedTextField r = null;
-    
+        
     public GestionJefe() {
         initComponents();
+                
         limitarNumerosTelefono();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -22,7 +25,7 @@ public class GestionJefe extends javax.swing.JFrame {
         panelEmpleado.setVisible(false);
         panelCotizaciones.setVisible(false);
         panelProductos.setVisible(true);
-        botonProducto.setBackground(Color.gray);
+        botonProducto.setBackground(rojo);
         panelProveedor.setVisible(false);
         panelReportes.setVisible(false);
         fechaCotizacion.setText(buscar.fechaActual());
@@ -366,15 +369,14 @@ public class GestionJefe extends javax.swing.JFrame {
         jLayeredPane1.setOpaque(true);
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelPiePagina.setBackground(new java.awt.Color(255, 255, 255));
+        panelPiePagina.setBackground(new java.awt.Color(158, 189, 213));
         panelPiePagina.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         panelPiePagina.setMinimumSize(new java.awt.Dimension(668, 44));
         panelPiePagina.setPreferredSize(new java.awt.Dimension(633, 47));
         panelPiePagina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton7.setBackground(new java.awt.Color(0, 102, 255));
+        jButton7.setBackground(new java.awt.Color(246, 149, 50));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Exit_25px.png"))); // NOI18N
         jButton7.setText("CERRAR SESIÓN");
         jButton7.setMaximumSize(new java.awt.Dimension(107, 23));
@@ -385,17 +387,18 @@ public class GestionJefe extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        panelPiePagina.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 10, 190, 36));
+        panelPiePagina.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 7, 190, 36));
 
-        jLayeredPane1.add(panelPiePagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 637, 1137, 48));
+        jLayeredPane1.add(panelPiePagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 637, 1138, 49));
 
-        panelProductos.setBackground(new java.awt.Color(255, 255, 255));
-        panelProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        panelProductos.setBackground(new java.awt.Color(158, 189, 213));
         panelProductos.setToolTipText("");
         panelProductos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         panelProductos.setOpaque(true);
 
-        panelCrear.setBackground(new java.awt.Color(255, 255, 255));
+        panelCrear.setBackground(new java.awt.Color(233, 233, 233));
+        panelCrear.setMinimumSize(new java.awt.Dimension(730, 480));
+        panelCrear.setPreferredSize(new java.awt.Dimension(730, 480));
         panelCrear.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -466,7 +469,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProductos.addTab("CREAR", panelCrear);
 
-        panelEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        panelEliminar.setBackground(new java.awt.Color(233, 233, 233));
         panelEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -525,7 +528,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProductos.addTab("ELIMINAR", panelEliminar);
 
-        panelEditar.setBackground(new java.awt.Color(255, 255, 255));
+        panelEditar.setBackground(new java.awt.Color(233, 233, 233));
         panelEditar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         descripcionProducto1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -606,7 +609,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProductos.addTab("EDITAR", panelEditar);
 
-        panelBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        panelBuscar.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -654,7 +657,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProductos.addTab("BUSCAR", panelBuscar);
 
-        panelListar.setBackground(new java.awt.Color(255, 255, 255));
+        panelListar.setBackground(new java.awt.Color(233, 233, 233));
         panelListar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDatos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -712,16 +715,15 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProductos.addTab("LISTAR", panelListar);
 
-        jLayeredPane1.add(panelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 917, 570));
-        panelProductos.getAccessibleContext().setAccessibleName("CREAR");
+        jLayeredPane1.add(panelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
+        panelProductos.getAccessibleContext().setAccessibleName("");
 
-        panelProveedor.setBackground(new java.awt.Color(255, 255, 255));
-        panelProveedor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        panelProveedor.setBackground(new java.awt.Color(158, 189, 213));
         panelProveedor.setToolTipText("");
         panelProveedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         panelProveedor.setOpaque(true);
 
-        panelCrearProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        panelCrearProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel30.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -791,7 +793,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProveedor.addTab("CREAR", panelCrearProveedor);
 
-        panelEliminarProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        panelEliminarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelEliminarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel39.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -849,7 +851,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProveedor.addTab("ELIMINAR", panelEliminarProveedor);
 
-        panelEditarProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        panelEditarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelEditarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelEditarProveedor.add(nomProducProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 302, -1));
 
@@ -921,7 +923,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProveedor.addTab("EDITAR", panelEditarProveedor);
 
-        panelBuscarProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        panelBuscarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel50.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -968,7 +970,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProveedor.addTab("BUSCAR", panelBuscarProveedor);
 
-        panelListarProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        panelListarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelListarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelListarProveedor.add(txtValorBusqueda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 352, 20));
 
@@ -1022,15 +1024,14 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelProveedor.addTab("LISTAR", panelListarProveedor);
 
-        jLayeredPane1.add(panelProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 917, 570));
+        jLayeredPane1.add(panelProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
-        panelReportes.setBackground(new java.awt.Color(255, 255, 255));
-        panelReportes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        panelReportes.setBackground(new java.awt.Color(158, 189, 213));
         panelReportes.setToolTipText("");
         panelReportes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         panelReportes.setOpaque(true);
 
-        panelReporteEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        panelReporteEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelReporteEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1054,7 +1055,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelReportes.addTab("EMPLEADO", panelReporteEmpleado);
 
-        panelReporteProductos.setBackground(new java.awt.Color(255, 255, 255));
+        panelReporteProductos.setBackground(new java.awt.Color(233, 233, 233));
         panelReporteProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel54.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1078,7 +1079,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelReportes.addTab("PRODUCTOS", panelReporteProductos);
 
-        panelReporteEditar.setBackground(new java.awt.Color(255, 255, 255));
+        panelReporteEditar.setBackground(new java.awt.Color(233, 233, 233));
         panelReporteEditar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelReporteEditar.add(jtxDato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 292, -1));
 
@@ -1102,15 +1103,14 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelReportes.addTab("CLIENTE", panelReporteEditar);
 
-        jLayeredPane1.add(panelReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 917, 570));
+        jLayeredPane1.add(panelReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
-        panelCotizaciones.setBackground(new java.awt.Color(255, 255, 255));
-        panelCotizaciones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        panelCotizaciones.setBackground(new java.awt.Color(158, 189, 213));
         panelCotizaciones.setToolTipText("");
         panelCotizaciones.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         panelCotizaciones.setOpaque(true);
 
-        panelCrearCotizacion.setBackground(new java.awt.Color(255, 255, 255));
+        panelCrearCotizacion.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearCotizacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         totalCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1281,7 +1281,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCotizaciones.addTab("CREAR", panelCrearCotizacion);
 
-        panelBuscarCotizacion.setBackground(new java.awt.Color(255, 255, 255));
+        panelBuscarCotizacion.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscarCotizacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buscarCotizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
@@ -1325,15 +1325,14 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCotizaciones.addTab("BUSCAR", panelBuscarCotizacion);
 
-        jLayeredPane1.add(panelCotizaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 917, 570));
+        jLayeredPane1.add(panelCotizaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
-        panelEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        panelEmpleado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        panelEmpleado.setBackground(new java.awt.Color(158, 189, 213));
         panelEmpleado.setToolTipText("");
         panelEmpleado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         panelEmpleado.setOpaque(true);
 
-        panelCrearEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        panelCrearEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel63.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1414,7 +1413,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelEmpleado.addTab("CREAR", panelCrearEmpleado);
 
-        panelEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        panelEliminarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cedulEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -1472,7 +1471,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelEmpleado.addTab("ELIMINAR", panelEliminarEmpleado);
 
-        panelEditarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        panelEditarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelEditarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel80.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1536,7 +1535,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelEmpleado.addTab("EDITAR", panelEditarEmpleado);
 
-        panelBuscarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        panelBuscarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         resultadoBusqueda1.setEditable(false);
@@ -1583,7 +1582,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelEmpleado.addTab("BUSCAR", panelBuscarEmpleado);
 
-        panelListarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        panelListarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelListarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonListar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonListar.PNG"))); // NOI18N
@@ -1639,15 +1638,14 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelEmpleado.addTab("LISTAR", panelListarEmpleado);
 
-        jLayeredPane1.add(panelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 917, 570));
+        jLayeredPane1.add(panelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
-        panelCliente.setBackground(new java.awt.Color(255, 255, 255));
-        panelCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        panelCliente.setBackground(new java.awt.Color(158, 189, 213));
         panelCliente.setToolTipText("");
         panelCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         panelCliente.setOpaque(true);
 
-        panelCrearCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelCrearCliente.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel91.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1718,7 +1716,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCliente.addTab("CREAR", panelCrearCliente);
 
-        panelEliminarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelEliminarCliente.setBackground(new java.awt.Color(233, 233, 233));
         panelEliminarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel100.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1776,7 +1774,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCliente.addTab("ELIMINAR", panelEliminarCliente);
 
-        panelEditarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelEditarCliente.setBackground(new java.awt.Color(233, 233, 233));
         panelEditarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel103.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1857,7 +1855,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCliente.addTab("EDITAR", panelEditarCliente);
 
-        panelBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelBuscarCliente.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel112.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -1905,7 +1903,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCliente.addTab("BUSCAR", panelBuscarCliente);
 
-        panelListarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelListarCliente.setBackground(new java.awt.Color(233, 233, 233));
         panelListarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDatos3.setModel(new javax.swing.table.DefaultTableModel(
@@ -1954,15 +1952,14 @@ public class GestionJefe extends javax.swing.JFrame {
 
         panelCliente.addTab("LISTAR", panelListarCliente);
 
-        jLayeredPane1.add(panelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 917, 570));
+        jLayeredPane1.add(panelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
-        panelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        panelMenu.setBackground(new java.awt.Color(158, 189, 213));
         panelMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonProducto.setBackground(new java.awt.Color(0, 102, 255));
+        botonProducto.setBackground(new java.awt.Color(246, 149, 50));
         botonProducto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        botonProducto.setForeground(new java.awt.Color(255, 255, 255));
         botonProducto.setText("PRODUCTOS");
         botonProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1977,9 +1974,8 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoprovedor.png"))); // NOI18N
         panelMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 120, -1, -1));
 
-        gestionProveedor.setBackground(new java.awt.Color(0, 102, 255));
+        gestionProveedor.setBackground(new java.awt.Color(246, 149, 50));
         gestionProveedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        gestionProveedor.setForeground(new java.awt.Color(255, 255, 255));
         gestionProveedor.setText("PROVEEDOR");
         gestionProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1991,9 +1987,8 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/REPORTES.png"))); // NOI18N
         panelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 208, -1, -1));
 
-        botonReportes.setBackground(new java.awt.Color(0, 102, 255));
+        botonReportes.setBackground(new java.awt.Color(246, 149, 50));
         botonReportes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        botonReportes.setForeground(new java.awt.Color(255, 255, 255));
         botonReportes.setText("REPORTES");
         botonReportes.setToolTipText("");
         botonReportes.setMaximumSize(new java.awt.Dimension(107, 23));
@@ -2008,9 +2003,8 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cotizacion.png"))); // NOI18N
         panelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 296, -1, -1));
 
-        botonCotizacion.setBackground(new java.awt.Color(0, 102, 255));
+        botonCotizacion.setBackground(new java.awt.Color(246, 149, 50));
         botonCotizacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        botonCotizacion.setForeground(new java.awt.Color(255, 255, 255));
         botonCotizacion.setText("COTIZACIONES");
         botonCotizacion.setMaximumSize(new java.awt.Dimension(107, 23));
         botonCotizacion.setMinimumSize(new java.awt.Dimension(107, 23));
@@ -2028,9 +2022,8 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/clienteimagenqw.png"))); // NOI18N
         panelMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 493, 48, -1));
 
-        clientes.setBackground(new java.awt.Color(0, 102, 255));
+        clientes.setBackground(new java.awt.Color(246, 149, 50));
         clientes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        clientes.setForeground(new java.awt.Color(255, 255, 255));
         clientes.setText("CLIENTE");
         clientes.setMaximumSize(new java.awt.Dimension(107, 23));
         clientes.setMinimumSize(new java.awt.Dimension(107, 23));
@@ -2042,9 +2035,8 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         panelMenu.add(clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 505, 136, 36));
 
-        Empleado.setBackground(new java.awt.Color(0, 102, 255));
+        Empleado.setBackground(new java.awt.Color(246, 149, 50));
         Empleado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Empleado.setForeground(new java.awt.Color(255, 255, 255));
         Empleado.setText("EMPLEADO");
         Empleado.setMaximumSize(new java.awt.Dimension(107, 23));
         Empleado.setMinimumSize(new java.awt.Dimension(107, 23));
@@ -2058,7 +2050,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         jLayeredPane1.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 69, 217, 568));
 
-        panelTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        panelTitulo.setBackground(new java.awt.Color(158, 189, 213));
         panelTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -2080,7 +2072,7 @@ public class GestionJefe extends javax.swing.JFrame {
         nombreEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         panelTitulo.add(nombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1005, 41, -1, -1));
 
-        jLayeredPane1.add(panelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 1135, 60));
+        jLayeredPane1.add(panelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 1138, 68));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2121,12 +2113,12 @@ public class GestionJefe extends javax.swing.JFrame {
         panelProveedor.setVisible(false);
         panelReportes.setVisible(false);
         
-        botonReportes.setBackground(fondoAzul);
-        clientes.setBackground(fondoAzul);
-        botonProducto.setBackground(Color.gray);
-        gestionProveedor.setBackground(fondoAzul);
-        botonCotizacion.setBackground(fondoAzul);
-        Empleado.setBackground(fondoAzul);
+        botonReportes.setBackground(fondoNaranja);
+        clientes.setBackground(fondoNaranja);
+        botonProducto.setBackground(rojo);
+        gestionProveedor.setBackground(fondoNaranja);
+        botonCotizacion.setBackground(fondoNaranja);
+        Empleado.setBackground(fondoNaranja);
     }//GEN-LAST:event_botonProductoActionPerformed
 
     private void gestionProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionProveedorActionPerformed
@@ -2137,12 +2129,12 @@ public class GestionJefe extends javax.swing.JFrame {
         panelProveedor.setVisible(true);       
         panelReportes.setVisible(false);
         
-        botonReportes.setBackground(fondoAzul);
-        clientes.setBackground(fondoAzul);
-        botonProducto.setBackground(fondoAzul);
-        gestionProveedor.setBackground(Color.gray);
-        botonCotizacion.setBackground(fondoAzul);
-        Empleado.setBackground(fondoAzul);
+        botonReportes.setBackground(fondoNaranja);
+        clientes.setBackground(fondoNaranja);
+        botonProducto.setBackground(fondoNaranja);
+        gestionProveedor.setBackground(rojo);
+        botonCotizacion.setBackground(fondoNaranja);
+        Empleado.setBackground(fondoNaranja);
     }//GEN-LAST:event_gestionProveedorActionPerformed
 
     private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
@@ -2153,12 +2145,12 @@ public class GestionJefe extends javax.swing.JFrame {
         panelProveedor.setVisible(false);
         panelReportes.setVisible(true);
         
-        botonReportes.setBackground(Color.gray);
-        clientes.setBackground(fondoAzul);
-        botonProducto.setBackground(fondoAzul);
-        gestionProveedor.setBackground(fondoAzul);
-        botonCotizacion.setBackground(fondoAzul);
-        Empleado.setBackground(fondoAzul);
+        botonReportes.setBackground(rojo);
+        clientes.setBackground(fondoNaranja);
+        botonProducto.setBackground(fondoNaranja);
+        gestionProveedor.setBackground(fondoNaranja);
+        botonCotizacion.setBackground(fondoNaranja);
+        Empleado.setBackground(fondoNaranja);
     }//GEN-LAST:event_botonReportesActionPerformed
 
     private void botonCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCotizacionActionPerformed
@@ -2169,12 +2161,12 @@ public class GestionJefe extends javax.swing.JFrame {
         panelProveedor.setVisible(false);
         panelReportes.setVisible(false);
         
-        clientes.setBackground(fondoAzul);
-        botonProducto.setBackground(fondoAzul);
-        gestionProveedor.setBackground(fondoAzul);
-        botonReportes.setBackground(fondoAzul);
-        botonCotizacion.setBackground(Color.gray);
-        Empleado.setBackground(fondoAzul);
+        clientes.setBackground(fondoNaranja);
+        botonProducto.setBackground(fondoNaranja);
+        gestionProveedor.setBackground(fondoNaranja);
+        botonReportes.setBackground(fondoNaranja);
+        botonCotizacion.setBackground(rojo);
+        Empleado.setBackground(fondoNaranja);
     }//GEN-LAST:event_botonCotizacionActionPerformed
 
     private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
@@ -2185,12 +2177,12 @@ public class GestionJefe extends javax.swing.JFrame {
         panelProveedor.setVisible(false);
         panelReportes.setVisible(false);
         
-        clientes.setBackground(Color.gray);
-        botonProducto.setBackground(fondoAzul);
-        gestionProveedor.setBackground(fondoAzul);
-        botonReportes.setBackground(fondoAzul);
-        botonCotizacion.setBackground(fondoAzul);
-        Empleado.setBackground(fondoAzul);
+        clientes.setBackground(rojo);
+        botonProducto.setBackground(fondoNaranja);
+        gestionProveedor.setBackground(fondoNaranja);
+        botonReportes.setBackground(fondoNaranja);
+        botonCotizacion.setBackground(fondoNaranja);
+        Empleado.setBackground(fondoNaranja);
     }//GEN-LAST:event_clientesActionPerformed
 
     private void EmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpleadoMouseClicked
@@ -2201,12 +2193,12 @@ public class GestionJefe extends javax.swing.JFrame {
         panelProveedor.setVisible(false);
         panelReportes.setVisible(false);
         
-        botonReportes.setBackground(fondoAzul);
-        botonProducto.setBackground(fondoAzul);
-        gestionProveedor.setBackground(fondoAzul);
-        botonCotizacion.setBackground(fondoAzul);
-        Empleado.setBackground(Color.gray);
-        clientes.setBackground(fondoAzul);
+        botonReportes.setBackground(fondoNaranja);
+        botonProducto.setBackground(fondoNaranja);
+        gestionProveedor.setBackground(fondoNaranja);
+        botonCotizacion.setBackground(fondoNaranja);
+        Empleado.setBackground(rojo);
+        clientes.setBackground(fondoNaranja);
     }//GEN-LAST:event_EmpleadoMouseClicked
 
     private void guardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProductoActionPerformed
@@ -2215,10 +2207,10 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe llenar todo el formulario", "Error",JOptionPane.WARNING_MESSAGE);
         } else {
             String nombre = nombreProducto.getText();
-            int codigo = Integer.parseInt(codigoProducto.getText());
-            double precio = Double.parseDouble(precioProducto.getText());
+            String codigo = codigoProducto.getText();
+            String precio = precioProducto.getText();
             String descripcion = descripcionProducto.getText();
-            int cantidad = Integer.parseInt(cantidadProducto.getText());
+            String cantidad = cantidadProducto.getText();
             String proveedor = proveedirProducto.getText();
 
             controlador.ControladorProducto producto = new controlador.ControladorProducto();
@@ -2232,7 +2224,7 @@ public class GestionJefe extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarProductoActionPerformed
 
     private void botonBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCliActionPerformed
-        int codigo = Integer.parseInt(codigoProduccto.getText());
+        String codigo = codigoProduccto.getText();
         if(codigoProduccto.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR EL NIT DEL PRODUCTO");
         }else{
@@ -2245,7 +2237,7 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE BUSCAR EL PRODUCTO");
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el PRODUCTO, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        produ.eliminarPro(Integer.parseInt(codigoProduccto.getText()));
+        produ.eliminarPro(codigoProduccto.getText());
         limpiarCampos();
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
@@ -2270,12 +2262,12 @@ public class GestionJefe extends javax.swing.JFrame {
     private void guardarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProducto1ActionPerformed
 
         modelo.DAOProducto objetoProducto= new modelo.DAOProducto();
-        objetoProducto.setCodigoPro(Integer.parseInt(codigoProducto1.getText()));
+        objetoProducto.setCodigoPro(codigoProducto1.getText());
         objetoProducto.setNombrePro(nombrProducto.getText());
-        objetoProducto.setPrecioPro(Integer.parseInt(precioProducto1.getText()));
+        objetoProducto.setPrecioPro(precioProducto1.getText());
         objetoProducto.setDescripcionPro(descripcionProducto1.getText());
-        objetoProducto.setCantidadPro(Integer.parseInt(cantidadProducto1.getText()));
-        objetoProducto.setProveedorPro(Integer.parseInt(nitProveedor.getText()));
+        objetoProducto.setCantidadPro(cantidadProducto1.getText());
+        objetoProducto.setProveedorPro(nitProveedor.getText());
         String resultado = "";
         resultado = objetoProducto.modificar();
         if(resultado.equals("Error")){
@@ -2295,7 +2287,7 @@ public class GestionJefe extends javax.swing.JFrame {
         if(codigoProducto2.getText().equals("")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR EL CODIGO DEL PRODUCTO");
         }else{
-            int codigoProd = Integer.parseInt(codigoProducto2.getText());
+            String codigoProd = codigoProducto2.getText();
             resultadoBusqueda.setText(buscar.buscarPro(codigoProd));
             codigoProducto2.setText("");
         }
@@ -2321,9 +2313,9 @@ public class GestionJefe extends javax.swing.JFrame {
         } else if (cboxFiltro.getSelectedItem().toString().equals("Nombre") || cboxFiltro.getSelectedItem().toString().equals("Todos")) {
             listarPro.listarProdu(txtValorBusqueda.getText(), cboxFiltro.getSelectedItem().toString(), tblDatos);
         } else{            
-            listarPro.setPrecioPro(Integer.parseInt(txtValorBusqueda.getText()));
-            listarPro.setCantidadPro(Integer.parseInt(txtValorBusqueda.getText()));
-            listarPro.setProveedorPro(Integer.parseInt(txtValorBusqueda.getText()));
+            listarPro.setPrecioPro(txtValorBusqueda.getText());
+            listarPro.setCantidadPro(txtValorBusqueda.getText());
+            listarPro.setProveedorPro(txtValorBusqueda.getText());
             listarPro.listarProdu(txtValorBusqueda.getText(), cboxFiltro.getSelectedItem().toString(), tblDatos);
             limpiarCampos();
         }
@@ -2341,17 +2333,17 @@ public class GestionJefe extends javax.swing.JFrame {
         modelo.DAOProveedor  objProv;
         objProv = new modelo.DAOProveedor();
 
-        int nit = (Integer.parseInt(nitProveedor1.getText()));
+        String nit = nitProveedor1.getText();
 
         controlador.ControladorProveedor proveedor  = new controlador.ControladorProveedor();
         String resultado = proveedor.verificarExitencia(nit);
         if(resultado.equals("No esta")){
             objProv.setNombreProv(nombredeProveedor.getText());
-            objProv.setNitProv(Integer.parseInt(nitProveedor1.getText()));
-            objProv.setTelefonoProv(Integer.parseInt(telefonoProveedor.getText()));
+            objProv.setNitProv(nitProveedor1.getText());
+            objProv.setTelefonoProv(telefonoProveedor.getText());
             objProv.setDireccionProv(direccionProveedor.getText());
             objProv.setProductoProv(nombreproductoprov.getText());
-            objProv.setPrecioProdProv(Integer.parseInt(precioproductoprov.getText()));
+            objProv.setPrecioProdProv(precioproductoprov.getText());
             objProv.insertar();
             JOptionPane.showMessageDialog(rootPane, "SE REGISTRO PROVEEDOR CON EXITO");
             limpiarCampos();
@@ -2373,7 +2365,7 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE BUSCAR AL CLIENTE");
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el proveedor, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        prove.eliminarProv(Integer.parseInt(nitProveedor.getText()));
+        prove.eliminarProv(nitProveedor.getText());
         limpiarCampos();
         }
     }//GEN-LAST:event_botonEliminar1ActionPerformed
@@ -2388,7 +2380,7 @@ public class GestionJefe extends javax.swing.JFrame {
     }//GEN-LAST:event_nitProveedor2KeyTyped
 
     private void botonBuscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProvActionPerformed
-        int nit = Integer.parseInt(nitProveedor2.getText());
+        String nit = nitProveedor2.getText();
         if(nitProveedor2.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR EL NIT DEL CLIENTE");
         }else{
@@ -2398,11 +2390,11 @@ public class GestionJefe extends javax.swing.JFrame {
 
     private void guardarProducto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProducto2ActionPerformed
         modelo.DAOProveedor objetoProveedor= new modelo.DAOProveedor();
-        objetoProveedor.setNitProv(Integer.parseInt(nitProveedor3.getText()));
+        objetoProveedor.setNitProv(nitProveedor3.getText());
         objetoProveedor.setNombreProv(nombrProveedor.getText());
-        objetoProveedor.setTelefonoProv(Integer.parseInt(telProveedor.getText()));
+        objetoProveedor.setTelefonoProv(telProveedor.getText());
         objetoProveedor.setDireccionProv(direccionProveedor1.getText());
-        objetoProveedor.setPrecioProdProv(Integer.parseInt(precioProdprov.getText()));
+        objetoProveedor.setPrecioProdProv(precioProdprov.getText());
         objetoProveedor.setProductoProv(nomProducProv.getText());
         String resultado = "";
         resultado = objetoProveedor.modificar();
@@ -2440,7 +2432,7 @@ public class GestionJefe extends javax.swing.JFrame {
         if(nitProveedor4.getText().equals("")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LA CEDULA DEL CLIENTE");
         }else{
-            int nit = Integer.parseInt(nitProveedor4.getText());
+            String nit = nitProveedor4.getText();
             busquedaProveedor.setText(buscar.buscarProv(nit));
             nitProveedor4.setText("");
         }
@@ -2455,7 +2447,7 @@ public class GestionJefe extends javax.swing.JFrame {
         if(txtValorBusqueda1.getText().equals("") && !cboxFiltro1.getSelectedItem().toString().equals("Todos")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR UN DATO");
         }else{
-            listarProv.setPrecioProdProv(Integer.parseInt(txtValorBusqueda1.getText()));
+            listarProv.setPrecioProdProv(txtValorBusqueda1.getText());
             listarProv.listarProve(txtValorBusqueda1.getText(),cboxFiltro1.getSelectedItem().toString(),tblDatos);
             limpiarCampos();
         }
@@ -2491,7 +2483,7 @@ public class GestionJefe extends javax.swing.JFrame {
         }else{
             jtxDato1.setVisible(true);
             String dato = jtxDato1.getText();
-            produ2.setPrecioPro(Integer.parseInt(jtxDato1.getText()));
+            produ2.setPrecioPro(jtxDato1.getText());
             produ2.generarPdf(dato,jComboBox2.getSelectedItem().toString());
         }
     }//GEN-LAST:event_GenerarPdf1ActionPerformed
@@ -2514,7 +2506,7 @@ public class GestionJefe extends javax.swing.JFrame {
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         try {
 
-            int codigoProducto = Integer.parseInt(codigoProducCotizacion.getText());
+            String codigoProducto = codigoProducCotizacion.getText();
             controlador.ControladorCotizacion buscar1 = new controlador.ControladorCotizacion();
             String nombre = (buscar1.buscarPro(codigoProducto));
             String precio = (buscar1.buscarPrecio(codigoProducto));
@@ -2528,8 +2520,8 @@ public class GestionJefe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debe ingresar la cantidad");
             } else if (buscar1.isNumeric(cantidad)) {
                 agregar(codigo, nombre, cantidad, precio, valort);
-                buscar1.guardarDetalleC(idcotizacion, codigoProducto, Integer.parseInt(cantidad),
-                    Double.parseDouble(precio), Double.parseDouble(iva), valort1);
+                buscar1.guardarDetalleC(Integer.toString(idcotizacion), codigoProducto, cantidad,
+                    precio, iva, Float.toString(valort1));
 
                 cantidadProductoCotizacion.setText("");
                 codigoProducCotizacion.setText("");
@@ -2556,8 +2548,8 @@ public class GestionJefe extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarProductoActionPerformed
 
     private void tbnGuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnGuardarCotizacionActionPerformed
-        int cedulaClien = Integer.parseInt(documentoClienteCotiza.getText());
-        int cedulaEmple = Integer.parseInt(vendedorCotizacion.getText());
+        String cedulaClien = documentoClienteCotiza.getText();
+        String cedulaEmple = vendedorCotizacion.getText();
         //Crea la cotizacion
         buscar.guardarCotizacion(cedulaClien, cedulaEmple);
         codigoProducCotizacion.setEditable(true);
@@ -2578,7 +2570,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         documentoClienteCotiza.setText("");
         vendedorCotizacion.setText("");
-        buscar.cancelarCotizacion(idcotizacion);
+        buscar.cancelarCotizacion(Integer.toString(idcotizacion));
         numeroCotizacion.setText(Integer.toString(idcotizacion));
         fechaCotizacion.setText(buscar.fechaActual());
         tbnGuardarCotizacion.setEnabled(true);
@@ -2596,7 +2588,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         int numerocotiza = Integer.parseInt(buscar.codigoCotizacion()) -1;
         System.out.println(numerocotiza);
-        buscar.updateCompra(compraTotal,numerocotiza);
+        buscar.updateCompra(Double.toString(compraTotal),Integer.toString(numerocotiza));
         codigoProducCotizacion.setEditable(false);
         cantidadProductoCotizacion.setEditable(false);
         agregar.setEnabled(false);
@@ -2620,7 +2612,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         int numerocotiza = Integer.parseInt(buscar.codigoCotizacion()) -1;
         // System.out.println(numerocotiza);
-        buscar.updateCompra(compraTotal,numerocotiza);
+        buscar.updateCompra(Double.toString(compraTotal),Integer.toString(numerocotiza));
         codigoProducCotizacion.setEditable(false);
         cantidadProductoCotizacion.setEditable(false);
         agregar.setEnabled(false);
@@ -2637,7 +2629,7 @@ public class GestionJefe extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarCotizacion1ActionPerformed
 
     private void buscarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCotizacionActionPerformed
-        int cotizacion = Integer.parseInt(numeroCotizacion2.getText());
+        String cotizacion = numeroCotizacion2.getText();
         controlador.ControladorCotizacion buscar2  = new controlador.ControladorCotizacion();
         resultadocotizacion.setText(buscar2.buscarCotizacion(cotizacion));
         resultadodetalle.setText(buscar2.buscardetalleCotizacion(cotizacion));
@@ -2781,8 +2773,8 @@ public class GestionJefe extends javax.swing.JFrame {
 
         String nombreCli = nombreCliente.getText();
         String apellido = apellidoCliente.getText();
-        int cedula = Integer.parseInt(cedulaCliente.getText());
-        int telefono = Integer.parseInt(telCliente.getText());
+        String cedula = cedulaCliente.getText();
+        String telefono = telCliente.getText();
         String direccion = direccinCliete.getText();
         String barrio = BarrioCliente.getText();
         String correo = CorreoCliente.getText();
@@ -2805,7 +2797,7 @@ public class GestionJefe extends javax.swing.JFrame {
     }//GEN-LAST:event_cedulaClienteActionPerformed
 
     private void botonBuscarCli1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarCli1ActionPerformed
-        int cedula = Integer.parseInt(cedulCliente.getText());
+        String cedula = cedulCliente.getText();
         if(cedulCliente.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR LA CEDULA DEL CLIENTE");
         }else{
@@ -2828,7 +2820,7 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE BUSCAR AL CLIENTE");
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el cliente, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        cliente.eliminarCli(Integer.parseInt(cedulCliente.getText()));
+        cliente.eliminarCli(cedulCliente.getText());
         limpiarCampos();
         }
     }//GEN-LAST:event_botonEliminar3ActionPerformed
@@ -2842,10 +2834,10 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR LA CEDULA");
         }else{
             modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
-            objetoCliente.setCedulaCli(Integer.parseInt(cedulCliente1.getText()));
+            objetoCliente.setCedulaCli(cedulCliente1.getText());
             objetoCliente.setNombreCli(nombreCliente1.getText());
             objetoCliente.setApellidoCli(apellidoCliente1.getText());
-            objetoCliente.setTelefonoCli(Integer.parseInt(telCliente1.getText()));
+            objetoCliente.setTelefonoCli(telCliente1.getText());
             objetoCliente.setDireccionCli(direccinCliete1.getText());
             objetoCliente.setBarrioCli(BarrioCliente1.getText());
             objetoCliente.setCorreoCli(CorreoCliente1.getText());
@@ -2885,7 +2877,7 @@ public class GestionJefe extends javax.swing.JFrame {
         if(cedulCliente2.getText().equals("")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR LA CEDULA DEL CLIENTE");
         }else{
-            int cedula = Integer.parseInt(cedulCliente2.getText());
+            String cedula = cedulCliente2.getText();
             resultadoBusqueda2.setText(buscar.buscarCli(cedula));
             cedulCliente2.setText("");
         }
@@ -2978,7 +2970,7 @@ public class GestionJefe extends javax.swing.JFrame {
         int fila = tlbDatos.getSelectedRow();
         String codigopro = tlbDatos.getValueAt(fila, 0).toString();
         dtm.removeRow(fila);
-        int codigo = Integer.parseInt(codigopro);
+        String codigo = codigopro;
         System.out.println(codigo);
         buscar.cancelarProducto(codigo);
     }

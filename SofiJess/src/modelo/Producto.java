@@ -2,17 +2,17 @@ package modelo;
 
 public class Producto {
     private String nombrePro;
-    private int codigoPro; 
-    private int precioPro;
+    private String codigoPro; 
+    private String precioPro;
     private String descripcionPro;
-    private int cantidadPro;
-    private int nitproveedor;
+    private String cantidadPro;
+    private String nitproveedor;
     
    public Producto(){
    }
    
-   public Producto(String nombrePro, int codigoPro, int precioPro, 
-                   String descripcionPro, int cantidadPro, int nitproveedor){
+   public Producto(String nombrePro, String codigoPro, String precioPro, 
+                   String descripcionPro, String cantidadPro, String nitproveedor){
        this.nombrePro = nombrePro;
        this.codigoPro = codigoPro;
        this.precioPro = precioPro;
@@ -29,19 +29,19 @@ public class Producto {
         this.nombrePro = nombrePro;
     }
 
-    public int getCodigoPro() {
+    public String getCodigoPro() {
         return codigoPro;
     }
 
-    public void setCodigoPro(int codigoPro) {
+    public void setCodigoPro(String codigoPro) {
         this.codigoPro = codigoPro;
     }
 
-    public int getPrecioPro() {
+    public String getPrecioPro() {
         return precioPro;
     }
 
-    public void setPrecioPro(int precioPro) {
+    public void setPrecioPro(String precioPro) {
         this.precioPro = precioPro;
     }
 
@@ -53,19 +53,19 @@ public class Producto {
         this.descripcionPro = descripcionPro;
     }
 
-    public int getCantidadPro() {
+    public String getCantidadPro() {
         return cantidadPro;
     }
 
-    public void setCantidadPro(int cantidadPro) {
+    public void setCantidadPro(String cantidadPro) {
         this.cantidadPro = cantidadPro;
     }
 
-    public int getProveedorPro() {
+    public String getProveedorPro() {
         return nitproveedor;
     }
 
-    public void setProveedorPro(int nitproveedor) {
+    public void setProveedorPro(String nitproveedor) {
         this.nitproveedor=nitproveedor;
     }
     

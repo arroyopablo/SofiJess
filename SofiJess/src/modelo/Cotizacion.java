@@ -2,24 +2,24 @@ package modelo;
 
 public class Cotizacion {
 
-private int codigocotizacion;
-private int cedulaClien;
-private int cedulaEmple;
+private String codigocotizacion;
+private String cedulaClien;
+private String cedulaEmple;
 private String fecha;
-private double totalCompra;
+private String totalCompra;
 //atributos detallecotizacion
-private int idDetalleCotizacion;
-private int idCotizacion;
-private int codigoProducto;
-private int cantidad;
-private double valorUnitario;
-private double iva;
-private double total;
+private String idDetalleCotizacion;
+private String idCotizacion;
+private String codigoProducto;
+private String cantidad;
+private String valorUnitario;
+private String iva;
+private String total;
 
     public Cotizacion() {
     }
 
-    public Cotizacion(int codigocotizacion, int cedulaClien, int cedulaEmple, String fecha, double totalCompra, int idDetalleCotizacion, int idCotizacion, int codigoProducto, int cantidad, double valorUnitario, double iva, double total) {
+    public Cotizacion(String codigocotizacion, String cedulaClien, String cedulaEmple, String fecha, String totalCompra, String idDetalleCotizacion, String idCotizacion, String codigoProducto, String cantidad, String valorUnitario, String iva, String total) {
         this.codigocotizacion = codigocotizacion;
         this.cedulaClien = cedulaClien;
         this.cedulaEmple = cedulaEmple;
@@ -34,27 +34,27 @@ private double total;
         this.total = total;
     }
 
-    public int getCodigocotizacion() {
+    public String getCodigocotizacion() {
         return codigocotizacion;
     }
 
-    public void setCodigocotizacion(int codigocotizacion) {
+    public void setCodigocotizacion(String codigocotizacion) {
         this.codigocotizacion = codigocotizacion;
     }
 
-    public int getCedulaClien() {
+    public String getCedulaClien() {
         return cedulaClien;
     }
 
-    public void setCedulaClien(int cedulaClien) {
+    public void setCedulaClien(String cedulaClien) {
         this.cedulaClien = cedulaClien;
     }
 
-    public int getCedulaEmple() {
+    public String getCedulaEmple() {
         return cedulaEmple;
     }
 
-    public void setCedulaEmple(int cedulaEmple) {
+    public void setCedulaEmple(String cedulaEmple) {
         this.cedulaEmple = cedulaEmple;
     }
 
@@ -66,67 +66,67 @@ private double total;
         this.fecha = fecha;
     }
 
-    public double getTotalCompra() {
+    public String getTotalCompra() {
         return totalCompra;
     }
 
-    public void setTotalCompra(double totalCompra) {
+    public void setTotalCompra(String totalCompra) {
         this.totalCompra = totalCompra;
     }
 
-    public int getIdDetalleCotizacion() {
+    public String getIdDetalleCotizacion() {
         return idDetalleCotizacion;
     }
 
-    public void setIdDetalleCotizacion(int idDetalleCotizacion) {
+    public void setIdDetalleCotizacion(String idDetalleCotizacion) {
         this.idDetalleCotizacion = idDetalleCotizacion;
     }
 
-    public int getIdCotizacion() {
+    public String getIdCotizacion() {
         return idCotizacion;
     }
 
-    public void setIdCotizacion(int idCotizacion) {
+    public void setIdCotizacion(String idCotizacion) {
         this.idCotizacion = idCotizacion;
     }
 
-    public int getCodigoProducto() {
+    public String getCodigoProducto() {
         return codigoProducto;
     }
 
-    public void setCodigoProducto(int codigoProducto) {
+    public void setCodigoProducto(String codigoProducto) {
         this.codigoProducto = codigoProducto;
     }
 
-    public int getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 
-    public double getValorUnitario() {
+    public String getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(double valorUnitario) {
+    public void setValorUnitario(String valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 
-    public double getIva() {
+    public String getIva() {
         return iva;
     }
 
-    public void setIva(double iva) {
+    public void setIva(String iva) {
         this.iva = iva;
     }
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
     

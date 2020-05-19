@@ -2,13 +2,12 @@ package controlador;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import vista.EditarProveedor;
 
 public class ControladorProveedor {
     public ControladorProveedor(){       
     }
     
-    public String buscarProv (int busqueda){
+    public String buscarProv (String busqueda){
        modelo.DAOProveedor objetoProveedor = new modelo.DAOProveedor();
        objetoProveedor.setNitProv(busqueda);
     
@@ -22,7 +21,7 @@ public class ControladorProveedor {
         return resultado;
     }
     
-    public void eliminarProv (int nitPro){
+    public void eliminarProv (String nitPro){
         modelo.DAOProveedor objetoProv =new modelo.DAOProveedor();
         objetoProv.setNitProv(nitPro);
         String resultado = "";
@@ -34,7 +33,7 @@ public class ControladorProveedor {
         }
     }
     
-    public void editProveedor(int nitPro) {
+    public void editProveedor(String nitPro) {
         modelo.DAOProveedor objetoProveedor = new modelo.DAOProveedor();
         objetoProveedor.setNitProv(nitPro);
       
@@ -44,16 +43,10 @@ public class ControladorProveedor {
         if(resultado.equals("No esta")){
             JOptionPane.showMessageDialog(null, "El proveedor no esta registrado");
            
-        }else{
-            
-            EditarProveedor editar = new EditarProveedor();
-            
-            editar.setVisible(true);
-
         }
     }
     
-    public String verificarExitencia (int datoBuscar){
+    public String verificarExitencia (String datoBuscar){
        modelo.DAOProveedor objetoProveedor = new modelo.DAOProveedor();
        objetoProveedor.setNitProv(datoBuscar);
     
@@ -66,8 +59,8 @@ public class ControladorProveedor {
         return resultado;
     }
     
-    public void guardarProveedor (String nombre, int nit, int telefon, String direccion, 
-            int precio, String nombreproducto){
+    public void guardarProveedor (String nombre, String nit, String telefon, String direccion, 
+            String precio, String nombreproducto){
         modelo.DAOProveedor  objProveedor;
         objProveedor = new modelo.DAOProveedor();
        //cargar la informacion en el objeto

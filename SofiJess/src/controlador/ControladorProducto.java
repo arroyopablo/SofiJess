@@ -2,13 +2,12 @@ package controlador;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import vista.EditarProducto;
 
 public class ControladorProducto {
     public ControladorProducto(){       
     }
     
-    public String buscarPro (int busqueda){
+    public String buscarPro (String busqueda){
        
         modelo.DAOProducto objetoProducto = new modelo.DAOProducto();
        objetoProducto.setCodigoPro(busqueda);
@@ -22,21 +21,21 @@ public class ControladorProducto {
         return resultado;
     }
     
-    public void guardarProducto(String nombre, int codigo, double precio, String descripcion, 
-                                int cantidad, String proveedor ){
+    public void guardarProducto(String nombre, String codigo, String precio, String descripcion, 
+                                String cantidad, String proveedor ){
         modelo.DAOProducto objProducto = new modelo.DAOProducto();
         objProducto.setNombrePro(nombre);
         objProducto.setCodigoPro(codigo);
         objProducto.setPrecioPro(codigo);
         objProducto.setDescripcionPro(descripcion);
         objProducto.setCantidadPro(cantidad);
-        objProducto.setProveedorPro(Integer.parseInt(proveedor));
+        objProducto.setProveedorPro(proveedor);
         
         objProducto.insertar();
         JOptionPane.showMessageDialog(null,"SE REGISTRO CON EXITO");
     }
            
-    public void eliminarPro (int codePro){
+    public void eliminarPro (String codePro){
         modelo.DAOProducto objetoPro =new modelo.DAOProducto();
         objetoPro.setCodigoPro(codePro);
         String resultado = "";
@@ -49,7 +48,7 @@ public class ControladorProducto {
     }
     
     
-    public void editProducto(int codePro) {
+    public void editProducto(String codePro) {
         modelo.DAOProducto objetoProducto = new modelo.DAOProducto();
         objetoProducto.setCodigoPro(codePro);
       
@@ -59,16 +58,10 @@ public class ControladorProducto {
         if(resultado.equals("No esta")){
             JOptionPane.showMessageDialog(null, "El producto no esta registrado");
            
-        }else{
-            
-            EditarProducto editar = new EditarProducto();
-            
-            editar.setVisible(true);
-
         }
     }
     
-    public String verificarExitencia (int datoBuscar){
+    public String verificarExitencia (String datoBuscar){
        modelo.DAOProducto objetoProducto = new modelo.DAOProducto();
        objetoProducto.setCodigoPro(datoBuscar);
     

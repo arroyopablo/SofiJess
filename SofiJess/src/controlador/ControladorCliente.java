@@ -1,15 +1,13 @@
 package controlador;
 
 import javax.swing.JOptionPane;
-import vista.EditarCliente;
-
 
 public class ControladorCliente {
 
     public ControladorCliente() {
     }
     
-    public String buscarCli (int datoBuscar){
+    public String buscarCli (String datoBuscar){
        modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
        objetoCliente.setCedulaCli(datoBuscar);
     
@@ -22,7 +20,7 @@ public class ControladorCliente {
     }
  
     
-    public void eliminarCli (int documentoCli){
+    public void eliminarCli (String documentoCli){
         modelo.DAOCliente objeto =new modelo.DAOCliente();
         objeto.setCedulaCli(documentoCli);
         String resultado = "";
@@ -34,7 +32,7 @@ public class ControladorCliente {
         }
     }
     
-    public void editCliente(int documentoCli) {
+    public void editCliente(String documentoCli) {
         modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
         objetoCliente.setCedulaCli(documentoCli);
       
@@ -44,16 +42,10 @@ public class ControladorCliente {
         if(resultado.equals("No esta")){
             JOptionPane.showMessageDialog(null, "El usuario no esta registrado");
            
-        }else{
-            
-            EditarCliente editar = new EditarCliente();
-            
-            editar.setVisible(true);
-              
         }
     }
     
-    public void guardarCliente (String nombre, String apellido, int cedula, int telefono, 
+    public void guardarCliente (String nombre, String apellido, String cedula, String telefono, 
                                 String direccion, String barrio, String correo){
         
         
@@ -72,7 +64,7 @@ public class ControladorCliente {
        JOptionPane.showMessageDialog(null,"SE REGISTRO CON EXITO");
     } 
     
-    public String verificarExitencia (int datoBuscar){
+    public String verificarExitencia (String datoBuscar){
        modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
        objetoCliente.setCedulaCli(datoBuscar);
     

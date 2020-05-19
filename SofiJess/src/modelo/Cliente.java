@@ -3,8 +3,8 @@ package modelo;
 public class Cliente {
     private String nombreCli;
     private String apellidoCli;
-    private int cedulaCli; 
-    private int telefonoCli;
+    private String cedulaCli; 
+    private String telefonoCli;
     private String direccionCli;
     private String barrioCli;
     private String correoCli;
@@ -12,7 +12,7 @@ public class Cliente {
     public Cliente() {
     }
     
-    public Cliente(String nombreCli, String apellidoCli, int cedulaCli,int telefonoCli, 
+    public Cliente(String nombreCli, String apellidoCli, String cedulaCli,String telefonoCli, 
                    String direccionCli, String barrioCli, String correoCli ) {
         this.nombreCli = nombreCli;
         this.apellidoCli = apellidoCli;
@@ -39,19 +39,19 @@ public class Cliente {
         this.apellidoCli = apellidoCli;
     }
 
-    public int getCedulaCli() {
+    public String getCedulaCli() {
         return cedulaCli;
     }
 
-    public void setCedulaCli(int cedulaCli) {
+    public void setCedulaCli(String cedulaCli) {
         this.cedulaCli = cedulaCli;
     }
 
-    public int getTelefonoCli() {
+    public String getTelefonoCli() {
         return telefonoCli;
     }
 
-    public void setTelefonoCli(int telefonoCli) {
+    public void setTelefonoCli(String telefonoCli) {
         this.telefonoCli = telefonoCli;
     }
 
