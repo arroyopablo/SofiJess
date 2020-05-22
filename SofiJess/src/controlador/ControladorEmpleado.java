@@ -21,6 +21,19 @@ public class ControladorEmpleado {
         return resultado;
     }
     
+    public String[] buscarEmpleEdit (String busqueda){
+       modelo.DAOEmpleado objetoEmpleado = new modelo.DAOEmpleado();
+       objetoEmpleado.setCedulaEmpleado(Double.valueOf(busqueda));
+    
+       String resultado[] = null;
+       resultado = objetoEmpleado.consultarEmpleadoEdit();
+      
+        if(resultado.equals("No se encontró")){
+            JOptionPane.showMessageDialog(null, "No esta");
+        }
+        return resultado;
+    }
+    
     public void eliminarEmple (int documentoEmple){
         modelo.DAOEmpleado objeto =new modelo.DAOEmpleado();
         objeto.setCedulaEmpleado(documentoEmple);

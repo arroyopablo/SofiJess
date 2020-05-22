@@ -18,7 +18,18 @@ public class ControladorCliente {
         }
         return resultado;
     }
- 
+    
+    public String[] buscarCliEdit (String datoBuscar){
+       modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
+       objetoCliente.setCedulaCli(datoBuscar);
+    
+       String resultado[] = null;
+       resultado = objetoCliente.consultarClienteEdit();
+      
+        if(resultado.equals("No esta")){      
+        }
+        return resultado;
+    }
     
     public void eliminarCli (String documentoCli){
         modelo.DAOCliente objeto =new modelo.DAOCliente();

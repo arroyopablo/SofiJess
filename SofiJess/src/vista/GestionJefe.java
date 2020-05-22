@@ -15,7 +15,7 @@ public class GestionJefe extends javax.swing.JFrame {
     private double compraTotal;
     RestrictedTextField r = null;
         
-    public GestionJefe() {
+    public GestionJefe(String cedula) {
         initComponents();
                 
         limitarNumerosTelefono();
@@ -34,10 +34,13 @@ public class GestionJefe extends javax.swing.JFrame {
         dtm.setColumnIdentifiers(titulo);
         tlbDatos.setModel(dtm);
         numeroCotizacion.setEditable(false);
+        vendedorCotizacion.setEditable(false);
         fechaCotizacion.setEditable(false);
         controlador.ControladorCotizacion buscar = new controlador.ControladorCotizacion();
         idcotizacion = Integer.parseInt(buscar.codigoCotizacion());
         numeroCotizacion.setText(Integer.toString(idcotizacion));
+        vendedorCotizacion.setText(cedula);
+       
         fechaCotizacion.setText(buscar.fechaActual());
         codigoProducCotizacion.setEditable(false);
         cantidadProductoCotizacion.setEditable(false);
@@ -69,6 +72,8 @@ public class GestionJefe extends javax.swing.JFrame {
         cantidadProducto = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         proveedirProducto = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        precioVentaProducto = new javax.swing.JTextField();
         panelEliminar = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         botonBuscarCli = new javax.swing.JButton();
@@ -94,6 +99,8 @@ public class GestionJefe extends javax.swing.JFrame {
         codigoProducto1 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        precioVentaProduc = new javax.swing.JTextField();
         panelBuscar = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         buscarProducto = new javax.swing.JButton();
@@ -121,10 +128,6 @@ public class GestionJefe extends javax.swing.JFrame {
         telefonoProveedor = new javax.swing.JTextField();
         direccionProveedor = new javax.swing.JTextField();
         guardarProv = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        nombreproductoprov = new javax.swing.JTextField();
-        precioproductoprov = new javax.swing.JTextField();
         panelEliminarProveedor = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
         botonEliminar1 = new javax.swing.JButton();
@@ -135,19 +138,15 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         botonBuscarProv = new javax.swing.JButton();
         panelEditarProveedor = new javax.swing.JPanel();
-        nomProducProv = new javax.swing.JTextField();
         guardarProducto2 = new javax.swing.JButton();
-        jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         nitProveedor3 = new javax.swing.JTextField();
         nombrProveedor = new javax.swing.JTextField();
         telProveedor = new javax.swing.JTextField();
-        precioProdprov = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         direccionProveedor1 = new javax.swing.JTextField();
         panelBuscarProveedor = new javax.swing.JPanel();
@@ -183,6 +182,7 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel55 = new javax.swing.JLabel();
         panelCotizaciones = new javax.swing.JTabbedPane();
         panelCrearCotizacion = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         totalCompra = new javax.swing.JLabel();
         agregar = new javax.swing.JButton();
         eliminarProducto = new javax.swing.JButton();
@@ -407,28 +407,28 @@ public class GestionJefe extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Nombre");
-        panelCrear.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 60, -1));
+        panelCrear.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 60, 30));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Codigo");
-        panelCrear.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        jLabel20.setText("Código");
+        panelCrear.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, 30));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel21.setText("Precio");
-        panelCrear.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
+        jLabel21.setText("Precio de compra");
+        panelCrear.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, 30));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setText("Descrpcion");
-        panelCrear.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+        jLabel22.setText("Descripción");
+        panelCrear.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Cantidad");
-        panelCrear.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
+        panelCrear.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, 30));
 
         guardarProducto.setBackground(new java.awt.Color(2, 184, 2));
         guardarProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        guardarProducto.setForeground(new java.awt.Color(51, 153, 255));
-        guardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GUARDARBOTON.png"))); // NOI18N
+        guardarProducto.setForeground(new java.awt.Color(0, 0, 153));
+        guardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
         guardarProducto.setText("GUARDAR");
         guardarProducto.setContentAreaFilled(false);
         guardarProducto.setDefaultCapable(false);
@@ -438,10 +438,10 @@ public class GestionJefe extends javax.swing.JFrame {
                 guardarProductoActionPerformed(evt);
             }
         });
-        panelCrear.add(guardarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, 50));
+        panelCrear.add(guardarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, 50));
 
         nombreProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelCrear.add(nombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 359, 28));
+        panelCrear.add(nombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 359, 30));
 
         codigoProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         codigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -449,23 +449,30 @@ public class GestionJefe extends javax.swing.JFrame {
                 codigoProductoKeyTyped(evt);
             }
         });
-        panelCrear.add(codigoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 359, 28));
+        panelCrear.add(codigoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 359, 30));
 
         precioProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelCrear.add(precioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 361, 28));
+        panelCrear.add(precioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 361, 30));
 
         descripcionProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelCrear.add(descripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 361, 28));
+        panelCrear.add(descripcionProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 361, 30));
 
         cantidadProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelCrear.add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 361, 28));
+        panelCrear.add(cantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 361, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Proveedor");
-        panelCrear.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, -1));
+        jLabel9.setText("NIT Proveedor");
+        panelCrear.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, 30));
 
         proveedirProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelCrear.add(proveedirProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 359, 28));
+        panelCrear.add(proveedirProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 359, 30));
+
+        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel37.setText("Precio de venta");
+        panelCrear.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, 30));
+
+        precioVentaProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrear.add(precioVentaProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 361, 30));
 
         panelProductos.addTab("CREAR", panelCrear);
 
@@ -476,46 +483,46 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel13.setText("ELIMINAR PRODUCTO");
         panelEliminar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
-        botonBuscarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        botonBuscarCli.setBackground(new java.awt.Color(255, 255, 255));
+        botonBuscarCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonBuscarCli.setForeground(new java.awt.Color(0, 0, 153));
+        botonBuscarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        botonBuscarCli.setText("BUSCAR PRODUCTO");
         botonBuscarCli.setBorder(null);
-        botonBuscarCli.setBorderPainted(false);
         botonBuscarCli.setContentAreaFilled(false);
         botonBuscarCli.setFocusPainted(false);
-        botonBuscarCli.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        botonBuscarCli.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         botonBuscarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarCliActionPerformed(evt);
             }
         });
-        panelEliminar.add(botonBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 116, -1, -1));
+        panelEliminar.add(botonBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 200, 50));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Codigo del producto");
-        panelEliminar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 79, -1, -1));
+        jLabel14.setText("Código del producto:");
+        panelEliminar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 79, -1, 30));
 
-        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        botonEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonEliminar.setForeground(new java.awt.Color(0, 0, 153));
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminar.PNG"))); // NOI18N
+        botonEliminar.setText("ELIMINAR");
         botonEliminar.setBorder(null);
-        botonEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar.setContentAreaFilled(false);
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
             }
         });
-        panelEliminar.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, -1, -1));
+        panelEliminar.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 120, -1));
 
         codigoProduccto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        codigoProduccto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoProducctoActionPerformed(evt);
-            }
-        });
         codigoProduccto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 codigoProducctoKeyTyped(evt);
             }
         });
-        panelEliminar.add(codigoProduccto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 78, 300, -1));
+        panelEliminar.add(codigoProduccto, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 78, 300, 30));
 
         productoEliminar.setEditable(false);
         productoEliminar.setColumns(20);
@@ -523,7 +530,7 @@ public class GestionJefe extends javax.swing.JFrame {
         productoEliminar.setRows(5);
         jScrollPane1.setViewportView(productoEliminar);
 
-        panelEliminar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 200, 444, 162));
+        panelEliminar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 444, 190));
         panelEliminar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 258, -1, -1));
 
         panelProductos.addTab("ELIMINAR", panelEliminar);
@@ -537,24 +544,24 @@ public class GestionJefe extends javax.swing.JFrame {
                 descripcionProducto1ActionPerformed(evt);
             }
         });
-        panelEditar.add(descripcionProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 355, -1));
+        panelEditar.add(descripcionProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 355, 30));
 
         precioProducto1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelEditar.add(precioProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 355, -1));
+        panelEditar.add(precioProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 355, 30));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Descripcion Producto");
-        panelEditar.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 255, -1, -1));
+        panelEditar.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, 30));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Nombre Producto");
-        panelEditar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 155, -1, -1));
+        panelEditar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, 30));
 
         cantidadProducto1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelEditar.add(cantidadProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 355, -1));
+        panelEditar.add(cantidadProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 355, 30));
 
         nitProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelEditar.add(nitProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 355, -1));
+        panelEditar.add(nitProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 355, 30));
 
         nombrProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombrProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -562,50 +569,59 @@ public class GestionJefe extends javax.swing.JFrame {
                 nombrProductoActionPerformed(evt);
             }
         });
-        panelEditar.add(nombrProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 355, -1));
+        panelEditar.add(nombrProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 355, 30));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Nit Proveedor");
-        panelEditar.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 355, -1, -1));
+        panelEditar.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, -1, 30));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setText("Cantidad");
-        panelEditar.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 306, -1, -1));
+        panelEditar.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, 30));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel24.setText("Codigo del producto a editar");
-        panelEditar.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 105, -1, -1));
+        panelEditar.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, 30));
 
-        guardarProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardarProducto1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardarProducto1.setForeground(new java.awt.Color(0, 0, 153));
+        guardarProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.PNG"))); // NOI18N
+        guardarProducto1.setText("GUARDAR");
         guardarProducto1.setBorder(null);
         guardarProducto1.setBorderPainted(false);
         guardarProducto1.setContentAreaFilled(false);
         guardarProducto1.setFocusPainted(false);
-        guardarProducto1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        guardarProducto1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardarProducto1.setRequestFocusEnabled(false);
         guardarProducto1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarProducto1ActionPerformed(evt);
             }
         });
-        panelEditar.add(guardarProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 413, -1, -1));
+        panelEditar.add(guardarProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, -1, -1));
         panelEditar.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 268, -1, -1));
 
         codigoProducto1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        codigoProducto1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoProducto1ActionPerformed(evt);
+        codigoProducto1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codigoProducto1KeyReleased(evt);
             }
         });
-        panelEditar.add(codigoProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 350, -1));
+        panelEditar.add(codigoProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 350, 30));
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel26.setText("Precio Producto");
-        panelEditar.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 205, -1, -1));
+        jLabel26.setText("Precio de compra");
+        panelEditar.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, 30));
 
         jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel27.setText("EDITAR PRODUCTO");
         panelEditar.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel38.setText("Precio de Venta");
+        panelEditar.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, 30));
+
+        precioVentaProduc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditar.add(precioVentaProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 355, 30));
 
         panelProductos.addTab("EDITAR", panelEditar);
 
@@ -613,16 +629,17 @@ public class GestionJefe extends javax.swing.JFrame {
         panelBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel28.setText("Codigo del producto");
-        panelBuscar.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 94, -1, -1));
+        jLabel28.setText("Codigo del producto:");
+        panelBuscar.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, 30));
 
-        buscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        buscarProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buscarProducto.setForeground(new java.awt.Color(0, 0, 153));
+        buscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        buscarProducto.setText("BUSCAR");
         buscarProducto.setBorder(null);
         buscarProducto.setBorderPainted(false);
         buscarProducto.setContentAreaFilled(false);
         buscarProducto.setFocusPainted(false);
-        buscarProducto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        buscarProducto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         buscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarProductoActionPerformed(evt);
@@ -649,7 +666,7 @@ public class GestionJefe extends javax.swing.JFrame {
                 codigoProducto2KeyTyped(evt);
             }
         });
-        panelBuscar.add(codigoProducto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 89, 267, 29));
+        panelBuscar.add(codigoProducto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 89, 300, 30));
 
         jLabel29.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel29.setText("BUSCAR PRODUCTO");
@@ -663,15 +680,22 @@ public class GestionJefe extends javax.swing.JFrame {
         tblDatos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NOMBRE", "CODIGO", "PRECIO", "DESCRIPCION", "CANTIDAD", "NIT PROVEEDOR"
+                "NOMBRE", "CODIGO", "PRECIO DE COMPRA", "PRECIO DE VENTA", "CANTIDAD", "NIT PROVEEDOR", "TOTAL", "GANANCIA"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -679,30 +703,34 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblDatos);
 
-        panelListar.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 193, 720, 250));
+        panelListar.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 193, 880, 290));
 
         txtValorBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        panelListar.add(txtValorBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 110, 352, -1));
+        panelListar.add(txtValorBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 530, 30));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel32.setText("LISTAR POR:");
-        panelListar.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 111, -1, -1));
+        jLabel32.setText("FILTRAR POR:");
+        panelListar.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, 30));
 
         jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel33.setText("LISTAR PRODUCTO");
         panelListar.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 11, -1, -1));
 
-        cboxFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Precio", "Cantidad", "Nit Proveedor", "Todos" }));
+        cboxFiltro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", "Precio", "Cantidad", "Nit Proveedor", " " }));
         cboxFiltro.setOpaque(false);
         cboxFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxFiltroActionPerformed(evt);
             }
         });
-        panelListar.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 185, -1));
+        panelListar.add(cboxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 120, 30));
 
-        botonListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonListar.PNG"))); // NOI18N
+        botonListar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonListar.setForeground(new java.awt.Color(0, 0, 153));
+        botonListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar-el-simbolo-del-boton-cuadrado-para-la-interfaz.PNG"))); // NOI18N
+        botonListar.setText("MOSTRAR LISTADO");
+        botonListar.setToolTipText("");
         botonListar.setBorder(null);
         botonListar.setBorderPainted(false);
         botonListar.setContentAreaFilled(false);
@@ -711,7 +739,7 @@ public class GestionJefe extends javax.swing.JFrame {
                 botonListarActionPerformed(evt);
             }
         });
-        panelListar.add(botonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 141, -1, -1));
+        panelListar.add(botonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
         panelProductos.addTab("LISTAR", panelListar);
 
@@ -730,66 +758,52 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel30.setText("REGISTRAR PROVEEDOR");
         panelCrearProveedor.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setText("Nombre");
-        panelCrearProveedor.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 128, -1, -1));
+        panelCrearProveedor.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 60, 30));
 
-        jLabel34.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel34.setText("Nit");
-        panelCrearProveedor.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 186, -1, -1));
+        panelCrearProveedor.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 60, 30));
 
-        jLabel35.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel35.setText("Telefono");
-        panelCrearProveedor.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 244, -1, -1));
+        jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel35.setText("Teléfono");
+        panelCrearProveedor.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 60, 30));
 
-        jLabel36.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel36.setText("Direccion");
-        panelCrearProveedor.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 302, -1, -1));
+        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel36.setText("Dirección");
+        panelCrearProveedor.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 60, 30));
 
+        nombredeProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombredeProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombredeProveedorActionPerformed(evt);
             }
         });
-        panelCrearProveedor.add(nombredeProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 127, 309, -1));
-        panelCrearProveedor.add(nitProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 185, 309, -1));
-        panelCrearProveedor.add(telefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 243, 309, -1));
-        panelCrearProveedor.add(direccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 301, 309, -1));
+        panelCrearProveedor.add(nombredeProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 309, 30));
 
-        guardarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        nitProveedor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearProveedor.add(nitProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 309, 30));
+
+        telefonoProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearProveedor.add(telefonoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 309, 30));
+
+        direccionProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearProveedor.add(direccionProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 309, 30));
+
+        guardarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardarProv.setForeground(new java.awt.Color(0, 0, 153));
+        guardarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        guardarProv.setText("GUARDAR");
         guardarProv.setBorder(null);
         guardarProv.setBorderPainted(false);
         guardarProv.setContentAreaFilled(false);
-        guardarProv.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        guardarProv.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
         guardarProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarProvActionPerformed(evt);
             }
         });
-        panelCrearProveedor.add(guardarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, -1, -1));
-
-        jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel37.setText("Precio producto a proveer");
-        panelCrearProveedor.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 418, -1, -1));
-
-        jLabel38.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel38.setText("Nombre producto a proveer");
-        panelCrearProveedor.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
-
-        nombreproductoprov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreproductoprovActionPerformed(evt);
-            }
-        });
-        panelCrearProveedor.add(nombreproductoprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 359, 309, -1));
-
-        precioproductoprov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precioproductoprovActionPerformed(evt);
-            }
-        });
-        panelCrearProveedor.add(precioproductoprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 417, 309, -1));
+        panelCrearProveedor.add(guardarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
 
         panelProveedor.addTab("CREAR", panelCrearProveedor);
 
@@ -800,16 +814,22 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel39.setText("ELIMINAR PROVEEDOR");
         panelEliminarProveedor.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
-        botonEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonEliminar1.setForeground(new java.awt.Color(0, 51, 153));
+        botonEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminar.png"))); // NOI18N
+        botonEliminar1.setText("ELIMINAR PROVEEDOR");
         botonEliminar1.setBorder(null);
-        botonEliminar1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar1.setBorderPainted(false);
+        botonEliminar1.setContentAreaFilled(false);
+        botonEliminar1.setFocusPainted(false);
         botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminar1ActionPerformed(evt);
             }
         });
-        panelEliminarProveedor.add(botonEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
+        panelEliminarProveedor.add(botonEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, -1, -1));
 
+        nitProveedor2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nitProveedor2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nitProveedor2ActionPerformed(evt);
@@ -820,178 +840,170 @@ public class GestionJefe extends javax.swing.JFrame {
                 nitProveedor2KeyTyped(evt);
             }
         });
-        panelEliminarProveedor.add(nitProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 267, -1));
+        panelEliminarProveedor.add(nitProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 110, 300, 30));
 
         proveedorEliminar.setEditable(false);
         proveedorEliminar.setColumns(20);
-        proveedorEliminar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        proveedorEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         proveedorEliminar.setRows(5);
         jScrollPane3.setViewportView(proveedorEliminar);
 
         panelEliminarProveedor.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 444, 162));
         panelEliminarProveedor.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
 
-        jLabel41.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel41.setText("Nit del Proveedor ");
-        panelEliminarProveedor.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel41.setText("Nit del Proveedor:");
+        panelEliminarProveedor.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, 30));
 
-        botonBuscarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        botonBuscarProv.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonBuscarProv.setForeground(new java.awt.Color(0, 0, 153));
+        botonBuscarProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        botonBuscarProv.setText("BUSCAR PROVEEDOR");
         botonBuscarProv.setBorder(null);
         botonBuscarProv.setBorderPainted(false);
         botonBuscarProv.setContentAreaFilled(false);
         botonBuscarProv.setFocusPainted(false);
-        botonBuscarProv.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        botonBuscarProv.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         botonBuscarProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarProvActionPerformed(evt);
             }
         });
-        panelEliminarProveedor.add(botonBuscarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
+        panelEliminarProveedor.add(botonBuscarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
         panelProveedor.addTab("ELIMINAR", panelEliminarProveedor);
 
         panelEditarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelEditarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelEditarProveedor.add(nomProducProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 302, -1));
 
-        guardarProducto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardarProducto2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardarProducto2.setForeground(new java.awt.Color(0, 0, 153));
+        guardarProducto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        guardarProducto2.setText("GUARDAR CAMBIOS");
         guardarProducto2.setBorder(null);
         guardarProducto2.setBorderPainted(false);
         guardarProducto2.setContentAreaFilled(false);
         guardarProducto2.setFocusPainted(false);
-        guardarProducto2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        guardarProducto2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
         guardarProducto2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarProducto2ActionPerformed(evt);
             }
         });
-        panelEditarProveedor.add(guardarProducto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, -1, -1));
+        panelEditarProveedor.add(guardarProducto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
 
-        jLabel42.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel42.setText("Precio del producto que provee");
-        panelEditarProveedor.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 189, -1));
-
-        jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel43.setText("Direccion Proveedor");
-        panelEditarProveedor.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 189, -1));
+        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel43.setText("Dirección Proveedor");
+        panelEditarProveedor.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 154, 30));
 
         jLabel44.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel44.setText("EDITAR PROVEEDOR");
         panelEditarProveedor.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
         panelEditarProveedor.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
 
-        jLabel46.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel46.setText("Telefono Proveedor");
-        panelEditarProveedor.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 189, -1));
+        jLabel46.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel46.setText("Teléfono Proveedor");
+        panelEditarProveedor.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 154, 30));
 
-        jLabel47.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel47.setText("Nombre del producto a proveer");
-        panelEditarProveedor.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
-
-        jLabel48.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel48.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel48.setText("Nombre Proveedor");
-        panelEditarProveedor.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 189, -1));
+        panelEditarProveedor.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 154, 30));
 
-        nitProveedor3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nitProveedor3ActionPerformed(evt);
+        nitProveedor3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nitProveedor3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nitProveedor3KeyReleased(evt);
             }
         });
-        panelEditarProveedor.add(nitProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 300, -1));
+        panelEditarProveedor.add(nitProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 300, 30));
 
+        nombrProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombrProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombrProveedorActionPerformed(evt);
             }
         });
-        panelEditarProveedor.add(nombrProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 302, -1));
-        panelEditarProveedor.add(telProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 302, -1));
-        panelEditarProveedor.add(precioProdprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 302, -1));
+        panelEditarProveedor.add(nombrProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 302, 30));
 
-        jLabel49.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        telProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarProveedor.add(telProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 302, 30));
+
+        jLabel49.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel49.setText("Nit del proveedor a editar");
-        panelEditarProveedor.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+        panelEditarProveedor.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 154, 30));
 
-        direccionProveedor1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                direccionProveedor1ActionPerformed(evt);
-            }
-        });
-        panelEditarProveedor.add(direccionProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 302, -1));
+        direccionProveedor1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarProveedor.add(direccionProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 302, 30));
 
         panelProveedor.addTab("EDITAR", panelEditarProveedor);
 
         panelBuscarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel50.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel50.setText("Nit Proveedor");
-        panelBuscarProveedor.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        jLabel50.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel50.setText("Nit Proveedor:");
+        panelBuscarProveedor.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, 30));
 
         busquedaProveedor.setEditable(false);
         busquedaProveedor.setColumns(20);
-        busquedaProveedor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        busquedaProveedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         busquedaProveedor.setRows(5);
         jScrollPane5.setViewportView(busquedaProveedor);
 
-        panelBuscarProveedor.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 444, 296));
+        panelBuscarProveedor.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 444, 260));
 
         jLabel51.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel51.setText("BUSCAR PROVEEDOR");
         panelBuscarProveedor.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
-        nitProveedor4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nitProveedor4ActionPerformed(evt);
-            }
-        });
+        nitProveedor4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nitProveedor4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nitProveedor4KeyTyped(evt);
             }
         });
-        panelBuscarProveedor.add(nitProveedor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 267, -1));
+        panelBuscarProveedor.add(nitProveedor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 120, 350, 30));
 
-        buscarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        buscarProveedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buscarProveedor.setForeground(new java.awt.Color(0, 0, 153));
+        buscarProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        buscarProveedor.setText("BUSCAR PROVEEDOR");
         buscarProveedor.setBorder(null);
         buscarProveedor.setBorderPainted(false);
         buscarProveedor.setContentAreaFilled(false);
         buscarProveedor.setFocusPainted(false);
-        buscarProveedor.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        buscarProveedor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         buscarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarProveedorActionPerformed(evt);
             }
         });
-        panelBuscarProveedor.add(buscarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, -1, -1));
+        panelBuscarProveedor.add(buscarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
 
         panelProveedor.addTab("BUSCAR", panelBuscarProveedor);
 
         panelListarProveedor.setBackground(new java.awt.Color(233, 233, 233));
         panelListarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelListarProveedor.add(txtValorBusqueda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 352, 20));
+        panelListarProveedor.add(txtValorBusqueda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 120, 470, 30));
 
         jLabel52.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel52.setText("LISTAR PROVEEDOR");
         panelListarProveedor.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
         cboxFiltro1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        cboxFiltro1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Precio", "Nombre Producto", "Todos" }));
+        cboxFiltro1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", " " }));
         cboxFiltro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxFiltro1ActionPerformed(evt);
             }
         });
-        panelListarProveedor.add(cboxFiltro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 185, -1));
+        panelListarProveedor.add(cboxFiltro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 160, 30));
 
-        jLabel53.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel53.setText("LISTAR POR:");
-        panelListarProveedor.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, 20));
+        jLabel53.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel53.setText("FILTRAR POR:");
+        panelListarProveedor.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, 30));
 
-        botonListar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonListar.PNG"))); // NOI18N
+        botonListar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonListar1.setForeground(new java.awt.Color(0, 0, 153));
+        botonListar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar-el-simbolo-del-boton-cuadrado-para-la-interfaz.png"))); // NOI18N
+        botonListar1.setText("LISTAR PROVEEDORES");
         botonListar1.setBorder(null);
         botonListar1.setBorderPainted(false);
         botonListar1.setContentAreaFilled(false);
@@ -1000,18 +1012,20 @@ public class GestionJefe extends javax.swing.JFrame {
                 botonListar1ActionPerformed(evt);
             }
         });
-        panelListarProveedor.add(botonListar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, -1, -1));
+        panelListarProveedor.add(botonListar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
+        jScrollPane6.setVisible(false);
 
         tblDatos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "NOMBRE", "NIT", "TELEFONO", "DIRECCION", "PRECIO PRODUCTO", "NOMBRE PRODUCTO"
+                "NOMBRE", "NIT", "TELEFONO", "DIRECCION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1020,7 +1034,7 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tblDatos1);
 
-        panelListarProveedor.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 167, 760, 300));
+        panelListarProveedor.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 217, 760, 280));
 
         panelProveedor.addTab("LISTAR", panelListarProveedor);
 
@@ -1034,19 +1048,26 @@ public class GestionJefe extends javax.swing.JFrame {
         panelReporteEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelReporteEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cargo", "Salario", "Todo" }));
-        panelReporteEmpleado.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 113, -1));
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Cargo", "Salario", " " }));
+        panelReporteEmpleado.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 113, 30));
 
-        GenerarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonPdf.PNG"))); // NOI18N
+        GenerarPdf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GenerarPdf.setForeground(new java.awt.Color(0, 0, 153));
+        GenerarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pdf.PNG"))); // NOI18N
+        GenerarPdf.setText("GENERAR REPORTE");
         GenerarPdf.setBorder(null);
+        GenerarPdf.setBorderPainted(false);
+        GenerarPdf.setContentAreaFilled(false);
         GenerarPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GenerarPdfActionPerformed(evt);
             }
         });
-        panelReporteEmpleado.add(GenerarPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
-        panelReporteEmpleado.add(jtxDato, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 292, -1));
+        panelReporteEmpleado.add(GenerarPdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+
+        jtxDato.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelReporteEmpleado.add(jtxDato, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 292, 30));
 
         jLabel74.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1062,39 +1083,53 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel54.setText("GENERAR REPORTE PRODUCTO");
         panelReporteProductos.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 920, -1));
-        panelReporteProductos.add(jtxDato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 292, -1));
 
-        GenerarPdf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonPdf.PNG"))); // NOI18N
+        jtxDato1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelReporteProductos.add(jtxDato1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 292, 30));
+
+        GenerarPdf1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GenerarPdf1.setForeground(new java.awt.Color(0, 0, 153));
+        GenerarPdf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pdf.PNG"))); // NOI18N
+        GenerarPdf1.setText("GENERAR REPORTE");
         GenerarPdf1.setBorder(null);
+        GenerarPdf1.setBorderPainted(false);
+        GenerarPdf1.setContentAreaFilled(false);
         GenerarPdf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GenerarPdf1ActionPerformed(evt);
             }
         });
-        panelReporteProductos.add(GenerarPdf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
+        panelReporteProductos.add(GenerarPdf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Precio", "Nombre Proveedor", "Todo" }));
-        panelReporteProductos.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 113, -1));
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Nombre", "Precio", "Nombre Proveedor", " " }));
+        panelReporteProductos.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 140, 150, 30));
 
         panelReportes.addTab("PRODUCTOS", panelReporteProductos);
 
         panelReporteEditar.setBackground(new java.awt.Color(233, 233, 233));
         panelReporteEditar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelReporteEditar.add(jtxDato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 292, -1));
 
-        GenerarPdf2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonPdf.PNG"))); // NOI18N
+        jtxDato2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelReporteEditar.add(jtxDato2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 292, 30));
+
+        GenerarPdf2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GenerarPdf2.setForeground(new java.awt.Color(0, 0, 153));
+        GenerarPdf2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pdf.PNG"))); // NOI18N
+        GenerarPdf2.setText("GENERAR REPORTE");
         GenerarPdf2.setBorder(null);
+        GenerarPdf2.setBorderPainted(false);
+        GenerarPdf2.setContentAreaFilled(false);
         GenerarPdf2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GenerarPdf2ActionPerformed(evt);
             }
         });
-        panelReporteEditar.add(GenerarPdf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
+        panelReporteEditar.add(GenerarPdf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
 
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Barrio", "Todo" }));
-        panelReporteEditar.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 113, -1));
+        jComboBox3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Nombre", "Barrio", " " }));
+        panelReporteEditar.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 113, 30));
 
         jLabel55.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1113,12 +1148,14 @@ public class GestionJefe extends javax.swing.JFrame {
         panelCrearCotizacion.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearCotizacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        panelCrearCotizacion.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 10, 200));
+
         totalCompra.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        totalCompra.setForeground(new java.awt.Color(51, 51, 51));
-        totalCompra.setText("Total");
+        totalCompra.setText("Total: ");
         panelCrearCotizacion.add(totalCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 323, -1));
 
-        agregar.setForeground(new java.awt.Color(51, 51, 51));
+        agregar.setBackground(new java.awt.Color(102, 255, 0));
         agregar.setText("AGREGAR");
         agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1127,7 +1164,7 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         panelCrearCotizacion.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, -1, -1));
 
-        eliminarProducto.setForeground(new java.awt.Color(51, 51, 51));
+        eliminarProducto.setBackground(new java.awt.Color(102, 255, 0));
         eliminarProducto.setText("ELIMINAR");
         eliminarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1137,16 +1174,14 @@ public class GestionJefe extends javax.swing.JFrame {
         panelCrearCotizacion.add(eliminarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 85, -1));
 
         jLabel56.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel56.setForeground(new java.awt.Color(51, 51, 51));
         jLabel56.setText("Documento Cliente");
-        panelCrearCotizacion.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        panelCrearCotizacion.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, 25));
 
         jLabel57.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel57.setForeground(new java.awt.Color(51, 51, 51));
         jLabel57.setText("Cantidad");
-        panelCrearCotizacion.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, -1, -1));
+        panelCrearCotizacion.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, 25));
 
-        tbnGuardarCotizacion.setForeground(new java.awt.Color(51, 51, 51));
+        tbnGuardarCotizacion.setBackground(new java.awt.Color(102, 255, 0));
         tbnGuardarCotizacion.setText("GUARDAR");
         tbnGuardarCotizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1155,16 +1190,14 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         panelCrearCotizacion.add(tbnGuardarCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
-        fecha.setForeground(new java.awt.Color(51, 51, 51));
         fecha.setText("AA/MM/DD");
-        panelCrearCotizacion.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+        panelCrearCotizacion.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 25));
 
         jLabel58.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel58.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel58.setText("Numero Cotizacion");
-        panelCrearCotizacion.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jLabel58.setText("Número Cotización");
+        panelCrearCotizacion.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 25));
 
-        cancelarC.setForeground(new java.awt.Color(51, 51, 51));
+        cancelarC.setBackground(new java.awt.Color(102, 255, 0));
         cancelarC.setText("CANCELAR");
         cancelarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1173,14 +1206,14 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         panelCrearCotizacion.add(cancelarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
-        fechaCotizacion.setForeground(new java.awt.Color(51, 51, 51));
+        fechaCotizacion.setBackground(new java.awt.Color(236, 236, 236));
+        fechaCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fechaCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelCrearCotizacion.add(fechaCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 97, -1));
+        panelCrearCotizacion.add(fechaCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 97, 25));
 
         jLabel59.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(51, 51, 51));
         jLabel59.setText("Fecha");
-        panelCrearCotizacion.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        panelCrearCotizacion.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, 25));
 
         jScrollPane7.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -1205,24 +1238,22 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(tlbDatos);
 
-        panelCrearCotizacion.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 300, 530, 100));
+        panelCrearCotizacion.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 300, 620, 100));
 
-        numeroCotizacion.setForeground(new java.awt.Color(51, 51, 51));
+        numeroCotizacion.setBackground(new java.awt.Color(236, 236, 236));
+        numeroCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         numeroCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         numeroCotizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroCotizacionActionPerformed(evt);
             }
         });
-        panelCrearCotizacion.add(numeroCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 117, -1));
+        panelCrearCotizacion.add(numeroCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 117, 25));
 
-        vendedorCotizacion.setForeground(new java.awt.Color(51, 51, 51));
-        vendedorCotizacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vendedorCotizacionActionPerformed(evt);
-            }
-        });
-        panelCrearCotizacion.add(vendedorCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 322, -1));
+        vendedorCotizacion.setBackground(new java.awt.Color(236, 236, 236));
+        vendedorCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        vendedorCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelCrearCotizacion.add(vendedorCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 130, 25));
 
         GuardarCotizacion.setForeground(new java.awt.Color(51, 51, 51));
         GuardarCotizacion.setBorder(null);
@@ -1235,81 +1266,82 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         panelCrearCotizacion.add(GuardarCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, -1));
 
-        documentoClienteCotiza.setForeground(new java.awt.Color(51, 51, 51));
-        panelCrearCotizacion.add(documentoClienteCotiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 322, -1));
+        documentoClienteCotiza.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelCrearCotizacion.add(documentoClienteCotiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 130, 25));
 
         jLabel60.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(51, 51, 51));
         jLabel60.setText("Documento vendedor");
-        panelCrearCotizacion.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        panelCrearCotizacion.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 25));
 
-        codigoProducCotizacion.setForeground(new java.awt.Color(51, 51, 51));
-        panelCrearCotizacion.add(codigoProducCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 87, -1));
+        codigoProducCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelCrearCotizacion.add(codigoProducCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 87, 25));
 
-        cantidadProductoCotizacion.setForeground(new java.awt.Color(51, 51, 51));
+        cantidadProductoCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cantidadProductoCotizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantidadProductoCotizacionActionPerformed(evt);
             }
         });
-        panelCrearCotizacion.add(cantidadProductoCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 86, -1));
+        panelCrearCotizacion.add(cantidadProductoCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 86, 25));
 
-        GuardarCotizacion1.setForeground(new java.awt.Color(51, 51, 51));
-        GuardarCotizacion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        GuardarCotizacion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GuardarCotizacion1.setForeground(new java.awt.Color(0, 0, 153));
+        GuardarCotizacion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        GuardarCotizacion1.setText("GUARDAR COTIZACIÓN");
         GuardarCotizacion1.setBorder(null);
         GuardarCotizacion1.setBorderPainted(false);
         GuardarCotizacion1.setContentAreaFilled(false);
-        GuardarCotizacion1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        GuardarCotizacion1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guradar.png"))); // NOI18N
         GuardarCotizacion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GuardarCotizacion1ActionPerformed(evt);
             }
         });
-        panelCrearCotizacion.add(GuardarCotizacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 123, -1));
+        panelCrearCotizacion.add(GuardarCotizacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 470, 220, -1));
 
         jLabel61.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(51, 51, 51));
         jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel61.setText("CREAR COTIZACION");
+        jLabel61.setText("CREAR COTIZACIÓN");
         panelCrearCotizacion.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 10, 880, -1));
 
         jLabel62.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel62.setText("Codigo Producto");
-        panelCrearCotizacion.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
+        jLabel62.setText("Código Producto");
+        panelCrearCotizacion.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, 25));
 
         panelCotizaciones.addTab("CREAR", panelCrearCotizacion);
 
         panelBuscarCotizacion.setBackground(new java.awt.Color(233, 233, 233));
         panelBuscarCotizacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buscarCotizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        buscarCotizacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buscarCotizacion.setForeground(new java.awt.Color(0, 0, 153));
+        buscarCotizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        buscarCotizacion.setText("BUSCAR ");
+        buscarCotizacion.setToolTipText("");
         buscarCotizacion.setBorder(null);
         buscarCotizacion.setBorderPainted(false);
         buscarCotizacion.setContentAreaFilled(false);
         buscarCotizacion.setFocusPainted(false);
-        buscarCotizacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        buscarCotizacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         buscarCotizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarCotizacionActionPerformed(evt);
             }
         });
-        panelBuscarCotizacion.add(buscarCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, -1, -1));
+        panelBuscarCotizacion.add(buscarCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, -1, 50));
 
         resultadodetalle.setEditable(false);
         resultadodetalle.setColumns(20);
-        resultadodetalle.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        resultadodetalle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         resultadodetalle.setRows(5);
         jScrollPane10.setViewportView(resultadodetalle);
 
         panelBuscarCotizacion.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 466, 196));
 
-        jLabel65.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel65.setText("Numero Cotizacion ");
-        panelBuscarCotizacion.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
-        panelBuscarCotizacion.add(numeroCotizacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 183, -1));
+        jLabel65.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel65.setText("Numero Cotización: ");
+        panelBuscarCotizacion.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 140, 30));
+
+        numeroCotizacion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        panelBuscarCotizacion.add(numeroCotizacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 100, 190, 30));
 
         jLabel67.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel67.setText("BUSCAR COTIZACION");
@@ -1317,7 +1349,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         resultadocotizacion.setEditable(false);
         resultadocotizacion.setColumns(20);
-        resultadocotizacion.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        resultadocotizacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         resultadocotizacion.setRows(5);
         jScrollPane11.setViewportView(resultadocotizacion);
 
@@ -1330,92 +1362,129 @@ public class GestionJefe extends javax.swing.JFrame {
         panelEmpleado.setBackground(new java.awt.Color(158, 189, 213));
         panelEmpleado.setToolTipText("");
         panelEmpleado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        panelEmpleado.setMinimumSize(new java.awt.Dimension(901, 536));
         panelEmpleado.setOpaque(true);
+        panelEmpleado.setPreferredSize(new java.awt.Dimension(901, 536));
 
         panelCrearEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel63.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel63.setText("Nombre Empleado");
-        panelCrearEmpleado.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+        jLabel63.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel63.setText("Nombre ");
+        panelCrearEmpleado.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 119, 30));
 
+        nombreEmpleado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombreEmpleado1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreEmpleado1ActionPerformed(evt);
             }
         });
-        panelCrearEmpleado.add(nombreEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 283, 25));
+        panelCrearEmpleado.add(nombreEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 283, 30));
 
-        jLabel64.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel64.setText("Apellido Empleado");
-        panelCrearEmpleado.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        jLabel64.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel64.setText("Apellido ");
+        panelCrearEmpleado.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 119, 30));
 
-        jLabel66.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel66.setText("Cedula");
-        panelCrearEmpleado.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+        jLabel66.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel66.setText("Cédula");
+        panelCrearEmpleado.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 119, 30));
 
-        jLabel68.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel68.setText("Telefono");
-        panelCrearEmpleado.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
+        jLabel68.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel68.setText("Teléfono");
+        panelCrearEmpleado.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 119, 30));
 
-        jLabel69.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel69.setText("Direccion");
-        panelCrearEmpleado.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        jLabel69.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel69.setText("Dirección");
+        panelCrearEmpleado.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 119, 30));
 
         jLabel70.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel70.setText("REGISTRAR EMPLEADO");
         panelCrearEmpleado.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
-        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardar.setForeground(new java.awt.Color(0, 0, 153));
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        guardar.setText("REGISTAR EMPLEADO");
         guardar.setBorder(null);
         guardar.setBorderPainted(false);
         guardar.setContentAreaFilled(false);
         guardar.setFocusable(false);
-        guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
             }
         });
-        panelCrearEmpleado.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, -1));
+        panelCrearEmpleado.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 467, -1, -1));
 
-        jLabel71.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel71.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel71.setText("Sueldo");
-        panelCrearEmpleado.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
+        panelCrearEmpleado.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 119, 30));
 
-        jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel72.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel72.setText("Nombre Usuario");
-        panelCrearEmpleado.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
+        panelCrearEmpleado.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 119, 30));
 
-        jLabel73.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel73.setText("Contrasena Usuario");
-        panelCrearEmpleado.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
-        panelCrearEmpleado.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 283, 25));
-        panelCrearEmpleado.add(contrasenaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 283, 25));
-        panelCrearEmpleado.add(apellidoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 283, 25));
-        panelCrearEmpleado.add(cedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 283, 25));
-        panelCrearEmpleado.add(telefonoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 283, 25));
-        panelCrearEmpleado.add(direccionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 283, 25));
-        panelCrearEmpleado.add(sueldoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 283, 25));
+        jLabel73.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel73.setText("Contraseña Usuario");
+        panelCrearEmpleado.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 119, 30));
 
-        jLabel75.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        nombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearEmpleado.add(nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 283, 30));
+
+        contrasenaUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearEmpleado.add(contrasenaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 283, 30));
+
+        apellidoEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearEmpleado.add(apellidoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 283, 30));
+
+        cedulaEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cedulaEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaEmpleadoKeyTyped(evt);
+            }
+        });
+        panelCrearEmpleado.add(cedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 283, 30));
+
+        telefonoEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        telefonoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                telefonoEmpleadoKeyTyped(evt);
+            }
+        });
+        panelCrearEmpleado.add(telefonoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 283, 30));
+
+        direccionEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearEmpleado.add(direccionEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 283, 30));
+
+        sueldoEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        sueldoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                sueldoEmpleadoKeyTyped(evt);
+            }
+        });
+        panelCrearEmpleado.add(sueldoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 283, 30));
+
+        jLabel75.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel75.setText("Barrio");
-        panelCrearEmpleado.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
-        panelCrearEmpleado.add(barrioEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 283, 25));
+        panelCrearEmpleado.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 119, 30));
 
-        jLabel76.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        barrioEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearEmpleado.add(barrioEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 283, 30));
+
+        jLabel76.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel76.setText("Cargo");
-        panelCrearEmpleado.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, 20));
+        panelCrearEmpleado.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 119, 30));
 
+        cargoEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cargoEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jefe", "Empleado" }));
-        panelCrearEmpleado.add(cargoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 283, 25));
+        panelCrearEmpleado.add(cargoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 283, 30));
 
         panelEmpleado.addTab("CREAR", panelCrearEmpleado);
 
         panelEliminarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cedulEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulEmpleadoActionPerformed(evt);
@@ -1426,17 +1495,22 @@ public class GestionJefe extends javax.swing.JFrame {
                 cedulEmpleadoKeyTyped(evt);
             }
         });
-        panelEliminarEmpleado.add(cedulEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 267, -1));
+        panelEliminarEmpleado.add(cedulEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 110, 310, 30));
 
-        botonEliminar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonEliminar2.setForeground(new java.awt.Color(0, 0, 153));
+        botonEliminar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminar.PNG"))); // NOI18N
+        botonEliminar2.setText("ELIMINAR");
         botonEliminar2.setBorder(null);
+        botonEliminar2.setBorderPainted(false);
+        botonEliminar2.setContentAreaFilled(false);
         botonEliminar2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
         botonEliminar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminar2ActionPerformed(evt);
             }
         });
-        panelEliminarEmpleado.add(botonEliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
+        panelEliminarEmpleado.add(botonEliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, -1, -1));
 
         empleadoEliminar.setEditable(false);
         empleadoEliminar.setColumns(20);
@@ -1444,29 +1518,30 @@ public class GestionJefe extends javax.swing.JFrame {
         empleadoEliminar.setRows(5);
         jScrollPane8.setViewportView(empleadoEliminar);
 
-        panelEliminarEmpleado.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 444, 162));
+        panelEliminarEmpleado.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 212, 444, 180));
 
-        jLabel77.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel77.setText("Cedula del Empleado");
-        panelEliminarEmpleado.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
+        jLabel77.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel77.setText("Cedula del Empleado:");
+        panelEliminarEmpleado.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, 30));
 
         jLabel78.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel78.setText("ELIMINAR EMPLEADO");
         panelEliminarEmpleado.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
-        botonBuscarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        botonBuscarEmp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonBuscarEmp.setForeground(new java.awt.Color(0, 0, 153));
+        botonBuscarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        botonBuscarEmp.setText("BUSCAR");
         botonBuscarEmp.setBorder(null);
         botonBuscarEmp.setBorderPainted(false);
         botonBuscarEmp.setContentAreaFilled(false);
         botonBuscarEmp.setFocusPainted(false);
-        botonBuscarEmp.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        botonBuscarEmp.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         botonBuscarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarEmpActionPerformed(evt);
             }
         });
-        panelEliminarEmpleado.add(botonBuscarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+        panelEliminarEmpleado.add(botonBuscarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
         panelEliminarEmpleado.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, -1, -1));
 
         panelEmpleado.addTab("ELIMINAR", panelEliminarEmpleado);
@@ -1474,64 +1549,75 @@ public class GestionJefe extends javax.swing.JFrame {
         panelEditarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelEditarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel80.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel80.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel80.setText("Cedula del Empleado a Editar");
-        panelEditarEmpleado.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
+        panelEditarEmpleado.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 30));
 
-        jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel81.setText("Direccion");
-        panelEditarEmpleado.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+        jLabel81.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel81.setText("Dirección");
+        panelEditarEmpleado.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, 30));
 
-        jLabel82.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel82.setText("Telefono");
-        panelEditarEmpleado.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, -1));
-        panelEditarEmpleado.add(apellidoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 314, -1));
-        panelEditarEmpleado.add(barrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 314, -1));
+        jLabel82.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel82.setText("Teléfono");
+        panelEditarEmpleado.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, 30));
 
+        apellidoEmpleado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarEmpleado.add(apellidoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 314, 30));
+
+        barrio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarEmpleado.add(barrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 314, 30));
+
+        telefonoEmpleado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         telefonoEmpleado1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 telefonoEmpleado1KeyTyped(evt);
             }
         });
-        panelEditarEmpleado.add(telefonoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 314, -1));
+        panelEditarEmpleado.add(telefonoEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 314, 30));
 
         jLabel83.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel83.setText("EDITAR EMPLEADO");
         panelEditarEmpleado.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
-        jLabel84.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel84.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel84.setText("Barrio");
-        panelEditarEmpleado.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
-        panelEditarEmpleado.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 314, -1));
+        panelEditarEmpleado.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, 30));
 
-        cedulaEmpleado1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cedulaEmpleado1ActionPerformed(evt);
-            }
-        });
+        direccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarEmpleado.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 314, 30));
+
+        cedulaEmpleado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulaEmpleado1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cedulaEmpleado1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cedulaEmpleado1KeyTyped(evt);
             }
         });
-        panelEditarEmpleado.add(cedulaEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 314, -1));
+        panelEditarEmpleado.add(cedulaEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 314, 30));
 
-        guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardar1.setForeground(new java.awt.Color(0, 0, 153));
+        guardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        guardar1.setText("GUARDAR CAMBIOS");
         guardar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 guardar1MouseClicked(evt);
             }
         });
-        panelEditarEmpleado.add(guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
-        panelEditarEmpleado.add(nombreEmpleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 314, -1));
+        panelEditarEmpleado.add(guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
 
-        jLabel85.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        nombreEmpleado2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarEmpleado.add(nombreEmpleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 314, 30));
+
+        jLabel85.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel85.setText("Apellido Empleado");
-        panelEditarEmpleado.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        panelEditarEmpleado.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, 30));
 
-        jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel86.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel86.setText("Nombre Empleado");
-        panelEditarEmpleado.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
+        panelEditarEmpleado.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, 30));
 
         panelEmpleado.addTab("EDITAR", panelEditarEmpleado);
 
@@ -1540,16 +1626,17 @@ public class GestionJefe extends javax.swing.JFrame {
 
         resultadoBusqueda1.setEditable(false);
         resultadoBusqueda1.setColumns(20);
-        resultadoBusqueda1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        resultadoBusqueda1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         resultadoBusqueda1.setRows(5);
         jScrollPane9.setViewportView(resultadoBusqueda1);
 
-        panelBuscarEmpleado.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 444, 270));
+        panelBuscarEmpleado.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 444, 260));
 
-        jLabel87.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel87.setText("Cedula del Cliente ");
-        panelBuscarEmpleado.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+        jLabel87.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel87.setText("Cédula del Cliente:");
+        panelBuscarEmpleado.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, 30));
 
+        cedulEmpleado1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulEmpleado1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulEmpleado1ActionPerformed(evt);
@@ -1560,32 +1647,36 @@ public class GestionJefe extends javax.swing.JFrame {
                 cedulEmpleado1KeyTyped(evt);
             }
         });
-        panelBuscarEmpleado.add(cedulEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 267, -1));
+        panelBuscarEmpleado.add(cedulEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 327, 30));
 
         jLabel88.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel88.setText("BUSCAR EMPLEADO");
         panelBuscarEmpleado.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
-        buscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        buscarEmpleado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buscarEmpleado.setForeground(new java.awt.Color(0, 0, 153));
+        buscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        buscarEmpleado.setText("BUSCAR EMPLEADO");
         buscarEmpleado.setBorder(null);
         buscarEmpleado.setBorderPainted(false);
         buscarEmpleado.setContentAreaFilled(false);
         buscarEmpleado.setFocusPainted(false);
-        buscarEmpleado.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        buscarEmpleado.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         buscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarEmpleadoActionPerformed(evt);
             }
         });
-        panelBuscarEmpleado.add(buscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, -1, -1));
+        panelBuscarEmpleado.add(buscarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
 
         panelEmpleado.addTab("BUSCAR", panelBuscarEmpleado);
 
         panelListarEmpleado.setBackground(new java.awt.Color(233, 233, 233));
         panelListarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonListar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonListar.PNG"))); // NOI18N
+        botonListar2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonListar2.setForeground(new java.awt.Color(0, 0, 153));
+        botonListar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar-el-simbolo-del-boton-cuadrado-para-la-interfaz.png"))); // NOI18N
+        botonListar2.setText("MOSTRAR EMPLEADO(S)");
         botonListar2.setBorder(null);
         botonListar2.setBorderPainted(false);
         botonListar2.setContentAreaFilled(false);
@@ -1600,25 +1691,26 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel89.setText("LISTAR EMPELADO");
         panelListarEmpleado.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
-        jLabel90.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel90.setText("LISTAR POR:");
-        panelListarEmpleado.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 30));
+        jLabel90.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel90.setText("FILTRAR POR:");
+        panelListarEmpleado.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, 30));
 
-        cboxFiltro2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        cboxFiltro2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cboxFiltro2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", "Apellido", "Cargo", "Sueldo", "Barrio", " " }));
         cboxFiltro2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxFiltro2ActionPerformed(evt);
             }
         });
-        panelListarEmpleado.add(cboxFiltro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 185, 30));
+        panelListarEmpleado.add(cboxFiltro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 100, 30));
 
+        tblDatos2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblDatos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "USUARIO", "NOMBRE", "APELLIDO", "CEDULA", "TELEFONO", "DIRECCION", "BARRIO", "SUELDO", "CARGO"
+                "USUARIO", "NOMBRE", "APELLIDO", "CÉDULA", "TELÉFONO", "DIRECCIÓN", "BARRIO", "SUELDO", "CARGO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1631,19 +1723,22 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(tblDatos2);
 
-        panelListarEmpleado.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 750, 327));
+        panelListarEmpleado.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 177, 810, 320));
 
+        txtValorBusqueda2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtValorBusqueda2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        panelListarEmpleado.add(txtValorBusqueda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 240, 30));
+        panelListarEmpleado.add(txtValorBusqueda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 580, 30));
 
         panelEmpleado.addTab("LISTAR", panelListarEmpleado);
 
-        jLayeredPane1.add(panelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
+        jLayeredPane1.add(panelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 920, 570));
 
         panelCliente.setBackground(new java.awt.Color(158, 189, 213));
         panelCliente.setToolTipText("");
         panelCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        panelCliente.setMinimumSize(new java.awt.Dimension(901, 536));
         panelCliente.setOpaque(true);
+        panelCliente.setPreferredSize(new java.awt.Dimension(901, 536));
 
         panelCrearCliente.setBackground(new java.awt.Color(233, 233, 233));
         panelCrearCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1652,67 +1747,80 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel91.setText("REGISTAR CLIENTE");
         panelCrearCliente.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
-        jLabel92.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel92.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel92.setText("Nombre");
-        panelCrearCliente.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        panelCrearCliente.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, 30));
 
-        jLabel93.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel93.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel93.setText("Apellido");
-        panelCrearCliente.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+        panelCrearCliente.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, 30));
         panelCrearCliente.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
 
-        jLabel95.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel95.setText("Cedula");
-        panelCrearCliente.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
+        jLabel95.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel95.setText("Cédula");
+        panelCrearCliente.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, 30));
 
-        jLabel96.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel96.setText("Telefono");
-        panelCrearCliente.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
+        jLabel96.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel96.setText("Teléfono");
+        panelCrearCliente.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, 30));
 
-        jLabel97.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel97.setText("Direccion");
-        panelCrearCliente.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
+        jLabel97.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel97.setText("Dirección");
+        panelCrearCliente.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, 30));
 
-        jLabel98.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel98.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel98.setText("Barrio");
-        panelCrearCliente.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+        panelCrearCliente.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, 30));
 
-        guardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardarCliente.setForeground(new java.awt.Color(0, 0, 153));
+        guardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        guardarCliente.setText("REGISTRAR CLIENTE");
         guardarCliente.setBorder(null);
         guardarCliente.setBorderPainted(false);
         guardarCliente.setContentAreaFilled(false);
         guardarCliente.setFocusPainted(false);
-        guardarCliente.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        guardarCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
         guardarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarClienteActionPerformed(evt);
             }
         });
-        panelCrearCliente.add(guardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, -1, -1));
+        panelCrearCliente.add(guardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
+        nombreCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreClienteActionPerformed(evt);
             }
         });
-        panelCrearCliente.add(nombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 355, -1));
-        panelCrearCliente.add(apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 355, -1));
+        panelCrearCliente.add(nombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 355, 30));
 
+        apellidoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearCliente.add(apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 355, 30));
+
+        cedulaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaClienteActionPerformed(evt);
             }
         });
-        panelCrearCliente.add(cedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 355, -1));
-        panelCrearCliente.add(telCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 355, -1));
-        panelCrearCliente.add(direccinCliete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 355, -1));
-        panelCrearCliente.add(BarrioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 355, -1));
+        panelCrearCliente.add(cedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 355, 30));
 
-        jLabel99.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        telCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearCliente.add(telCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 355, 30));
+
+        direccinCliete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearCliente.add(direccinCliete, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 355, 30));
+
+        BarrioCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearCliente.add(BarrioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 355, 30));
+
+        jLabel99.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel99.setText("Correo");
-        panelCrearCliente.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, -1, -1));
-        panelCrearCliente.add(CorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 355, -1));
+        panelCrearCliente.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, -1, 30));
+
+        CorreoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelCrearCliente.add(CorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 355, 30));
 
         panelCliente.addTab("CREAR", panelCrearCliente);
 
@@ -1724,24 +1832,26 @@ public class GestionJefe extends javax.swing.JFrame {
         panelEliminarCliente.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
         panelEliminarCliente.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, -1, -1));
 
-        botonBuscarCli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        botonBuscarCli1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonBuscarCli1.setForeground(new java.awt.Color(0, 0, 153));
+        botonBuscarCli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        botonBuscarCli1.setText("BUSCAR CLIENTE");
         botonBuscarCli1.setBorder(null);
         botonBuscarCli1.setBorderPainted(false);
         botonBuscarCli1.setContentAreaFilled(false);
         botonBuscarCli1.setFocusPainted(false);
-        botonBuscarCli1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
-        botonBuscarCli1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
         botonBuscarCli1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarCli1ActionPerformed(evt);
             }
         });
-        panelEliminarCliente.add(botonBuscarCli1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
+        panelEliminarCliente.add(botonBuscarCli1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, 50));
 
-        jLabel102.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel102.setText("Cedula del Cliente ");
-        panelEliminarCliente.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+        jLabel102.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel102.setText("Cédula del Cliente: ");
+        panelEliminarCliente.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, 30));
 
+        cedulCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulClienteActionPerformed(evt);
@@ -1752,7 +1862,7 @@ public class GestionJefe extends javax.swing.JFrame {
                 cedulClienteKeyTyped(evt);
             }
         });
-        panelEliminarCliente.add(cedulCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 267, -1));
+        panelEliminarCliente.add(cedulCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 310, 30));
 
         clienteaEliminar.setEditable(false);
         clienteaEliminar.setColumns(20);
@@ -1760,17 +1870,21 @@ public class GestionJefe extends javax.swing.JFrame {
         clienteaEliminar.setRows(5);
         jScrollPane13.setViewportView(clienteaEliminar);
 
-        panelEliminarCliente.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 444, 162));
+        panelEliminarCliente.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 444, 162));
 
-        botonEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonEliminar3.setForeground(new java.awt.Color(0, 0, 153));
+        botonEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminar.png"))); // NOI18N
+        botonEliminar3.setText("ELIIMINAR CLIENTE");
         botonEliminar3.setBorder(null);
-        botonEliminar3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonEliminar.PNG"))); // NOI18N
+        botonEliminar3.setBorderPainted(false);
+        botonEliminar3.setContentAreaFilled(false);
         botonEliminar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminar3ActionPerformed(evt);
             }
         });
-        panelEliminarCliente.add(botonEliminar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, -1, -1));
+        panelEliminarCliente.add(botonEliminar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
 
         panelCliente.addTab("ELIMINAR", panelEliminarCliente);
 
@@ -1781,41 +1895,43 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel103.setText("EDITAR CLIENTE");
         panelEditarCliente.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
 
-        jLabel104.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel104.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel104.setText("Nombre Cliente");
-        panelEditarCliente.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        panelEditarCliente.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, 30));
 
-        jLabel105.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel105.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel105.setText("Apellido Cliente");
-        panelEditarCliente.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+        panelEditarCliente.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, 30));
         panelEditarCliente.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
-        jLabel107.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel107.setText("Telefono ");
-        panelEditarCliente.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+        jLabel107.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel107.setText("Teléfono ");
+        panelEditarCliente.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, 30));
 
-        jLabel108.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel108.setText("Direccion ");
-        panelEditarCliente.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
+        jLabel108.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel108.setText("Dirección ");
+        panelEditarCliente.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, 30));
 
-        jLabel109.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel109.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel109.setText("Barrio ");
-        panelEditarCliente.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+        panelEditarCliente.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, 30));
 
-        guardarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
+        guardarCliente1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        guardarCliente1.setForeground(new java.awt.Color(0, 0, 153));
+        guardarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/disco-flexible.png"))); // NOI18N
+        guardarCliente1.setText("GUARDAR CAMBIOS");
         guardarCliente1.setBorder(null);
         guardarCliente1.setBorderPainted(false);
         guardarCliente1.setContentAreaFilled(false);
         guardarCliente1.setFocusPainted(false);
-        guardarCliente1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
-        guardarCliente1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonGuardar.PNG"))); // NOI18N
         guardarCliente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarCliente1ActionPerformed(evt);
             }
         });
-        panelEditarCliente.add(guardarCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
+        panelEditarCliente.add(guardarCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, -1, -1));
 
+        nombreCliente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nombreCliente1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreCliente1ActionPerformed(evt);
@@ -1826,32 +1942,41 @@ public class GestionJefe extends javax.swing.JFrame {
                 nombreCliente1KeyTyped(evt);
             }
         });
-        panelEditarCliente.add(nombreCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 355, -1));
-        panelEditarCliente.add(apellidoCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 355, -1));
-        panelEditarCliente.add(telCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 355, -1));
-        panelEditarCliente.add(direccinCliete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 355, -1));
-        panelEditarCliente.add(BarrioCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 355, -1));
+        panelEditarCliente.add(nombreCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 355, 30));
 
-        jLabel110.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel110.setText("Cedula del Cliente a Editar");
-        panelEditarCliente.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        apellidoCliente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarCliente.add(apellidoCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 355, 30));
 
-        cedulCliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cedulCliente1ActionPerformed(evt);
-            }
-        });
+        telCliente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarCliente.add(telCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 355, 30));
+
+        direccinCliete1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarCliente.add(direccinCliete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 355, 30));
+
+        BarrioCliente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarCliente.add(BarrioCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 355, 30));
+
+        jLabel110.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel110.setText("Cédula del Cliente a Editar");
+        panelEditarCliente.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, 30));
+
+        cedulCliente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulCliente1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cedulCliente1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cedulCliente1KeyTyped(evt);
             }
         });
-        panelEditarCliente.add(cedulCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 360, -1));
+        panelEditarCliente.add(cedulCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 360, 30));
 
-        jLabel111.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel111.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel111.setText("Correo");
-        panelEditarCliente.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
-        panelEditarCliente.add(CorreoCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 355, -1));
+        panelEditarCliente.add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, 30));
+
+        CorreoCliente1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelEditarCliente.add(CorreoCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 355, 30));
 
         panelCliente.addTab("EDITAR", panelEditarCliente);
 
@@ -1863,7 +1988,10 @@ public class GestionJefe extends javax.swing.JFrame {
         panelBuscarCliente.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
         panelBuscarCliente.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, -1, -1));
 
-        buscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BUSCARBOTON.PNG"))); // NOI18N
+        buscarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buscarCliente.setForeground(new java.awt.Color(0, 0, 153));
+        buscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        buscarCliente.setText("BUSCAR CLIENTE");
         buscarCliente.setBorder(null);
         buscarCliente.setBorderPainted(false);
         buscarCliente.setContentAreaFilled(false);
@@ -1875,12 +2003,13 @@ public class GestionJefe extends javax.swing.JFrame {
                 buscarClienteActionPerformed(evt);
             }
         });
-        panelBuscarCliente.add(buscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
+        panelBuscarCliente.add(buscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
 
-        jLabel114.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel114.setText("Cedula del Cliente ");
-        panelBuscarCliente.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+        jLabel114.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel114.setText("Cédula del Cliente: ");
+        panelBuscarCliente.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, 30));
 
+        cedulCliente2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cedulCliente2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulCliente2ActionPerformed(evt);
@@ -1891,7 +2020,7 @@ public class GestionJefe extends javax.swing.JFrame {
                 cedulCliente2KeyTyped(evt);
             }
         });
-        panelBuscarCliente.add(cedulCliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 267, -1));
+        panelBuscarCliente.add(cedulCliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 110, 320, 30));
 
         resultadoBusqueda2.setEditable(false);
         resultadoBusqueda2.setColumns(20);
@@ -1899,7 +2028,7 @@ public class GestionJefe extends javax.swing.JFrame {
         resultadoBusqueda2.setRows(5);
         jScrollPane14.setViewportView(resultadoBusqueda2);
 
-        panelBuscarCliente.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 444, 296));
+        panelBuscarCliente.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 444, 260));
 
         panelCliente.addTab("BUSCAR", panelBuscarCliente);
 
@@ -1911,7 +2040,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NOMBRE", "APELLIDO", "CEDULA", "TELEFONO", "DIRECCION", "BARRIO", "CORREO"
+                "NOMBRE", "APELLIDO", "CÉDULA", "TELÉFONO", "DIRECCIÓN", "BARRIO", "CORREO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1924,10 +2053,15 @@ public class GestionJefe extends javax.swing.JFrame {
         });
         jScrollPane15.setViewportView(tblDatos3);
 
-        panelListarCliente.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 770, 327));
-        panelListarCliente.add(txtValorBusqueda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 299, -1));
+        panelListarCliente.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 820, 300));
 
-        botonListar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BotonListar.PNG"))); // NOI18N
+        txtValorBusqueda3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        panelListarCliente.add(txtValorBusqueda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 100, 510, 30));
+
+        botonListar3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonListar3.setForeground(new java.awt.Color(0, 0, 153));
+        botonListar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/listar-el-simbolo-del-boton-cuadrado-para-la-interfaz.png"))); // NOI18N
+        botonListar3.setText("LISTAR CLIENTES");
         botonListar3.setBorder(null);
         botonListar3.setBorderPainted(false);
         botonListar3.setContentAreaFilled(false);
@@ -1936,19 +2070,19 @@ public class GestionJefe extends javax.swing.JFrame {
                 botonListar3ActionPerformed(evt);
             }
         });
-        panelListarCliente.add(botonListar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, -1));
+        panelListarCliente.add(botonListar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
 
         jLabel115.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel115.setText("LISTAR CLIENTE");
         panelListarCliente.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
-        jLabel116.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel116.setText("LISTAR POR:");
-        panelListarCliente.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        jLabel116.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel116.setText("FILTRAR POR:");
+        panelListarCliente.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 30));
 
-        cboxFiltro3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        cboxFiltro3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Barrio", "Todos" }));
-        panelListarCliente.add(cboxFiltro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 143, -1));
+        cboxFiltro3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cboxFiltro3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nombre", "Apellido", "Barrio", " " }));
+        panelListarCliente.add(cboxFiltro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 143, 30));
 
         panelCliente.addTab("LISTAR", panelListarCliente);
 
@@ -2202,13 +2336,14 @@ public class GestionJefe extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpleadoMouseClicked
 
     private void guardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProductoActionPerformed
-        if (nombreProducto.getText().isEmpty() || codigoProducto.getText().isEmpty() || precioProducto.getText().isEmpty() 
+        if (nombreProducto.getText().isEmpty() || codigoProducto.getText().isEmpty() || precioProducto.getText().isEmpty() || precioVentaProducto.getText().isEmpty() 
                 ||  descripcionProducto.getText().isEmpty() || cantidadProducto.getText().isEmpty() || proveedirProducto.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe llenar todo el formulario", "Error",JOptionPane.WARNING_MESSAGE);
         } else {
             String nombre = nombreProducto.getText();
             String codigo = codigoProducto.getText();
-            String precio = precioProducto.getText();
+            String precioCompra = precioProducto.getText();
+            String precioVenta = precioVentaProducto.getText();
             String descripcion = descripcionProducto.getText();
             String cantidad = cantidadProducto.getText();
             String proveedor = proveedirProducto.getText();
@@ -2217,7 +2352,7 @@ public class GestionJefe extends javax.swing.JFrame {
             String resultado = producto.verificarExitencia(codigo);
 
             if (resultado.equals("No esta")) {
-                producto.guardarProducto(nombre, codigo, precio, descripcion, cantidad, proveedor);
+                producto.guardarProducto(nombre, codigo, precioCompra, precioVenta, descripcion, cantidad, proveedor);
                 limpiarCampos();
             }
         }
@@ -2238,17 +2373,14 @@ public class GestionJefe extends javax.swing.JFrame {
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el PRODUCTO, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
         produ.eliminarPro(codigoProduccto.getText());
-        limpiarCampos();
+        codigoProduccto.setText("");
+        productoEliminar.setText("");
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
-    private void codigoProducctoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProducctoActionPerformed
-
-    }//GEN-LAST:event_codigoProducctoActionPerformed
-
     private void codigoProducctoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoProducctoKeyTyped
         char dato = evt.getKeyChar();
-        if(dato<'0'||dato>'9')evt.consume();
+        if(dato<'0'||dato>'9')evt.consume();         
     }//GEN-LAST:event_codigoProducctoKeyTyped
 
     private void descripcionProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionProducto1ActionPerformed
@@ -2265,6 +2397,7 @@ public class GestionJefe extends javax.swing.JFrame {
         objetoProducto.setCodigoPro(codigoProducto1.getText());
         objetoProducto.setNombrePro(nombrProducto.getText());
         objetoProducto.setPrecioPro(precioProducto1.getText());
+        objetoProducto.setPrecioVentaPro(precioVentaProduc.getText());
         objetoProducto.setDescripcionPro(descripcionProducto1.getText());
         objetoProducto.setCantidadPro(cantidadProducto1.getText());
         objetoProducto.setProveedorPro(nitProveedor.getText());
@@ -2277,10 +2410,6 @@ public class GestionJefe extends javax.swing.JFrame {
         }
         limpiarCampos();
     }//GEN-LAST:event_guardarProducto1ActionPerformed
-
-    private void codigoProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoProducto1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigoProducto1ActionPerformed
 
     private void buscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductoActionPerformed
         controlador.ControladorProducto buscar  = new controlador.ControladorProducto();
@@ -2342,22 +2471,15 @@ public class GestionJefe extends javax.swing.JFrame {
             objProv.setNitProv(nitProveedor1.getText());
             objProv.setTelefonoProv(telefonoProveedor.getText());
             objProv.setDireccionProv(direccionProveedor.getText());
-            objProv.setProductoProv(nombreproductoprov.getText());
-            objProv.setPrecioProdProv(precioproductoprov.getText());
             objProv.insertar();
             JOptionPane.showMessageDialog(rootPane, "SE REGISTRO PROVEEDOR CON EXITO");
-            limpiarCampos();
+            nombredeProveedor.setText("");
+            nitProveedor1.setText("");
+            telefonoProveedor.setText("");
+            direccionProveedor.setText("");
         }
 
     }//GEN-LAST:event_guardarProvActionPerformed
-
-    private void nombreproductoprovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreproductoprovActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreproductoprovActionPerformed
-
-    private void precioproductoprovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioproductoprovActionPerformed
-
-    }//GEN-LAST:event_precioproductoprovActionPerformed
 
     private void botonEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminar1ActionPerformed
 
@@ -2365,8 +2487,9 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"DEBE BUSCAR AL CLIENTE");
         }else if (JOptionPane.showConfirmDialog(rootPane, "Se eliminará el proveedor, ¿desea continuar?",
             "Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-        prove.eliminarProv(nitProveedor.getText());
-        limpiarCampos();
+        prove.eliminarProv(nitProveedor2.getText());
+        nitProveedor2.setText("");
+        proveedorEliminar.setText("");
         }
     }//GEN-LAST:event_botonEliminar1ActionPerformed
 
@@ -2394,8 +2517,6 @@ public class GestionJefe extends javax.swing.JFrame {
         objetoProveedor.setNombreProv(nombrProveedor.getText());
         objetoProveedor.setTelefonoProv(telProveedor.getText());
         objetoProveedor.setDireccionProv(direccionProveedor1.getText());
-        objetoProveedor.setPrecioProdProv(precioProdprov.getText());
-        objetoProveedor.setProductoProv(nomProducProv.getText());
         String resultado = "";
         resultado = objetoProveedor.modificar();
         if(resultado.equals("Error")){
@@ -2403,24 +2524,15 @@ public class GestionJefe extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Se modifico");
         }
-        limpiarCampos();
+        nitProveedor3.setText("");
+        nombrProveedor.setText("");
+        telProveedor.setText("");
+        direccionProveedor1.setText("");
     }//GEN-LAST:event_guardarProducto2ActionPerformed
-
-    private void nitProveedor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nitProveedor3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nitProveedor3ActionPerformed
 
     private void nombrProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrProveedorActionPerformed
 
     }//GEN-LAST:event_nombrProveedorActionPerformed
-
-    private void direccionProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionProveedor1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_direccionProveedor1ActionPerformed
-
-    private void nitProveedor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nitProveedor4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nitProveedor4ActionPerformed
 
     private void nitProveedor4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nitProveedor4KeyTyped
         char dato = evt.getKeyChar();
@@ -2430,13 +2542,12 @@ public class GestionJefe extends javax.swing.JFrame {
     private void buscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProveedorActionPerformed
         controlador.ControladorProveedor buscar  = new controlador.ControladorProveedor();
         if(nitProveedor4.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "DEBE INGRESAR LA CEDULA DEL CLIENTE");
+            JOptionPane.showMessageDialog(null, "DEBE INGRESAR EL NIT DEL PROVEEDOR");
         }else{
             String nit = nitProveedor4.getText();
             busquedaProveedor.setText(buscar.buscarProv(nit));
             nitProveedor4.setText("");
         }
-
     }//GEN-LAST:event_buscarProveedorActionPerformed
 
     private void cboxFiltro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxFiltro1ActionPerformed
@@ -2447,8 +2558,8 @@ public class GestionJefe extends javax.swing.JFrame {
         if(txtValorBusqueda1.getText().equals("") && !cboxFiltro1.getSelectedItem().toString().equals("Todos")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR UN DATO");
         }else{
-            listarProv.setPrecioProdProv(txtValorBusqueda1.getText());
-            listarProv.listarProve(txtValorBusqueda1.getText(),cboxFiltro1.getSelectedItem().toString(),tblDatos);
+            jScrollPane6.setVisible(true);
+            listarProv.listarProve(txtValorBusqueda1.getText(),cboxFiltro1.getSelectedItem().toString(),tblDatos1);
             limpiarCampos();
         }
 
@@ -2474,14 +2585,11 @@ public class GestionJefe extends javax.swing.JFrame {
     private void GenerarPdf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPdf1ActionPerformed
 
         if(jComboBox2.getSelectedItem().toString().equals("Todo")){
-            jtxDato1.setVisible(false);
             String dato = jtxDato1.getText();
             produ2.generarPdf(dato,jComboBox2.getSelectedItem().toString());
         }else if(jtxDato1.getText().equals("")){
-            jtxDato1.setVisible(true);
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR UN DATO");
         }else{
-            jtxDato1.setVisible(true);
             String dato = jtxDato1.getText();
             produ2.setPrecioPro(jtxDato1.getText());
             produ2.generarPdf(dato,jComboBox2.getSelectedItem().toString());
@@ -2490,14 +2598,11 @@ public class GestionJefe extends javax.swing.JFrame {
 
     private void GenerarPdf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPdf2ActionPerformed
         if(jComboBox3.getSelectedItem().toString().equals("Todo")){
-            jtxDato2.setVisible(false);
             String dato = jtxDato2.getText();
             clie.generarPdf(dato,jComboBox3.getSelectedItem().toString());
         }else if(jtxDato2.getText().equals("")){
-            jtxDato2.setVisible(true);
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR UN DATO");
         }else{
-            jtxDato2.setVisible(true);
             String dato = jtxDato2.getText();
             clie.generarPdf(dato,jComboBox3.getSelectedItem().toString());
         }
@@ -2532,7 +2637,7 @@ public class GestionJefe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe ingresar un dato Correcto");
         }
 
-        totalCompra.setText("Total: " + sumarTotal());
+        totalCompra.setText("Total: $" + sumarTotal());
         compraTotal = Double.parseDouble(sumarTotal());
     }//GEN-LAST:event_agregarActionPerformed
 
@@ -2580,10 +2685,6 @@ public class GestionJefe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroCotizacionActionPerformed
 
-    private void vendedorCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedorCotizacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vendedorCotizacionActionPerformed
-
     private void GuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCotizacionActionPerformed
 
         int numerocotiza = Integer.parseInt(buscar.codigoCotizacion()) -1;
@@ -2626,6 +2727,8 @@ public class GestionJefe extends javax.swing.JFrame {
         tbnGuardarCotizacion.setEnabled(true);
         totalCompra.setText("Total: ");
         limpiarTabla();
+        
+        JOptionPane.showMessageDialog(null, "Ha sido guardado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_GuardarCotizacion1ActionPerformed
 
     private void buscarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCotizacionActionPerformed
@@ -2697,10 +2800,6 @@ public class GestionJefe extends javax.swing.JFrame {
         char dato = evt.getKeyChar();
         if(dato<'0'||dato>'9')evt.consume();
     }//GEN-LAST:event_telefonoEmpleado1KeyTyped
-
-    private void cedulaEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaEmpleado1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cedulaEmpleado1ActionPerformed
 
     private void cedulaEmpleado1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaEmpleado1KeyTyped
         char dato = evt.getKeyChar();
@@ -2862,10 +2961,6 @@ public class GestionJefe extends javax.swing.JFrame {
         if((dato<'a'||dato>'z')&&(dato<'A'||dato>'Z'))evt.consume();
     }//GEN-LAST:event_nombreCliente1KeyTyped
 
-    private void cedulCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulCliente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cedulCliente1ActionPerformed
-
     private void cedulCliente1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulCliente1KeyTyped
         char dato = evt.getKeyChar();
         if(dato<'0'||dato>'9')evt.consume();
@@ -2897,9 +2992,8 @@ public class GestionJefe extends javax.swing.JFrame {
         if(txtValorBusqueda3.getText().equals("") && !cboxFiltro3.getSelectedItem().toString().equals("Todos")){
             JOptionPane.showMessageDialog(null, "DEBE INGRESAR UN DATO");
         }else{
-            txtValorBusqueda3.setEnabled(true);
             listarCli.listarC(txtValorBusqueda3.getText(),cboxFiltro3.getSelectedItem().toString(),tblDatos3);
-            limpiarCampos();
+            txtValorBusqueda3.setText("");
         }
     }//GEN-LAST:event_botonListar3ActionPerformed
 
@@ -2907,9 +3001,101 @@ public class GestionJefe extends javax.swing.JFrame {
         char validar = evt.getKeyChar();
         if(validar<'0'||validar>'9')evt.consume();
         if(Character.isLetter(validar))JOptionPane.showMessageDialog(null, "Solo digite números", "Advertencia", JOptionPane.WARNING_MESSAGE);              
+        
     }//GEN-LAST:event_codigoProductoKeyTyped
 
+    private void nitProveedor3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nitProveedor3KeyReleased
+        controlador.ControladorProveedor buscar = new controlador.ControladorProveedor();
+
+        String nit = nitProveedor3.getText();
+        String[] respuesta = buscar.buscarProvEdit(nit);
+        nombrProveedor.setText(respuesta[0]);
+        telProveedor.setText(respuesta[1]);
+        direccionProveedor1.setText(respuesta[2]);
+    }//GEN-LAST:event_nitProveedor3KeyReleased
+
+    private void codigoProducto1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoProducto1KeyReleased
+        controlador.ControladorProducto buscarProducto = new controlador.ControladorProducto();
+
+        String codigo_producto = codigoProducto1.getText();
+        if (codigo_producto.length() >= 1) {
+            String[] respuesta = buscarProducto.buscarProEdit(codigo_producto);
+            nombrProducto.setText(respuesta[0]);
+            precioProducto1.setText(respuesta[1]);
+            precioVentaProduc.setText(respuesta[2]);
+            descripcionProducto1.setText(respuesta[3]);
+            cantidadProducto1.setText(respuesta[4]);
+            nitProveedor.setText(respuesta[5]);
+        }else{
+            nombrProducto.setText("");
+            precioProducto1.setText("");
+            precioVentaProduc.setText("");
+            descripcionProducto1.setText("");
+            cantidadProducto1.setText("");
+            nitProveedor.setText("");
+        }
+    }//GEN-LAST:event_codigoProducto1KeyReleased
+
+    private void cedulaEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaEmpleadoKeyTyped
+        char dato = evt.getKeyChar();
+        if(dato<'0'||dato>'9')evt.consume();
+    }//GEN-LAST:event_cedulaEmpleadoKeyTyped
+
+    private void telefonoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoEmpleadoKeyTyped
+        char dato = evt.getKeyChar();
+        if(dato<'0'||dato>'9')evt.consume();
+    }//GEN-LAST:event_telefonoEmpleadoKeyTyped
+
+    private void sueldoEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sueldoEmpleadoKeyTyped
+        char dato = evt.getKeyChar();
+        if(dato<'0'||dato>'9')evt.consume();
+    }//GEN-LAST:event_sueldoEmpleadoKeyTyped
+
+    private void cedulaEmpleado1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaEmpleado1KeyReleased
+        controlador.ControladorEmpleado buscarEmpleado = new controlador.ControladorEmpleado();
+
+        String cedula_empleado = cedulaEmpleado1.getText();
+        if (cedula_empleado.length() >= 1) {
+            String[] respuesta = buscarEmpleado.buscarEmpleEdit(cedula_empleado);
+            nombreEmpleado2.setText(respuesta[0]);
+            apellidoEmpleado1.setText(respuesta[1]);
+            telefonoEmpleado1.setText(respuesta[2]);
+            direccion.setText(respuesta[3]);
+            barrio.setText(respuesta[4]);
+        }else{
+            nombreEmpleado2.setText("");
+            apellidoEmpleado1.setText("");
+            telefonoEmpleado1.setText("");
+            direccion.setText("");
+            barrio.setText("");
+        }
+    }//GEN-LAST:event_cedulaEmpleado1KeyReleased
+
+    private void cedulCliente1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulCliente1KeyReleased
+        controlador.ControladorCliente buscarCliente = new controlador.ControladorCliente();
+
+        String cedula_cliente = cedulCliente1.getText();
+        if (cedula_cliente.length() >= 1) {
+            String[] respuesta = buscarCliente.buscarCliEdit(cedula_cliente);
+            nombreCliente1.setText(respuesta[0]);
+            apellidoCliente1.setText(respuesta[1]);
+            telCliente1.setText(respuesta[2]);
+            direccinCliete1.setText(respuesta[3]);
+            BarrioCliente1.setText(respuesta[4]);
+            CorreoCliente1.setText(respuesta[5]);
+        }else{
+            nombreCliente1.setText("");
+            apellidoCliente1.setText("");
+            telCliente1.setText("");
+            direccinCliete1.setText("");
+            BarrioCliente1.setText("");
+            CorreoCliente1.setText("");
+        }
+    }//GEN-LAST:event_cedulCliente1KeyReleased
+
     public void limpiarCampos(){
+        precioVentaProduc.setText("");
+        precioVentaProducto.setText("");
         nombreUsuario.setText("");
         contrasenaUsuario.setText("");
         nombreEmpleado1.setText("");
@@ -3163,12 +3349,10 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
@@ -3242,6 +3426,7 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jtxDato;
     private javax.swing.JTextField jtxDato1;
     private javax.swing.JTextField jtxDato2;
@@ -3250,7 +3435,6 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JTextField nitProveedor2;
     private javax.swing.JTextField nitProveedor3;
     private javax.swing.JTextField nitProveedor4;
-    private javax.swing.JTextField nomProducProv;
     private javax.swing.JTextField nombrProducto;
     private javax.swing.JTextField nombrProveedor;
     private javax.swing.JTextField nombreCliente;
@@ -3261,7 +3445,6 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JTextField nombreProducto;
     private javax.swing.JTextField nombreUsuario;
     private javax.swing.JTextField nombredeProveedor;
-    private javax.swing.JTextField nombreproductoprov;
     private javax.swing.JTextField numeroCotizacion;
     private javax.swing.JTextField numeroCotizacion2;
     private javax.swing.JPanel panelBuscar;
@@ -3298,10 +3481,10 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JPanel panelReporteProductos;
     private javax.swing.JTabbedPane panelReportes;
     private javax.swing.JPanel panelTitulo;
-    private javax.swing.JTextField precioProdprov;
     private javax.swing.JTextField precioProducto;
     private javax.swing.JTextField precioProducto1;
-    private javax.swing.JTextField precioproductoprov;
+    private javax.swing.JTextField precioVentaProduc;
+    private javax.swing.JTextField precioVentaProducto;
     private javax.swing.JTextArea productoEliminar;
     private javax.swing.JTextField proveedirProducto;
     private javax.swing.JTextArea proveedorEliminar;

@@ -3,7 +3,7 @@ package silverdevs;
 import javax.swing.UIManager;
 import vista.LoginUsuario;
 
-public class SilverDevs {
+public class SoffiJess {
     
     public static void main(String[] args) {
 

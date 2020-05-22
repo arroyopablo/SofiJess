@@ -74,41 +74,84 @@ public class DAOEmpleado extends Empleado{
         return null;
     }
     
-    public String eliminar(){
-        String SQL = "DELETE FROM Empleado WHERE cedulaEmple = "+ super.getCedulaEmpleado();
+    public String[] consultarEmpleadoEdit(){
+        String SQL = "SELECT * FROM Empleado WHERE cedulaEmple = " + super.getCedulaEmpleado();
+        java.sql.ResultSet rs = null;
+        rs = objConecta.consulta(SQL);
+        String[] vacio = {"", "", "", "", "", ""};
+        try {
+            if (rs.next()) {
+                String nombre = rs.getString(3);
+                String apellido = rs.getString(4);
+                String telefono = rs.getString(6);
+                String direccion = rs.getString(7);
+                String barrio = rs.getString(8);
+                String[] niu = {nombre, apellido, telefono, direccion, barrio};
+
+                return niu;
+            } else {
+                return vacio;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error");
+        }
+        return null;
+    }
+
+    public String eliminar() {
+        String SQL = "DELETE FROM Empleado WHERE cedulaEmple = " + super.getCedulaEmpleado();
         String resultado = "";
         resultado = objConecta.eliminar(SQL);
         return resultado;
     }
-    
-    public String modificar(){
-        String SQL = "UPDATE  Empleado SET nombreEmple = '"+super.getNombreEmpleado()+ "', apellidoEmple = '"
-                +super.getApellidoEmpleado()+"', telefono = "+ super.getTelefonoEmpleado()+", direccionEmple = '"
-                +super.getDireccionEmpleado()+"',barrioEmple = '"+super.getBarrioEmpleado()
-                +"' WHERE cedulaEmple = " + super.getCedulaEmpleado();
+
+    public String modificar() {
+        String SQL = "UPDATE  Empleado SET nombreEmple = '" + super.getNombreEmpleado() + "', apellidoEmple = '"
+                + super.getApellidoEmpleado() + "', telefono = " + super.getTelefonoEmpleado() + ", direccionEmple = '"
+                + super.getDireccionEmpleado() + "',barrioEmple = '" + super.getBarrioEmpleado()
+                + "' WHERE cedulaEmple = " + super.getCedulaEmpleado();
         String resultado = "";
         resultado = objConecta.modifica(SQL);
         return resultado;
     }
-    
-    public boolean valide(){
-        String SQL ="SELECT usuarioEmple, contrasenaEmple FROM Empleado where usuarioEmple='"+ super.getUsuarioEmpleado()
-                                               +"' and contrasenaEmple='"+ super.getContrasenaEmpleado()+"'";
-        if(objConecta.validar(SQL)==false){
+
+    public boolean valide() {
+        String SQL = "SELECT usuarioEmple, contrasenaEmple FROM Empleado where usuarioEmple='" + super.getUsuarioEmpleado()
+                + "' and contrasenaEmple='" + super.getContrasenaEmpleado() + "'";
+        if (objConecta.validar(SQL) == false) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    
-    public String consultarCargo(){
+
+    public String consultarCargo() {
+        String SQL = "SELECT * FROM Empleado WHERE usuarioEmple = '" + super.getUsuarioEmpleado() + "'";
+        java.sql.ResultSet rs = null;
+        rs = objConecta.consulta(SQL);
+
+        try {
+            if (rs.next()) {
+                return rs.getString(10);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error Elemento no Encontrado");
+                return "No esta";
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+            System.out.println("Error Exception");
+        }
+        return null;
+    }
+
+    public String consultarCedula(){
         String SQL = "SELECT * FROM Empleado WHERE usuarioEmple = '" + super.getUsuarioEmpleado()+"'";
         java.sql.ResultSet rs = null;
         rs = objConecta.consulta(SQL);
         
         try{
             if(rs.next()){
-                return rs.getString(10);
+                return rs.getString(5);
             }else{
                 JOptionPane.showMessageDialog(null, "Error Elemento no Encontrado");
                 return "No esta";
@@ -118,7 +161,8 @@ public class DAOEmpleado extends Empleado{
             System.out.println("Error Exception");
         }
         return null;
-    }    
+    }  
+    
     public String nombreEmple(){
         String SQL = "SELECT * FROM empleado WHERE usuarioEmple = '" + super.getUsuarioEmpleado()+"'";
         java.sql.ResultSet rs = null;
@@ -154,7 +198,7 @@ public class DAOEmpleado extends Empleado{
     }
     
     public void listarEmpl(String valor, String filtro, JTable tabla) {
-        String[] columnas = {"USUARIO", "Nombre", "Apellido", "Cedula", "Telefono", "Direccion", "Barrio", "Sueldo","Cargo"};
+        String[] columnas = {"USUARIO", "NOMBRE", "APELLIDO", "CÉDULA", "TELÉFONO", "DIRECCIÓN", "BARRIO", "SUELDO","CARGO"};
         String[] registros = new String[9];
         modeloTabla = new DefaultTableModel(null, columnas);
         String SQL;
@@ -215,8 +259,7 @@ public class DAOEmpleado extends Empleado{
             
             Paragraph parrafo = new Paragraph();
             parrafo.setAlignment(Paragraph.ALIGN_CENTER);
-            parrafo.add("PAPELERIA SOFIJESS \n\n\n");
-            parrafo.setFont(FontFactory.getFont("Tahoma", 18, Font.BOLD, BaseColor.DARK_GRAY));
+            parrafo.setFont(FontFactory.getFont("Tahoma", 16, Font.BOLD, BaseColor.DARK_GRAY));
             parrafo.add("EMPLEADO\n\n");
             
             documento.open();

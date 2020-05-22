@@ -64,6 +64,31 @@ public class DAOCliente extends Cliente{
         return null;
     }
     
+    public String[] consultarClienteEdit() {
+        String SQL = "SELECT * FROM cliente WHERE cedulaClien = " + super.getCedulaCli();
+        java.sql.ResultSet rs = null;
+        rs = objConecta.consulta(SQL);
+        String[] vacio = {"", "", "", "", "", ""};
+        try {
+            if (rs.next()) {
+                String nombreCliente = rs.getString(1);
+                String apellidoCliente = rs.getString(2);
+                String telefonoCliente = rs.getString(4);
+                String direccionCliente = rs.getString(5);
+                String barrioCLiente = rs.getString(6);
+                String correoCliente = rs.getString(7);
+                String[] niu = {nombreCliente, apellidoCliente, telefonoCliente, direccionCliente, barrioCLiente, correoCliente};
+
+                return niu;
+            } else {
+                return vacio;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error");
+        }
+        return null;
+    }
+    
     public String eliminar(){
         String SQL = "DELETE FROM cliente WHERE cedulaClien = "+ super.getCedulaCli();
         String resultado = "";
@@ -119,7 +144,7 @@ public class DAOCliente extends Cliente{
     }
     
      public void listarC(String valor, String filtro, JTable tabla) {
-        String[] columnas = {"NOMBRE", "APELLIDO", "CEDULA", "TELEFONO", "DIRECCION", "BARRIO", "CORREO"};
+        String[] columnas = {"NOMBRE", "APELLIDO", "CÉDULA", "TELÉFONO", "DIRECCIÓN", "BARRIO", "CORREO"};
         String[] registros = new String[7];
         modeloTabla = new DefaultTableModel(null, columnas);
         String SQL;
@@ -164,15 +189,14 @@ public class DAOCliente extends Cliente{
         try {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte_Cliente.pdf"));
-            Image header = Image.getInstance("src/Imagenes/logo.PNG");
+            Image header = Image.getInstance("src/Imagenes/titulo.PNG");
             //largo y dimension
             header.scaleToFit(150, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
             
             Paragraph parrafo = new Paragraph();
             parrafo.setAlignment(Paragraph.ALIGN_CENTER);
-            parrafo.add("SILVER DEVS \n\n\n");
-            parrafo.setFont(FontFactory.getFont("Tahoma", 18, Font.BOLD, BaseColor.DARK_GRAY));
+            parrafo.setFont(FontFactory.getFont("Tahoma", 16, Font.BOLD, BaseColor.DARK_GRAY));
             parrafo.add("CLIENTES\n\n");
             
             documento.open();

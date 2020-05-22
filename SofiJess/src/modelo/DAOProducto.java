@@ -27,9 +27,9 @@ public class DAOProducto extends Producto {
   }
   
   public void insertar(){
-      String sql = "INSERT INTO producto (nombreProduc, codigoProduc, precioProduc, descripcionProduc, "
+      String sql = "INSERT INTO producto (nombreProduc, codigoProduc, precioCompraProduc, precioVentaProduc, descripcionProduc, "
               + "cantidadProduc, nitProv) VALUES" + "('"+ super.getNombrePro() +"', '"+ super.getCodigoPro() 
-              +"', '"+ super.getPrecioPro() +"', '"+ super.getDescripcionPro() +"', '"+ super.getCantidadPro() 
+              +"', '"+ super.getPrecioPro() +"', '"+ super.getPrecioVentaPro() +"', '"+ super.getDescripcionPro() +"', '"+ super.getCantidadPro() 
               +"', "+ super.getProveedorPro()+ ")";
       conexionPro.insertar(sql);
   }
@@ -58,6 +58,31 @@ public class DAOProducto extends Producto {
       return null;
   }
   
+  public String[] consultarProductoEdit(){
+      String SQL = "SELECT * FROM producto WHERE codigoProduc = " + super.getCodigoPro();
+      java.sql.ResultSet rs = null;
+      rs = conexionPro.consulta(SQL);
+      String[] vacio = {"","","","","", ""};
+      try{
+          if(rs.next()){
+              String nombreProduc = rs.getString(1);
+              String precioCompraProduc = rs.getString(3);
+              String precioVentaProduc = rs.getString(4);
+              String cantidadProduc = rs.getString(6);
+              String descripcionProduc = rs.getString(5);
+              String nombreprov = rs.getString(7);              
+              String[] niu = {nombreProduc, precioCompraProduc, precioVentaProduc, descripcionProduc, cantidadProduc, nombreprov};
+              
+              return niu;
+          }else{
+              return vacio;
+          }
+      }catch(SQLException ex){
+              System.out.println("Error");
+      }
+      return null;
+  }
+  
   public String eliminar(){
         String SQL = "DELETE FROM producto WHERE codigoProduc = "+ super.getCodigoPro();
         String resultado = "";
@@ -67,8 +92,8 @@ public class DAOProducto extends Producto {
   
   
     public String modificar(){
-        String SQL = "UPDATE  producto SET nombreproduc = '"+super.getNombrePro()+ "', precioproduc = "
-                +super.getPrecioPro()+", descripcionproduc = '"+ super.getDescripcionPro()+"', cantidadproduc = "
+        String SQL = "UPDATE  producto SET nombreproduc = '"+super.getNombrePro()+ "', precioCompraProduc = "
+                +super.getPrecioPro()+ ", precioVentaProduc = " +super.getPrecioVentaPro()+ ", descripcionproduc = '"+ super.getDescripcionPro()+"', cantidadproduc = "
                 +super.getCantidadPro()+", nitProv = "+ super.getProveedorPro()
                 +" WHERE codigoproduc = " + super.getCodigoPro();
         //String SQL = "UPDATE FROM Persona  WHERE cedula = '"+ super.getCedula() + "' SET nombre = '"+ super.getNombre()+"'";
@@ -97,8 +122,8 @@ public class DAOProducto extends Producto {
   
   public void listarProdu(String valor, String filtro, JTable tabla) {
         controlador.ControladorProducto produ = new controlador.ControladorProducto();
-        String[] columnas = {"NOMBRE", "CODIGO", "PRECIO", "DESCRIPCION", "CANTIDAD", "NIT PROVEEDOR"};
-        String[] registros = new String[6];
+        String[] columnas = {"NOMBRE", "CÓDIGO", "PRECIO DE COMPRA", "PRECIO DE VENTA", "CANTIDAD", "NIT PROVEEDOR", "TOTAL", "GANANCIA"};
+        String[] registros = new String[8];
         modeloTabla = new DefaultTableModel(null, columnas);
         String SQL;
         
@@ -106,7 +131,7 @@ public class DAOProducto extends Producto {
             SQL = "SELECT *"
                     + "FROM producto WHERE nombreproduc LIKE '%" + valor + "%'";
         } else if (filtro.equals("Precio")) {
-            SQL = "SELECT * FROM producto WHERE precioproduc = " + super.getPrecioPro();
+            SQL = "SELECT * FROM producto WHERE precioVentaProduc = " + super.getPrecioPro();
         } else if (filtro.endsWith("Cantidad")){
             SQL = "SELECT * FROM producto WHERE cantidadproduc = " + super.getCantidadPro();
         }else if (filtro.endsWith("Todos")){
@@ -121,10 +146,14 @@ public class DAOProducto extends Producto {
             while (rs.next()) {
                 registros[0] = rs.getString("nombreProduc");
                 registros[1] = rs.getString("codigoproduc");
-                registros[2] = rs.getString("precioProduc");
-                registros[3] = rs.getString("descripcionProduc");
+                registros[2] = "$" + rs.getString("precioCompraProduc");
+                String precioCompra = rs.getString("precioCompraProduc");
+                registros[3] = "$" + rs.getString("precioVentaProduc");
+                String precioVenta = rs.getString("precioVentaProduc");
                 registros[4] = rs.getString("cantidadProduc");
                 registros[5] = rs.getString("nitProv");
+                registros[6] = "$" + String.valueOf(Integer.parseInt(precioVenta) * Integer.parseInt(registros[4]));
+                registros[7] = "$" + String.valueOf((Integer.parseInt(precioVenta) - Integer.parseInt(precioCompra)) * Integer.parseInt(registros[4]));
                 
                 modeloTabla.addRow(registros);
             }
@@ -139,15 +168,14 @@ public class DAOProducto extends Producto {
         try {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte_Producto.pdf"));
-            Image header = Image.getInstance("src/Imagenes/logo.PNG");
+            Image header = Image.getInstance("src/Imagenes/titulo.PNG");
             //largo y dimension
             header.scaleToFit(150, 1000);
             header.setAlignment(Chunk.ALIGN_CENTER);
             
             Paragraph parrafo = new Paragraph();
             parrafo.setAlignment(Paragraph.ALIGN_CENTER);
-            parrafo.add("SILVER DEVS \n\n\n");
-            parrafo.setFont(FontFactory.getFont("Tahoma", 18, Font.BOLD, BaseColor.DARK_GRAY));
+            parrafo.setFont(FontFactory.getFont("Tahoma", 16, Font.BOLD, BaseColor.DARK_GRAY));
             parrafo.add("PRODUCTO\n\n");
             
             documento.open();

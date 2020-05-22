@@ -105,10 +105,10 @@ public class DAOCotizacion1 extends Cotizacion{
         String SQL = "SELECT * FROM DetalleCotizacion WHERE idcotizacion = " + super.getIdCotizacion();
         java.sql.ResultSet rs = null;
         rs = conexionPro.consulta(SQL);
-
+        String resultado = "";
         try {
 
-            if (rs.next()) {
+            while (rs.next()) {
                 String iddetallec = rs.getString(1);
                 String codigopro = rs.getString(3);
                 String cantidad = rs.getString(4);
@@ -117,13 +117,17 @@ public class DAOCotizacion1 extends Cotizacion{
                 String total = rs.getString(7);
 
 
-                return ("IDENTIFICADOR: " + iddetallec + "\n " + " \n" + "CODIGO PRODUCTO: " + codigopro + "\n " 
+                resultado += "IDENTIFICADOR: " + iddetallec + "\n " + " \n" + "CODIGO PRODUCTO: " + codigopro + "\n " 
                         + " \n" + "CANTIDAD: " + cantidad + "\n "
                         + " \n" + "VALOR UNITARIO: " + valorunitario + " \n" + " \n" + "IVA: " + iva + " \n" 
-                        + " \n"+ "TOTAL: " + total + " \n" + " \n");
-            } else {
+                        + " \n"+ "TOTAL: " + total + " \n" +
+                        " \n" + "----------------------------------------------------------------------------------" + "\n";
+            }
+            if(!rs.next() && resultado.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Error Elemento no Encontrado");
                 return "No esta";
+            }else{
+                return resultado;
             }
         } catch (SQLException ex) {
             ex.getMessage();

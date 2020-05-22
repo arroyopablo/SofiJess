@@ -4,6 +4,7 @@ public class Producto {
     private String nombrePro;
     private String codigoPro; 
     private String precioPro;
+    private String precioVentaPro;
     private String descripcionPro;
     private String cantidadPro;
     private String nitproveedor;
@@ -11,11 +12,12 @@ public class Producto {
    public Producto(){
    }
    
-   public Producto(String nombrePro, String codigoPro, String precioPro, 
+   public Producto(String nombrePro, String codigoPro, String precioPro, String precioVentaPro, 
                    String descripcionPro, String cantidadPro, String nitproveedor){
        this.nombrePro = nombrePro;
        this.codigoPro = codigoPro;
        this.precioPro = precioPro;
+       this.precioVentaPro = precioVentaPro;
        this.descripcionPro = descripcionPro;
        this.cantidadPro = cantidadPro;
        this.nitproveedor = nitproveedor;
@@ -43,6 +45,14 @@ public class Producto {
 
     public void setPrecioPro(String precioPro) {
         this.precioPro = precioPro;
+    }
+    
+    public String getPrecioVentaPro() {
+        return precioVentaPro;
+    }
+
+    public void setPrecioVentaPro(String precioVentaPro) {
+        this.precioVentaPro = precioVentaPro;
     }
 
     public String getDescripcionPro() {
@@ -72,7 +82,7 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto=" + "nombrePro=" + nombrePro + ", codigoPro=" + codigoPro 
-                + ", precioPro=" + precioPro + ", descripcionPro=" + descripcionPro 
+                + ", precioPro=" + precioPro + ", precioVentaPro=" + precioVentaPro + ", descripcionPro=" + descripcionPro 
                 + ", cantidadPro=" + cantidadPro + ", proveedorPro=" + nitproveedor + '}';
     }
 }

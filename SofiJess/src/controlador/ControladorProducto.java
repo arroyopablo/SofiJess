@@ -21,12 +21,24 @@ public class ControladorProducto {
         return resultado;
     }
     
-    public void guardarProducto(String nombre, String codigo, String precio, String descripcion, 
+    public String[] buscarProEdit(String busqueda) {
+
+        modelo.DAOProducto objetoProducto = new modelo.DAOProducto();
+        objetoProducto.setCodigoPro(busqueda);
+
+        String[] resultado = null;
+        resultado = objetoProducto.consultarProductoEdit();
+
+        return resultado;
+    }
+    
+    public void guardarProducto(String nombre, String codigo, String precioCompra, String precioVenta, String descripcion, 
                                 String cantidad, String proveedor ){
         modelo.DAOProducto objProducto = new modelo.DAOProducto();
         objProducto.setNombrePro(nombre);
         objProducto.setCodigoPro(codigo);
-        objProducto.setPrecioPro(codigo);
+        objProducto.setPrecioPro(precioCompra);
+        objProducto.setPrecioVentaPro(precioVenta);
         objProducto.setDescripcionPro(descripcion);
         objProducto.setCantidadPro(cantidad);
         objProducto.setProveedorPro(proveedor);

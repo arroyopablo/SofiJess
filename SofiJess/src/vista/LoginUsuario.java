@@ -206,7 +206,7 @@ public class LoginUsuario extends javax.swing.JFrame {
             try {
             modelo.DAOEmpleado obj = new modelo.DAOEmpleado();
             controlador.EncriptarPassword encriptar = new controlador.EncriptarPassword();
-            String usuario = txtUsuario.getText();
+            String usuario = txtUsuario.getText().trim();
             String password = txtpassClave.getText();
             obj.setUsuarioEmpleado(usuario);
             obj.setContrasenaEmpleado(encriptar.encriptar(password));
@@ -215,16 +215,18 @@ public class LoginUsuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
             } else {
                 String resultado = "";
-                String nombre = "";
+                String nombre = "";                
+                String cedula = "";
                 resultado = obj.consultarCargo();
                 nombre = obj.nombreEmple();
+                cedula = obj.consultarCedula();
 
                 if (resultado.equals("No esta")) {
                     JOptionPane.showMessageDialog(null, "No esta");
 
                 } else if (resultado.equals("Jefe")) {
 
-                    GestionJefe ge = new GestionJefe();
+                    GestionJefe ge = new GestionJefe(cedula);
                     ge.setVisible(true);
                     ge.nombreEmpleado.setText(nombre);
 
@@ -273,7 +275,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         try {
             modelo.DAOEmpleado obj = new modelo.DAOEmpleado();
             controlador.EncriptarPassword encriptar = new controlador.EncriptarPassword();
-            String usuario = txtUsuario.getText();
+            String usuario = txtUsuario.getText().trim();
             String password = txtpassClave.getText();
             obj.setUsuarioEmpleado(usuario);
             obj.setContrasenaEmpleado(encriptar.encriptar(password));
@@ -282,16 +284,18 @@ public class LoginUsuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
             } else {
                 String resultado = "";
-                String nombre = "";
+                String nombre = "";                
+                String cedula = "";
                 resultado = obj.consultarCargo();
                 nombre = obj.nombreEmple();
+                cedula = obj.consultarCedula();
 
                 if (resultado.equals("No esta")) {
                     JOptionPane.showMessageDialog(null, "No esta");
 
                 } else if (resultado.equals("Jefe")) {
 
-                    GestionJefe ge = new GestionJefe();
+                    GestionJefe ge = new GestionJefe(cedula);
                     ge.setVisible(true);
                     ge.nombreEmpleado.setText(nombre);
 

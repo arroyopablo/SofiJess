@@ -2,24 +2,23 @@ CREATE TABLE Proveedor(
  nombreProv           varchar(50),
  nitProv              bigint NOT NULL PRIMARY KEY,
  telProv              bigint  NOT NULL,
- dirProv              varchar(50) NOT NULL,
- precioProducrov      numeric(12,0) NOT NULL,
- nombreProducProv     varchar(50) NOT NULL);
+ dirProv              varchar(50) NOT NULL);
  
- INSERT INTO Proveedor VALUES('Jose',1077,316682357,'Cr39fdf',25000,'Teclado');
+ INSERT INTO Proveedor VALUES('Jose',1077,316682357,'Cr39fdf');
  select * from Proveedor;
  
 CREATE TABLE Producto(
  nombreProduc         varchar(50) NOT NULL,
  codigoProduc         bigint NOT NULL PRIMARY KEY,
- precioProduc         numeric(12,0) NOT NULL,
+ precioCompraProduc   numeric(12,0) NOT NULL,
+ precioVentaProduc 	  numeric(12,0) NOT NULL,
  descripcionProduc    varchar(150),
  cantidadProduc       bigint NOT NULL,
  nitProv              bigint NOT NULL,	
 CONSTRAINT  fknitProv FOREIGN KEY(nitProv) REFERENCES Proveedor(nitProv));
 
-INSERT INTO Producto VALUES('Teclado',1,25000,'Teclado nuevo',10,1077);
-INSERT INTO Producto VALUES('Mouse',2,20000,'Mouse nuevo',10,1077);
+INSERT INTO Producto VALUES('Teclado',1,25000,28000,'Teclado nuevo',10,1077);
+INSERT INTO Producto VALUES('Mouse',2,20000,23000,'Mouse nuevo',10,1077);
 
  select * from producto;
  
@@ -88,12 +87,14 @@ CONSTRAINT fkidCotizacion FOREIGN KEY(idCotizacion) REFERENCES Cotizacion(idCoti
 CONSTRAINT fkcodigoProducCot FOREIGN KEY(codigoProduc) REFERENCES Producto(codigoProduc));
 
 INSERT INTO DetalleCotizacion(idCotizacion,codigoProduc,cantidad,valorunitario,iva,total) VALUES
- (2,1,3,25000,4750,89250),
+ (1,1,3,25000,4750,89250),
  (2,2,3,20000,3800,86400),
  (2,1,1,25000,4750,29740);
  
- select * from detalleCotizacion;
+select * from detalleCotizacion;
 
+CREATE VIEW producto_proveedor AS
+SELECT * FROM Producto NATURAL JOIN Proveedor;
 
 update cotizacion set totalCompra = 205400;
 
