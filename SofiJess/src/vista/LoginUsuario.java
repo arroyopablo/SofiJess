@@ -232,7 +232,7 @@ public class LoginUsuario extends javax.swing.JFrame {
 
                 } else if (resultado.equals("Empleado")) {
 
-                    GestionEmpleado ge1 = new GestionEmpleado();
+                    GestionEmpleado ge1 = new GestionEmpleado(cedula);
                     ge1.setVisible(true);
                     ge1.nombreUsuario.setText(nombre);
 
@@ -301,7 +301,7 @@ public class LoginUsuario extends javax.swing.JFrame {
 
                 } else if (resultado.equals("Empleado")) {
 
-                    GestionEmpleado ge1 = new GestionEmpleado();
+                    GestionEmpleado ge1 = new GestionEmpleado(cedula);
                     ge1.setVisible(true);
                     ge1.nombreUsuario.setText(nombre);
 

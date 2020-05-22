@@ -96,5 +96,4 @@ select * from detalleCotizacion;
 CREATE VIEW producto_proveedor AS
 SELECT * FROM Producto NATURAL JOIN Proveedor;
 
-update cotizacion set totalCompra = 205400;
 

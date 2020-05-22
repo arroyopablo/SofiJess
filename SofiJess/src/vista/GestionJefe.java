@@ -2656,13 +2656,20 @@ public class GestionJefe extends javax.swing.JFrame {
         String cedulaClien = documentoClienteCotiza.getText();
         String cedulaEmple = vendedorCotizacion.getText();
         //Crea la cotizacion
-        buscar.guardarCotizacion(cedulaClien, cedulaEmple);
-        codigoProducCotizacion.setEditable(true);
-        cantidadProductoCotizacion.setEditable(true);
-        agregar.setEnabled(true);
-        eliminarProducto.setEnabled(true);
-        GuardarCotizacion.setEnabled(true);
-        tbnGuardarCotizacion.setEnabled(false);
+        controlador.ControladorCliente guardarCliente  = new controlador.ControladorCliente();
+        
+        String resultado = guardarCliente.verificarExitenciaCliente(cedulaClien);
+        if(resultado.equals("No esta")){
+            JOptionPane.showMessageDialog(null, "El cliente no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            buscar.guardarCotizacion(cedulaClien, cedulaEmple);
+            codigoProducCotizacion.setEditable(true);
+            cantidadProductoCotizacion.setEditable(true);
+            agregar.setEnabled(true);
+            eliminarProducto.setEnabled(true);
+            GuardarCotizacion.setEnabled(true);
+            tbnGuardarCotizacion.setEnabled(false);
+        }
     }//GEN-LAST:event_tbnGuardarCotizacionActionPerformed
 
     private void cancelarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCActionPerformed
@@ -2674,7 +2681,6 @@ public class GestionJefe extends javax.swing.JFrame {
         GuardarCotizacion.setEnabled(false);
 
         documentoClienteCotiza.setText("");
-        vendedorCotizacion.setText("");
         buscar.cancelarCotizacion(Integer.toString(idcotizacion));
         numeroCotizacion.setText(Integer.toString(idcotizacion));
         fechaCotizacion.setText(buscar.fechaActual());

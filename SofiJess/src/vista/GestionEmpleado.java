@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DAOEmpleado;
@@ -9,15 +10,42 @@ import modelo.DAOEmpleado;
 
 public class GestionEmpleado extends javax.swing.JFrame {
     DAOEmpleado emple = new DAOEmpleado();
-
-    public GestionEmpleado() {
+    private int idcotizacion;
+    
+     modelo.DAOProducto listarPro = new modelo.DAOProducto();
+    controlador.ControladorProducto produ = new controlador.ControladorProducto();
+    
+    controlador.ControladorCliente cliente  = new controlador.ControladorCliente();
+    modelo.DAOCliente listarCli = new  modelo.DAOCliente();
+    DefaultTableModel dtm = new DefaultTableModel();
+    
+    controlador.ControladorCotizacion buscar = new controlador.ControladorCotizacion();
+    private double compraTotal;
+    Color fondoNaranja = new Color(246,149,50);
+    Color rojo = new Color(234,201,186);
+    
+    public GestionEmpleado(String cedula) {
         initComponents();
         this.setLocationRelativeTo(this);
         this.setResizable(false);
         
+        String[] titulo = new String[]{"Codigo", "Nombre", "Cantidad", "V Unitario", "Valor Total"};
+        dtm.setColumnIdentifiers(titulo);
+        tlbDatos.setModel(dtm);
+        
+        fechaCotizacion.setEditable(false);
+        fechaCotizacion.setText(buscar.fechaActual());
+        numeroCotizacion.setEditable(false);
+        vendedorCotizacion.setEditable(false);
+        idcotizacion = Integer.parseInt(buscar.codigoCotizacion());
+        numeroCotizacion.setText(Integer.toString(idcotizacion));
+        vendedorCotizacion.setText(cedula);
         jTabbedPaneClientes.setVisible(true);
         jTabbedPaneCotizaciones.setVisible(false);
         jTabbedPaneProductos.setVisible(false);
+        clientes.setBackground(rojo);
+        cotizaciones.setBackground(fondoNaranja);
+        botonProductos.setBackground(fondoNaranja);
     }
 
     @SuppressWarnings("unchecked")
@@ -1265,16 +1293,7 @@ public class GestionEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    modelo.DAOProducto listarPro = new modelo.DAOProducto();
-    controlador.ControladorProducto produ = new controlador.ControladorProducto();
-    
-    controlador.ControladorCliente cliente  = new controlador.ControladorCliente();
-    modelo.DAOCliente listarCli = new  modelo.DAOCliente();
-    DefaultTableModel dtm = new DefaultTableModel();
-    
-    controlador.ControladorCotizacion buscar = new controlador.ControladorCotizacion();
-    private int idcotizacion;
-    private double compraTotal;
+   
  //   modelo.DAOCliente eliminarCli = new modelo.DAOCliente();
  //   modelo.DAOCliente listarCli = new modelo.DAOCliente();
  //   controlador.ControladorCliente cliente = new controlador.ControladorCliente();
@@ -1599,18 +1618,30 @@ public class GestionEmpleado extends javax.swing.JFrame {
         jTabbedPaneProductos.setVisible(true);
         jTabbedPaneClientes.setVisible(false);
         jTabbedPaneCotizaciones.setVisible(false);
+        
+        clientes.setBackground(fondoNaranja);
+        cotizaciones.setBackground(fondoNaranja);
+        botonProductos.setBackground(rojo);
     }//GEN-LAST:event_botonProductosMouseClicked
 
     private void clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesMouseClicked
         jTabbedPaneClientes.setVisible(true);
         jTabbedPaneCotizaciones.setVisible(false);
         jTabbedPaneProductos.setVisible(false);
+        
+        clientes.setBackground(rojo);
+        cotizaciones.setBackground(fondoNaranja);
+        botonProductos.setBackground(fondoNaranja);
     }//GEN-LAST:event_clientesMouseClicked
 
     private void cotizacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cotizacionesMouseClicked
         jTabbedPaneCotizaciones.setVisible(true);
         jTabbedPaneClientes.setVisible(false);
         jTabbedPaneProductos.setVisible(false);
+        
+        clientes.setBackground(fondoNaranja);
+        cotizaciones.setBackground(rojo);
+        botonProductos.setBackground(fondoNaranja);
     }//GEN-LAST:event_cotizacionesMouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1707,14 +1738,21 @@ public class GestionEmpleado extends javax.swing.JFrame {
     private void tbnGuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnGuardarCotizacionActionPerformed
         String cedulaClien = documentoClienteCotiza.getText();
         String cedulaEmple = vendedorCotizacion.getText();
-        //Crea la cotizacion
-        buscar.guardarCotizacion(cedulaClien, cedulaEmple);
-        codigoProducCotizacion.setEditable(true);
-        cantidadProductoCotizacion.setEditable(true);
-        agregar.setEnabled(true);
-        eliminarProducto.setEnabled(true);
-        GuardarCotizacion.setEnabled(true);
-        tbnGuardarCotizacion.setEnabled(false);
+        //Crea la cotizacion        
+        controlador.ControladorCliente guardarCliente  = new controlador.ControladorCliente();
+        
+        String resultado = guardarCliente.verificarExitenciaCliente(cedulaClien);
+        if (resultado.equals("No esta")) {
+            JOptionPane.showMessageDialog(null, "El cliente no se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            buscar.guardarCotizacion(cedulaClien, cedulaEmple);
+            codigoProducCotizacion.setEditable(true);
+            cantidadProductoCotizacion.setEditable(true);
+            agregar.setEnabled(true);
+            eliminarProducto.setEnabled(true);
+            GuardarCotizacion.setEnabled(true);
+            tbnGuardarCotizacion.setEnabled(false);
+        }
     }//GEN-LAST:event_tbnGuardarCotizacionActionPerformed
 
     private void cancelarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCActionPerformed
@@ -1726,7 +1764,6 @@ public class GestionEmpleado extends javax.swing.JFrame {
         GuardarCotizacion.setEnabled(false);
 
         documentoClienteCotiza.setText("");
-        vendedorCotizacion.setText("");
         buscar.cancelarCotizacion(Integer.toString(idcotizacion));
         numeroCotizacion.setText(Integer.toString(idcotizacion));
         fechaCotizacion.setText(buscar.fechaActual());
@@ -1772,7 +1809,6 @@ public class GestionEmpleado extends javax.swing.JFrame {
         eliminarProducto.setEnabled(false);
         GuardarCotizacion.setEnabled(false);
         documentoClienteCotiza.setText("");
-        vendedorCotizacion.setText("");
         fechaCotizacion.setText(buscar.fechaActual());
         idcotizacion = Integer.parseInt(buscar.codigoCotizacion());
         numeroCotizacion.setText(Integer.toString(idcotizacion));

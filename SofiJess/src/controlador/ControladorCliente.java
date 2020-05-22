@@ -88,4 +88,16 @@ public class ControladorCliente {
         return resultado;
     }
     
+    public String verificarExitenciaCliente (String datoBuscar){
+       modelo.DAOCliente objetoCliente = new modelo.DAOCliente();
+       objetoCliente.setCedulaCli(datoBuscar);
+    
+       String resultado = "";
+       resultado = objetoCliente.consultarExitencia();
+      
+        if(resultado.equals("")){
+            JOptionPane.showMessageDialog(null, "Puede registrar los productos");
+        }
+        return resultado;
+    }
 }
