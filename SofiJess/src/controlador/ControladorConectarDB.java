@@ -1,6 +1,8 @@
 package controlador;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -13,16 +15,17 @@ public class ControladorConectarDB {
     public ControladorConectarDB(){
         try{
             try{
-                Class.forName("org.postgresql.Driver");  
+                Class.forName("org.postgresql.Driver");                  
                 System.out.println("Driver correcto");
                 
             }catch(ClassNotFoundException ex){
                 System.out.println("ERROR CARGANDO");
-            }
-                                              
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/SofiJess", "postgres","cjloco1996");
+            }                                        
+            
+            con = DriverManager.getConnection("jdbc:postgresql://ec2-107-22-245-82.compute-1.amazonaws.com:5432/dd87n7bnbaspv9", "urkqyzgsfiblgw","324a83411bea1af477152eb7743579056f6b4e1ecd8c580402acbcec4d81f728");
+            
         }catch(SQLException ex){
-            System.out.println("No se pudo conectar");
+            System.out.println("No se pudo conectar: " +ex.getMessage());
         }
         
     }

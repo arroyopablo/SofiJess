@@ -2935,7 +2935,7 @@ public class GestionJefe extends javax.swing.JFrame {
             ||telCliente1.getText().equals("")||direccinCliete1.getText().equals("")||BarrioCliente1.getText().equals("")
             ||CorreoCliente1.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR TODOS LOS DATOS");
-        }else if(cedulCliente.getText().equals("")){
+        }else if(cedulCliente1.getText().equals("")){
             JOptionPane.showMessageDialog(null,"DEBE INGRESAR LA CEDULA");
         }else{
             modelo.DAOCliente objetoCliente = new modelo.DAOCliente();

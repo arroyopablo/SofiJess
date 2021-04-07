@@ -1,6 +1,6 @@
 package vista;
 
-import com.sun.awt.AWTUtilities;
+
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import javax.swing.Icon;
@@ -15,7 +15,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         initComponents();
                 
         this.setUndecorated(true);
-        AWTUtilities.setWindowOpaque(this, false);
+        
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
@@ -210,7 +210,8 @@ public class LoginUsuario extends javax.swing.JFrame {
             String password = txtpassClave.getText();
             obj.setUsuarioEmpleado(usuario);
             obj.setContrasenaEmpleado(encriptar.encriptar(password));
-
+            JOptionPane.showMessageDialog(null, "Espere un momento...");
+            
             if (obj.valide() == false) {
                 JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
             } else {
@@ -279,7 +280,8 @@ public class LoginUsuario extends javax.swing.JFrame {
             String password = txtpassClave.getText();
             obj.setUsuarioEmpleado(usuario);
             obj.setContrasenaEmpleado(encriptar.encriptar(password));
-
+            JOptionPane.showMessageDialog(null, "Espere un momento...");
+            
             if (obj.valide() == false) {
                 JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
             } else {
@@ -289,7 +291,7 @@ public class LoginUsuario extends javax.swing.JFrame {
                 resultado = obj.consultarCargo();
                 nombre = obj.nombreEmple();
                 cedula = obj.consultarCedula();
-
+                                
                 if (resultado.equals("No esta")) {
                     JOptionPane.showMessageDialog(null, "No esta");
 
