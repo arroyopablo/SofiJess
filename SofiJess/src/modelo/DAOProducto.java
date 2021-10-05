@@ -18,6 +18,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class DAOProducto extends Producto {
     controlador.ControladorConectarDB conexionPro;
@@ -42,13 +44,16 @@ public class DAOProducto extends Producto {
       try{
           if(rs.next()){
               String nombreProduc = rs.getString(1);
-              String precioProduc = rs.getString(3);
-              String cantidadProduc = rs.getString(5);
-              String descripcionProduc = rs.getString(4);
-              String nombreprov = rs.getString(6);
-              return ("NOMBRE: " + nombreProduc + "\n" + "PRECIO: " + precioProduc + "\n" 
+              String precioCompraProduc = rs.getString(3);
+              String precioVentaProduc = rs.getString(4);
+              String cantidadProduc = rs.getString(6);
+              String descripcionProduc = rs.getString(5);
+              String nombreprov = rs.getString(7);
+              String result = "NOMBRE: " + nombreProduc + "\n" + "PRECIO COMPRA: " + precioCompraProduc + "\n"
+                      + "PRECIO VENTA: " + precioVentaProduc + "\n"
                       + "CANTIDAD: " + cantidadProduc + "\n" + "DESCRIPCION: " + descripcionProduc 
-                      + "\n" + "PROVEEDOR: " + nombreprov);
+                      + "\n" + "PROVEEDOR: " + nombreprov;
+              return(result);
           }else{
               return "No se encontró";
           }
@@ -158,6 +163,43 @@ public class DAOProducto extends Producto {
                 modeloTabla.addRow(registros);
             }
             tabla.setModel(modeloTabla);
+            tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer()
+            {
+                int whichRow = 0;
+                int rowCount =0;
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+                {
+                    final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                    Object cantidad = table.getModel().getValueAt(row, 4);
+                    if(whichRow != row && whichRow != 0 && cantidad.equals("0")){
+                        int colNumber = tabla.getModel().getColumnCount();
+                        Object[] newRow = new String[colNumber];
+                        for (int i = 0; i < colNumber; i++) {
+                            newRow[i] = table.getModel().getValueAt(row, i);
+                        }
+                        modeloTabla.removeRow(row);
+                        modeloTabla.insertRow(0, newRow);
+                        tabla.setModel(modeloTabla);
+                    }
+                    if(tabla.getModel().getRowCount()-1 == whichRow){
+                        rowCount = rowCount+1;
+                    }
+                    if(rowCount == tabla.getModel().getColumnCount()){
+                        whichRow = 0;
+                    } else {
+                        whichRow = row;
+                    }
+
+                    if(cantidad.equals("0")){
+                        c.setForeground(Color.RED);
+                    } else{
+                        c.setForeground(Color.BLACK);
+                    }
+                    return c;
+                }
+                
+            });
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "Error al cargar datos", JOptionPane.ERROR_MESSAGE);
         }
