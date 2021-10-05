@@ -165,19 +165,23 @@ public class DAOProducto extends Producto {
             tabla.setModel(modeloTabla);
             tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer()
             {
-                int whichRow = 0;
+                int whichRow = -1;
                 int rowCount =0;
+                Object lastRowName = "";
                 @Override
                 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
                 {
                     final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                     Object cantidad = table.getModel().getValueAt(row, 4);
-                    if(whichRow != row && whichRow != 0 && cantidad.equals("0")){
+                    Object name = table.getModel().getValueAt(row, 0);
+                    if(whichRow != row && whichRow != -1 && cantidad.equals("0")
+                            && !lastRowName.equals(name)){
                         int colNumber = tabla.getModel().getColumnCount();
                         Object[] newRow = new String[colNumber];
                         for (int i = 0; i < colNumber; i++) {
                             newRow[i] = table.getModel().getValueAt(row, i);
                         }
+                        lastRowName = newRow[0];
                         modeloTabla.removeRow(row);
                         modeloTabla.insertRow(0, newRow);
                         tabla.setModel(modeloTabla);
@@ -186,11 +190,11 @@ public class DAOProducto extends Producto {
                         rowCount = rowCount+1;
                     }
                     if(rowCount == tabla.getModel().getColumnCount()){
-                        whichRow = 0;
+                        whichRow = -1;
                     } else {
                         whichRow = row;
                     }
-
+                    
                     if(cantidad.equals("0")){
                         c.setForeground(Color.RED);
                     } else{
