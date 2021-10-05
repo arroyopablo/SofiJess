@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sebas/Desktop/WORKSPACE/Sistemas%20de%20información/SofiJess/SofiJess/src/controlador/ControladorCliente.java</file>
-            <file>file:/C:/Users/Sebas/Desktop/WORKSPACE/Sistemas%20de%20información/SofiJess/SofiJess/src/controlador/ControladorConectarDB.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/SofiJess/SofiJess/src/controlador/ControladorCotizacion.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/SofiJess/SofiJess/src/modelo/DAOCotizacion1.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/SofiJess/SofiJess/src/vista/LoginUsuario.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/SofiJess/SofiJess/src/vista/GestionJefe.java</file>
         </group>
     </open-files>
 </project-private>

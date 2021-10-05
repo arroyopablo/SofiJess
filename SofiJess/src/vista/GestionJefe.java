@@ -180,6 +180,18 @@ public class GestionJefe extends javax.swing.JFrame {
         GenerarPdf2 = new javax.swing.JButton();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel55 = new javax.swing.JLabel();
+        panelReporteVentaMes = new javax.swing.JPanel();
+        jLabel117 = new javax.swing.JLabel();
+        GenerarPdf3 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        comboBoxMes = new javax.swing.JComboBox<>();
+        textAñoVenta = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        panelReporteVentaAno = new javax.swing.JPanel();
+        jLabel118 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        textAñoVenta1 = new javax.swing.JTextField();
+        GenerarPdf4 = new javax.swing.JButton();
         panelCotizaciones = new javax.swing.JTabbedPane();
         panelCrearCotizacion = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -370,7 +382,7 @@ public class GestionJefe extends javax.swing.JFrame {
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPiePagina.setBackground(new java.awt.Color(158, 189, 213));
-        panelPiePagina.setBorder(javax.swing.BorderFactory.createBevelBorder(1));
+        panelPiePagina.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         panelPiePagina.setMinimumSize(new java.awt.Dimension(668, 44));
         panelPiePagina.setPreferredSize(new java.awt.Dimension(633, 47));
         panelPiePagina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1134,9 +1146,148 @@ public class GestionJefe extends javax.swing.JFrame {
         jLabel55.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel55.setText("GENERAR REPORTE CLIENTE");
-        panelReporteEditar.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 20, 930, -1));
+        panelReporteEditar.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 930, -1));
 
         panelReportes.addTab("CLIENTE", panelReporteEditar);
+
+        jLabel117.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel117.setText("GENERAR REPORTE VENTA POR MES");
+
+        GenerarPdf3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GenerarPdf3.setForeground(new java.awt.Color(0, 0, 153));
+        GenerarPdf3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pdf.PNG"))); // NOI18N
+        GenerarPdf3.setText("GENERAR REPORTE");
+        GenerarPdf3.setBorder(null);
+        GenerarPdf3.setBorderPainted(false);
+        GenerarPdf3.setContentAreaFilled(false);
+        GenerarPdf3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenerarPdf3ActionPerformed(evt);
+            }
+        });
+
+        jLabel42.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel42.setText("SELECCIONE UN MES:");
+        jLabel42.setToolTipText("");
+
+        comboBoxMes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        comboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE", " " }));
+
+        textAñoVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        textAñoVenta.setText("2021");
+        textAñoVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textAñoVentaKeyTyped(evt);
+            }
+        });
+
+        jLabel47.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel47.setText("SELECCIONE UN AÑO:");
+
+        javax.swing.GroupLayout panelReporteVentaMesLayout = new javax.swing.GroupLayout(panelReporteVentaMes);
+        panelReporteVentaMes.setLayout(panelReporteVentaMesLayout);
+        panelReporteVentaMesLayout.setHorizontalGroup(
+            panelReporteVentaMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReporteVentaMesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelReporteVentaMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelReporteVentaMesLayout.createSequentialGroup()
+                        .addGroup(panelReporteVentaMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelReporteVentaMesLayout.createSequentialGroup()
+                                .addGap(337, 337, 337)
+                                .addComponent(GenerarPdf3)
+                                .addGap(166, 166, 166))
+                            .addGroup(panelReporteVentaMesLayout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel47)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(textAñoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        panelReporteVentaMesLayout.setVerticalGroup(
+            panelReporteVentaMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReporteVentaMesLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel117)
+                .addGap(92, 92, 92)
+                .addGroup(panelReporteVentaMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textAñoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(GenerarPdf3)
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+
+        panelReportes.addTab("VENTA MES", panelReporteVentaMes);
+
+        jLabel118.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel118.setText("GENERAR REPORTE VENTA POR AÑO");
+
+        jLabel119.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel119.setText("SELECCIONE UN AÑO:");
+
+        textAñoVenta1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        textAñoVenta1.setText("2021");
+        textAñoVenta1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textAñoVenta1KeyTyped(evt);
+            }
+        });
+
+        GenerarPdf4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GenerarPdf4.setForeground(new java.awt.Color(0, 0, 153));
+        GenerarPdf4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pdf.PNG"))); // NOI18N
+        GenerarPdf4.setText("GENERAR REPORTE");
+        GenerarPdf4.setBorder(null);
+        GenerarPdf4.setBorderPainted(false);
+        GenerarPdf4.setContentAreaFilled(false);
+        GenerarPdf4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenerarPdf4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelReporteVentaAnoLayout = new javax.swing.GroupLayout(panelReporteVentaAno);
+        panelReporteVentaAno.setLayout(panelReporteVentaAnoLayout);
+        panelReporteVentaAnoLayout.setHorizontalGroup(
+            panelReporteVentaAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReporteVentaAnoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelReporteVentaAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelReporteVentaAnoLayout.createSequentialGroup()
+                        .addGap(337, 337, 337)
+                        .addGroup(panelReporteVentaAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelReporteVentaAnoLayout.createSequentialGroup()
+                                .addComponent(jLabel119)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textAñoVenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(GenerarPdf4))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelReporteVentaAnoLayout.setVerticalGroup(
+            panelReporteVentaAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReporteVentaAnoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel118)
+                .addGap(83, 83, 83)
+                .addGroup(panelReporteVentaAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textAñoVenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(GenerarPdf4)
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+
+        panelReportes.addTab("VENTA AÑO", panelReporteVentaAno);
 
         jLayeredPane1.add(panelReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
@@ -1208,7 +1359,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         fechaCotizacion.setBackground(new java.awt.Color(236, 236, 236));
         fechaCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fechaCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        fechaCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelCrearCotizacion.add(fechaCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 97, 25));
 
         jLabel59.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -1242,7 +1393,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         numeroCotizacion.setBackground(new java.awt.Color(236, 236, 236));
         numeroCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        numeroCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        numeroCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         numeroCotizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroCotizacionActionPerformed(evt);
@@ -1252,7 +1403,7 @@ public class GestionJefe extends javax.swing.JFrame {
 
         vendedorCotizacion.setBackground(new java.awt.Color(236, 236, 236));
         vendedorCotizacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        vendedorCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        vendedorCotizacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelCrearCotizacion.add(vendedorCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 130, 25));
 
         GuardarCotizacion.setForeground(new java.awt.Color(51, 51, 51));
@@ -2089,7 +2240,7 @@ public class GestionJefe extends javax.swing.JFrame {
         jLayeredPane1.add(panelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 69, 919, 570));
 
         panelMenu.setBackground(new java.awt.Color(158, 189, 213));
-        panelMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        panelMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonProducto.setBackground(new java.awt.Color(246, 149, 50));
@@ -2232,6 +2383,7 @@ public class GestionJefe extends javax.swing.JFrame {
     controlador.ControladorProveedor prove = new controlador.ControladorProveedor();
     modelo.DAOProducto produ2 = new modelo.DAOProducto();
     modelo.DAOCliente clie = new modelo.DAOCliente();
+    modelo.DAOCotizacion cotiza = new modelo.DAOCotizacion();
     
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         LoginUsuario vista = new LoginUsuario();
@@ -2620,7 +2772,6 @@ public class GestionJefe extends javax.swing.JFrame {
             float valort1 = Float.parseFloat(cantidad) * Float.parseFloat(precio);
             String valort = Float.toString(valort1);
             String iva = ivaProducto(Double.parseDouble(precio));
-            System.out.print(cantidad + ";" + codigoProducto);
             buscar.updateCantidad(cantidad,codigoProducto);
             
             
@@ -3103,6 +3254,31 @@ public class GestionJefe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadProductoCotizacionActionPerformed
 
+    private void GenerarPdf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPdf3ActionPerformed
+        int mesReporte = comboBoxMes.getSelectedIndex()+ 1;
+        cotiza.generarPdf(mesReporte, Integer.parseInt(textAñoVenta.getText()), comboBoxMes.getSelectedItem().toString());      
+    }//GEN-LAST:event_GenerarPdf3ActionPerformed
+
+    private void textAñoVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAñoVentaKeyTyped
+        char caracter = evt.getKeyChar();
+        // Verificar si la tecla pulsada no es un digito
+        if (((caracter < '0') || (caracter > '9')) && (caracter != '\b' /*corresponde a BACK_SPACE*/)) {
+            evt.consume();  // ignorar el evento de teclado
+        }
+    }//GEN-LAST:event_textAñoVentaKeyTyped
+
+    private void textAñoVenta1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAñoVenta1KeyTyped
+         char caracter = evt.getKeyChar();
+        // Verificar si la tecla pulsada no es un digito
+        if (((caracter < '0') || (caracter > '9')) && (caracter != '\b' /*corresponde a BACK_SPACE*/)) {
+            evt.consume();  // ignorar el evento de teclado
+        }
+    }//GEN-LAST:event_textAñoVenta1KeyTyped
+
+    private void GenerarPdf4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPdf4ActionPerformed
+        cotiza.generarPdfAno(Integer.parseInt(textAñoVenta.getText()));      
+    }//GEN-LAST:event_GenerarPdf4ActionPerformed
+
     public void limpiarCampos(){
         precioVentaProduc.setText("");
         precioVentaProducto.setText("");
@@ -3225,6 +3401,8 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JButton GenerarPdf;
     private javax.swing.JButton GenerarPdf1;
     private javax.swing.JButton GenerarPdf2;
+    private javax.swing.JButton GenerarPdf3;
+    private javax.swing.JButton GenerarPdf4;
     private javax.swing.JButton GuardarCotizacion;
     private javax.swing.JButton GuardarCotizacion1;
     private javax.swing.JButton agregar;
@@ -3279,6 +3457,7 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JTextField codigoProducto;
     private javax.swing.JTextField codigoProducto1;
     private javax.swing.JTextField codigoProducto2;
+    private javax.swing.JComboBox<String> comboBoxMes;
     private javax.swing.JTextField contrasenaUsuario;
     private javax.swing.JTextField descripcionProducto;
     private javax.swing.JTextField descripcionProducto1;
@@ -3326,6 +3505,9 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -3359,10 +3541,12 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
@@ -3489,6 +3673,8 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JPanel panelReporteEditar;
     private javax.swing.JPanel panelReporteEmpleado;
     private javax.swing.JPanel panelReporteProductos;
+    private javax.swing.JPanel panelReporteVentaAno;
+    private javax.swing.JPanel panelReporteVentaMes;
     private javax.swing.JTabbedPane panelReportes;
     private javax.swing.JPanel panelTitulo;
     private javax.swing.JTextField precioProducto;
@@ -3515,6 +3701,8 @@ public class GestionJefe extends javax.swing.JFrame {
     private javax.swing.JTextField telefonoEmpleado;
     private javax.swing.JTextField telefonoEmpleado1;
     private javax.swing.JTextField telefonoProveedor;
+    private javax.swing.JTextField textAñoVenta;
+    private javax.swing.JTextField textAñoVenta1;
     private javax.swing.JTable tlbDatos;
     public javax.swing.JLabel totalCompra;
     private javax.swing.JTextField txtValorBusqueda;
