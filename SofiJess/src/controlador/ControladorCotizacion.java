@@ -93,10 +93,18 @@ public class ControladorCotizacion {
        
        update.setTotalCompra(totalcompra);
        update.setIdCotizacion(idcotizacion);
-       
-       update.setTotalCompra(totalcompra);
-       
+       update.setTotalCompra(totalcompra);       
        update.updateTotal();
+       update.Disminuir();
+    }
+    
+     public void updateCantidad(String cantidad, String codigoProducto){
+       modelo.DAOCotizacion1 update =new modelo.DAOCotizacion1();
+       
+
+       update.setCantidad(cantidad);
+       update.setCodigoProducto(codigoProducto);     
+       update.Disminuir();
     }
     
     public void cancelarCotizacion (String idcotizacion){

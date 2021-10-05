@@ -51,9 +51,20 @@ public class DAOCotizacion1 extends Cotizacion{
     public String updateTotal() {
         String SQL = "UPDATE Cotizacion  SET totalCompra ="+ super.getTotalCompra() + "WHERE idCotizacion = "
                      + super.getIdCotizacion() + ";";
+        
         String resultado = "";
         resultado = conexionPro.modifica(SQL);
         return resultado;
+    }
+    
+    public void Disminuir() {
+        
+        System.out.print(super.getCantidad() + "      ; " + super.getCodigoProducto());
+        String SQL2 = "UPDATE producto SET cantidadproduc = cantidadproduc -"+ super.getCantidad() 
+                +" WHERE codigoproduc =" + super.getCodigoProducto()+";";
+        conexionPro.modifica(SQL2);
+        
+        
     }
     
     public String cancelaCotizacion() {
